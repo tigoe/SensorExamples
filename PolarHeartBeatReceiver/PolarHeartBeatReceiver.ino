@@ -1,18 +1,18 @@
 /*  
-  Polar Heart beat monitior
-  
-  This sketch reads a Polar wireless heart rate monitor radio.
-  You can use Adafruit's model (product no. 1016) or SparkFun's
-  discontinued RMCM01.  You'll also need a Polar T3x Heart Rate
-  Transmitter (Adafruit, or any sports store).
-  
-  The circuit:
-   * Heart rate receiver output on digital pin 3
-   * Heart rate receiver connected to +5V and ground
-   
-  Created 17 Oct 2012
-  By Tom Igoe with input from Maria Paula Saba dos Reis
-*/
+ Polar Heart beat monitior
+ 
+ This sketch reads a Polar wireless heart rate monitor radio.
+ You can use Adafruit's model (product no. 1016) or SparkFun's
+ discontinued RMCM01.  You'll also need a Polar T3x Heart Rate
+ Transmitter (Adafruit, or any sports store).
+ 
+ The circuit:
+ * Heart rate receiver output on digital pin 3
+ * Heart rate receiver connected to +5V and ground
+ 
+ Created 17 Oct 2012
+ By Tom Igoe with input from Maria Paula Saba dos Reis
+ */
 
 // timestamp variables:
 long then;            // timestamp for the last heart beat
@@ -50,5 +50,6 @@ void beat()
   // as possible in an interrupt function:
   now = millis();
 }
+
 
 
