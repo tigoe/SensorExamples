@@ -2,7 +2,7 @@
   Pachube sensor client with Strings for my office
  
  This sketch connects an analog sensor to Pachube (http://www.pachube.com)
- using an Arduino Ethernet. 
+ using an Arduino WiFi shield. 
  
  This example has been updated to use version 2.0 of the Pachube.com API. 
  
@@ -11,32 +11,41 @@
  * BMP085 Temp and pressure sensor attached to I2C
  * DHT22 Temp and humidity sensor attached to pin 2
  * TSL2561 luminance sensor attached to I2C
- * Ethernet attached to SPI
+ * WiFi shield attached to SPI
  
  created  15 March 2010
- updated 1 Nov 2012
- by Tom Igoe with input from Usman Haque and Joe Saavedra
+ updated 5 Feb 2013
+ by Tom Igoe with input from Usman Haque and Joe Saavedra. TSL2561 code and 
+ DHT code borrowed from Adafruit's libraries for those sensors.
  
  */
 
 // include all Libraries needed:
-#include <SPI.h>
-#include <WiFi.h>
-#include <Wire.h>
-#include "TSL2561.h"
-#include <BMP085.h>
-#include "DHT.h"
+#include <SPI.h>            // For the WiFi shield
+#include <WiFi.h>           // for the WiFi shield
+#include <Wire.h>           // for the TSL2561 and BMP085 sensors
+#include "TSL2561.h"        // for the TSL2561 sensor
+#include <BMP085.h>         // for the BMP085 sensor
+#include "DHT.h"            // for the DHT22 sensor
+#include "passwords.h"      // contains my passwords, see below
+
+/*
+  NOTE: passwords.h is not included with this repo because it contains my passwords.
+  You need to create it for your own version of this application.  To do so, make
+  a new tab in Arduino, call it passwords.h, and include the following variables and constants:
+  
+#define APIKEY        "foo"                  // replace your pachube api key here
+#define FEEDID        0000                   // replace your feed ID
+#define USERAGENT     "my-project"           // user agent is the project name
+
+char ssid[] = "networkname";      //  your network SSID (name)
+char pass[] = "password";         // your network password
+
+*/
+
 
 #define DHTPIN 2        // DHT22's output pin
 #define DHTTYPE DHT22   // DHT 22  (AM2302) as opposed to DHT11
-
-#define APIKEY         "YOUR_KEY"             // replace your pachube api key here
-#define FEEDID        00000                   // replace your feed ID
-#define USERAGENT      "projectName"          // user agent is the project name
-
-
-char ssid[] = "networkName";      //  your network SSID (name)
-char pass[] = "password";   // your network password
 
 int status = WL_IDLE_STATUS;
 
@@ -49,11 +58,9 @@ DHT dht(DHTPIN, DHTTYPE);
 
 // set up net client info:
 char server[] = "api.pachube.com";
-unsigned long lastConnectionTime = 0;        // last time you connected to the server, in milliseconds
 boolean lastConnected = false;      // state of the connection last time through the main loop
 const unsigned long postingInterval = 60000;  //delay between updates to Pachube.com
 const unsigned long readingInterval = postingInterval / 10;  // delay between sensor reads;
-unsigned long lastReadTime = 0;
 String dataString = "";
 
 // set up sensor averaging variables:
@@ -89,7 +96,7 @@ void setup() {
     // wait 10 seconds for connection:
     delay(10000);
   } 
-  
+
   // you're connected now, so print out the status:
   printWifiStatus();   
 
@@ -108,7 +115,7 @@ void setup() {
   bmp.begin();  
 
   // set blink pin:
-  pinMode(A0, OUTPUT);
+  pinMode(9, OUTPUT);
   dht.begin();
 
   // reserve space for dataString:
@@ -120,7 +127,7 @@ void loop() {
   long now = millis();
 
   // if reading interval has passed, read:
-  if (millis() - lastReadTime > readingInterval) {
+  if (now % readingInterval < 5) {
     // increment sample count:
     samples++;   
 
@@ -151,26 +158,24 @@ void loop() {
 
     // convert the readings to a String to send it:
     dataString = "temp,";
+    //dataString += avgTemp;
     dataString += floatToString(avgTemp, 2);
     // add lux:
     dataString += "\nLight,";
+    // dataString += avgLux;
     dataString += floatToString(avgLux, 2);
     // add pressure:
     dataString += "\nPressure,";
+    //dataString += avgPressure;
     dataString += floatToString(avgPressure, 2);
 
     dataString += "\nHumidity,";
+    //dataString += avgHumidity;
     dataString += floatToString(avgHumidity, 2);
-    // if serial monitor's open, print it:
-    if (Serial) {
-      Serial.println(dataString);
-    }
+
     // toggle the LED to give a physical indicator of activity:
     blinkState = !blinkState;
-    digitalWrite(A0, blinkState);
-
-    // update the last reading time:
-    lastReadTime = now;
+    digitalWrite(9, blinkState);
   }
   // if there's incoming data from the net connection,
   // send it out the serial port.  This is for debugging
@@ -182,32 +187,22 @@ void loop() {
     }
   }
 
-  // if there's no net connection, but there was one last time
-  // through the loop, then stop the client:
-  if (!client.connected() && lastConnected) {
-    Serial.println();
-    Serial.println("disconnecting.");
-    client.stop();
-  }
+
 
   // if you're not connected, and the sending interval has passed since
   // your last connection, then connect again and send data:
-  if(!client.connected() && (now - lastConnectionTime > postingInterval)) {
-    sendData(dataString);
+  if(now % postingInterval < 5) {
+    sendData();
     // reset all the variables for next gathering of data:
-    lastConnectionTime = now;
-    avgTemp= 0.0;
-    avgLux = 0.0;
-    avgPressure = 0.0;
     samples = 0;
   }
-  // store the state of the connection for next time through
-  // the loop:
-  lastConnected = client.connected();
 }
 
 // this method makes a HTTP connection to the server:
-void sendData(String thisData) {
+void sendData() {
+  // stop the client if it's connected:
+  if (client.connected()) client.stop();
+
   // if there's a successful connection:
   if (client.connect(server, 80)) {
     Serial.println("connecting...");
@@ -221,18 +216,17 @@ void sendData(String thisData) {
     client.print("User-Agent: ");
     client.println(USERAGENT);
     client.print("Content-Length: ");
-    client.println(thisData.length(), DEC);
+    client.println(dataString.length());
 
     // last pieces of the HTTP PUT request:
     client.print("Content-Type: text/csv\n");
     client.println("Connection: close\n");
+    delay(1);
 
     // here's the actual content of the PUT request:
-    client.println(thisData);
-    Serial.println(thisData.length());
-    Serial.println(thisData);
-    // note the time that the connection was made:
-    lastConnectionTime = millis();
+    client.println(dataString);
+    Serial.println(dataString.length());
+    Serial.println(dataString);
   } 
   else {
     // if you couldn't make a connection:
@@ -240,13 +234,11 @@ void sendData(String thisData) {
     Serial.println();
     Serial.println("disconnecting.");
     client.stop();
-    lastConnected = client.connected();
   }
 }
 
 
-String floatToString(double number, uint8_t digits) 
-{ 
+String floatToString(double number, uint8_t digits)  { 
   String resultString = "";
   // Handle negative numbers
   if (number < 0.0)
@@ -282,8 +274,6 @@ String floatToString(double number, uint8_t digits)
   return resultString;
 }
 
-
-
 void printWifiStatus() {
   // print the SSID of the network you're attached to:
   Serial.print("SSID: ");
@@ -300,3 +290,4 @@ void printWifiStatus() {
   Serial.print(rssi);
   Serial.println(" dBm");
 }
+
