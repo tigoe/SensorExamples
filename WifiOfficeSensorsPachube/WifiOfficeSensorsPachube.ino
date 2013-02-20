@@ -1,3 +1,4 @@
+
 /*
   Pachube sensor client with Strings for my office
  
@@ -28,6 +29,9 @@
 #include <BMP085.h>         // for the BMP085 sensor
 #include "DHT.h"            // for the DHT22 sensor
 #include "passwords.h"      // contains my passwords, see below
+#include <Filter.h>         // includes Karl's filter library
+
+
 
 /*
   NOTE: passwords.h is not included with this repo because it contains my passwords.
@@ -60,7 +64,7 @@ DHT dht(DHTPIN, DHTTYPE);
 char server[] = "api.pachube.com";
 boolean lastConnected = false;      // state of the connection last time through the main loop
 const unsigned long postingInterval = 60000;  //delay between updates to Pachube.com
-const unsigned long readingInterval = postingInterval / 10;  // delay between sensor reads;
+const unsigned long readingInterval = postingInterval / 120;  // delay between sensor reads;
 String dataString = "";
 
 // set up sensor averaging variables:
@@ -70,6 +74,15 @@ float samples = 0;
 float avgPressure = 0.0;
 float avgHumidity = 0.0;
 float bmpTemp = 0.0;
+
+// we're going to store 100 values for analysis
+Filter filteredTemp(100); 
+Filter filteredLux(100); 
+Filter filteredPressure(100); 
+Filter filteredHumidity(100); 
+
+
+
 
 // an LED to see it's still working:
 int blinkState = LOW;
@@ -128,7 +141,7 @@ void loop() {
 
   // if reading interval has passed, read:
   if (now % readingInterval < 5) {
-    // increment sample count:
+     // increment sample count:
     samples++;   
 
     // read and average humidity reading from DHT22:    
@@ -137,16 +150,27 @@ void loop() {
       Serial.println("Failed to read from DHT");
     } 
     else {
-      avgHumidity = (avgHumidity*(samples-1) + humidity)/samples; 
+      humidity*=100;
+      filteredHumidity.put(humidity);
+       Serial.print(humidity);
+       Serial.print(" %\t");
+      //avgHumidity = (avgHumidity*(samples-1) + humidity)/samples; 
     }
 
     // read and average temperature reading from BMP085:    
     float temperature = bmp.readTemperature();
-    avgTemp = (avgTemp*(samples-1) + temperature)/samples; 
+    temperature *=100;
+    filteredTemp.put(temperature);
+     Serial.print(temperature);
+    Serial.print(" C\t");
+    //avgTemp = (avgTemp*(samples-1) + temperature)/samples; 
 
     // read and average pressure reading from BMP085:    
-    float pressure = bmp.readPressure() / 1000.0;
-    avgPressure = (avgPressure*(samples-1) + pressure)/samples; 
+    float pressure = bmp.readPressure(); // / 1000.0;
+    filteredPressure.put(pressure);      // /1000 to get kPa
+    Serial.print(pressure);
+    Serial.print(" hpA\t");
+    //avgPressure = (avgPressure*(samples-1) + pressure)/samples; 
 
     // read and average light reading from TSL2561:    
     long lum = tsl.getFullLuminosity();
@@ -154,25 +178,32 @@ void loop() {
     ir = lum >> 16;
     full = lum & 0xFFFF;
     long lux = tsl.calculateLux(full, ir);
-    avgLux = (avgLux*(samples-1) + lux)/samples; 
+    lux *=100;
+    filteredLux.put(lux);
+     Serial.println(lux);
+    //avgLux = (avgLux*(samples-1) + lux)/samples; 
 
+     dataString = "Humidity,";
+    //dataString += avgHumidity;
+    avgHumidity = filteredHumidity.mean();
+    dataString += floatToString(avgHumidity, 2);
+    
     // convert the readings to a String to send it:
-    dataString = "temp,";
+    dataString += "\ntemp,";
     //dataString += avgTemp;
+    avgTemp = filteredTemp.mean();
     dataString += floatToString(avgTemp, 2);
-    // add lux:
-    dataString += "\nLight,";
-    // dataString += avgLux;
-    dataString += floatToString(avgLux, 2);
     // add pressure:
     dataString += "\nPressure,";
     //dataString += avgPressure;
+    avgPressure = filteredPressure.mean();
     dataString += floatToString(avgPressure, 2);
-
-    dataString += "\nHumidity,";
-    //dataString += avgHumidity;
-    dataString += floatToString(avgHumidity, 2);
-
+    // add lux:
+    dataString += "\nLight,";
+    // dataString += avgLux;
+    avgLux = filteredLux.mean();
+    dataString += floatToString(avgLux, 2);
+    
     // toggle the LED to give a physical indicator of activity:
     blinkState = !blinkState;
     digitalWrite(9, blinkState);
@@ -191,7 +222,8 @@ void loop() {
 
   // if you're not connected, and the sending interval has passed since
   // your last connection, then connect again and send data:
-  if(now % postingInterval < 5) {
+  if(now % postingInterval < 5 || samples > 200) {
+    Serial.println("Sending...");
     sendData();
     // reset all the variables for next gathering of data:
     samples = 0;
