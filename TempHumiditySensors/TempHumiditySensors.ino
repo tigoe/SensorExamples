@@ -12,6 +12,12 @@ Temperature and Humidity sensors
  Bildr on HIN-4030: http://bildr.org/2012/11/hih4030-arduino/
  Arduino forum example for HIH-4030: http://forum.arduino.cc/index.php/topic,19961.0.html
  
+ Circuit:
+ * TMP36 on A0
+ * HIH-4030 on A1
+ 
+ Note: If you are using a 3.3V model, adjust the voltage variable accordingly.
+ 
  created 1 June 2013
  by Tom Igoe
  
@@ -56,6 +62,5 @@ void loop() {
   Serial.print(trueRH);
   Serial.print("%");
   delay(10);
-
 }
 
