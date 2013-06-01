@@ -5,8 +5,12 @@ Temperature and Humidity sensors
  the Analog Devices TMP36 and the Honeywell HIH-4030.
  
  Example derived from the datasheets, and from numerous examples,
- including Adafruit, Bildr, the Arduino forums, and others. 
- Citations coming.
+ including Adafruit, Bildr, the Arduino forums, and others:
+ TMP36 datasheet:http://www.ladyada.net/media/sensors/TMP35_36_37.pdf
+ HIH-4030 datasheet:https://www.sparkfun.com/datasheets/Sensors/Weather/SEN-09569-HIH-4030-datasheet.pdf
+ Adafruit on TMP36: http://learn.adafruit.com/tmp36-temperature-sensor/
+ Bildr on HIN-4030: http://bildr.org/2012/11/hih4030-arduino/
+ Arduino forum example for HIH-4030: http://forum.arduino.cc/index.php/topic,19961.0.html
  
  created 1 June 2013
  by Tom Igoe
@@ -26,17 +30,32 @@ void setup() {
 }
 
 void loop() {
+  // read the temperature sensor:
   int tempSensor = analogRead(A0);
+  // convert to voltage:
   float tempVoltage = (tempSensor/resolution) * voltage;
+  // convert to temperature (degrees Celsius):
   float temperature = (tempVoltage -0.5) / tempSlope;
 
+  delay(2);      // give the ADC time to settle
+  
+  // read the humidity sensor:
   int humiditySensor = analogRead(A1);
-  float humidityVoltage = (humiditySensor/resolution) * voltage;  
+  // convert to voltage:
+  float humidityVoltage = (humiditySensor/resolution) * voltage; 
+  // convert to relative humidity (rH): 
   float sensorRH = (humidityVoltage - rhOffset) / rhSlope;
+  // adjust for temperature:
   float trueRH = sensorRH / (1.0546 - (0.00216 * temperature)); 
 
+  // print the results:
   Serial.print("Temperature: ");
   Serial.print(temperature);
-  Serial.println(" degrees C");
+  Serial.print(" degrees C");
+  Serial.print("\tHumidity: ");
+  Serial.print(trueRH);
+  Serial.print("%");
   delay(10);
+
 }
+
