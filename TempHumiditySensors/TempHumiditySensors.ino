@@ -9,7 +9,7 @@ Temperature and Humidity sensors
  TMP36 datasheet:http://www.ladyada.net/media/sensors/TMP35_36_37.pdf
  HIH-4030 datasheet:https://www.sparkfun.com/datasheets/Sensors/Weather/SEN-09569-HIH-4030-datasheet.pdf
  Adafruit on TMP36: http://learn.adafruit.com/tmp36-temperature-sensor/
- Bildr on HIN-4030: http://bildr.org/2012/11/hih4030-arduino/
+ Bildr on HIH-4030: http://bildr.org/2012/11/hih4030-arduino/
  Arduino forum example for HIH-4030: http://forum.arduino.cc/index.php/topic,19961.0.html
  
  Circuit:
@@ -60,7 +60,7 @@ void loop() {
   Serial.print(" degrees C");
   Serial.print("\tHumidity: ");
   Serial.print(trueRH);
-  Serial.print("%");
+  Serial.println("%");
   delay(10);
 }
 
