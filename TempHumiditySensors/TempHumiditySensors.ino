@@ -13,13 +13,13 @@ Temperature and Humidity sensors
  
  */
 
-float voltage = 5.0;
-const float resolution = 1024.0;
+float voltage = 5.0;              // analog reference voltage
+const float resolution = 1024.0;  // A-to-D resolution
 
-float tempOffset = 0.5;    // temp sensor offset
-float tempSlope = 0.01;     // temp sensor slope
-float rhSlope = 0.0062 * voltage;
-float rhOffset = 0.16 * voltage;  
+float tempOffset = 0.5;           // temp sensor offset
+float tempSlope = 0.01;           // temp sensor slope
+float rhSlope = 0.0062 * voltage; // humidity sensor slope
+float rhOffset = 0.16 * voltage;  // humidity sensor offset
 
 void setup() {
   Serial.begin(9600);
@@ -33,7 +33,6 @@ void loop() {
   int humiditySensor = analogRead(A1);
   float humidityVoltage = (humiditySensor/resolution) * voltage;  
   float sensorRH = (humidityVoltage - rhOffset) / rhSlope;
-
   float trueRH = sensorRH / (1.0546 - (0.00216 * temperature)); 
 
   Serial.print("Temperature: ");
@@ -41,9 +40,3 @@ void loop() {
   Serial.println(" degrees C");
   delay(10);
 }
-
-
-
-
-
-
