@@ -1,5 +1,5 @@
 /*
-  TCS34725 sensor example
+  TCS34725 sensor example with SSD1306 OLED screen
 
   Reads lux, color temperature, red, green, blue
   Uses more accurate dn40 algorithm in Kevin Townsend's library
@@ -7,6 +7,8 @@
   Circuit:
    Sensor SCL: Arduino SCL (MKR: SCL UNo: SCL or analog 5)
    Sensor SDA:  Arduino SDA (MKR: SDA UNo: SDA or analog 4)
+   Screen SCL: Arduino SCL (MKR: SCL UNo: SCL or analog 5)
+   Screen SDA:  Arduino SDA (MKR: SDA UNo: SDA or analog 4) 
 */
 
 #include <Wire.h>
