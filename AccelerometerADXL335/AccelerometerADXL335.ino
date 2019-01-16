@@ -2,7 +2,8 @@
 ADXL335 Accelerometer
  
  This example reads an ADXL335 accelerometer (Adafruit breakout board model)
- and prints either the analogRead value from each axis.
+ and prints either the analogRead value from each axis. With the pins changed
+ appropriately, this example should work with most of the ADXL33x accelerometers.
  
  Circuit:
  * ADXL335 attached to pins A0 - A5 as follows:
@@ -14,7 +15,6 @@ ADXL335 Accelerometer
  
  created 18 Aug 2013
  by Tom Igoe
- 
  */
 
 void setup() {
