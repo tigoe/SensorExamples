@@ -9,7 +9,6 @@ Images made in Fritzing and Illustrator CS.
 _Figure 1. Breadboard view of MKR Zero, TCS34725_
 
 
-
 ![Figure 2. Schematic view of MKR Zero, TCS34725, SSD1306 OLED](TCS34725_OLED_circuit_schem.png)
 
 _Figure 2. Schematic view of MKR Zero, TCS34725_
