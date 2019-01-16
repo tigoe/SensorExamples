@@ -1,14 +1,11 @@
 /*
 ADXL326 Accelerometer
 
-  For Arduino Leonardo and other 32U4-based boards
- 
  This example reads an ADXL accelerometer and prints either the voltage
  from each axis, or the g-force from each axis.
  
  When the serial port is opened by a remote program or the Serial Monitor,
  the sketch prints out the units it's using and the range first.
-
  
  Circuit:
  * ADXL326 attached to pins A0 - A2
@@ -17,10 +14,9 @@ ADXL326 Accelerometer
  
  created 1 June 2013
  by Tom Igoe
- 
  */
 
-float voltage = 3.3;              // analog reference voltage
+float voltage = 3.3;         // analog reference voltage; change to 5.0 for Uno
 const float resolution = 1024.0;  // A-to-D resolution
 float sensitivity = 0.057;        // from the datasheet, output is 57mV/g
 float restVoltage = 1.65;         // output at 0g = 1.65V
