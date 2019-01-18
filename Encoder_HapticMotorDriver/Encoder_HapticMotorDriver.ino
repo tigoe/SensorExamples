@@ -9,6 +9,7 @@ https://github.com/adafruit/Adafruit_DRV2605_Library
 https://www.pjrc.com/teensy/td_libs_Encoder.html
 
  created 6 Feb. 2017
+ modified 18 Jan 2019
  by Tom Igoe
  */
 
@@ -18,7 +19,7 @@ https://www.pjrc.com/teensy/td_libs_Encoder.html
 
 Adafruit_DRV2605 motor;     // instance of the motor driver library
 
-Encoder knob(6, 7);         // initialize the encoder on pins 6 and 7    
+Encoder knob(4, 5);         // initialize the encoder on pins 4 and 5    
 long lastPosition = 0;      // last position of the knob
 
 void setup() {
