@@ -9,3 +9,7 @@ Analog Devices makes a family of accelerometers, the [ADXL3xx accelerometers](ht
 ## STMicroelectronics LIS3DH
 
 STMicroelectronics' [LIS3DH accelerometer](https://www.st.com/en/mems-and-sensors/lis3dh.html) is an inexpensive accelerometer with a variable range of sensitivity. It connects to a microcontroller using I2C. It's a great one to use when budget is a consideration. It also has some nice features like tap detection on all three axes.
+
+## Freescale MMA8451
+
+Freescale's MMA8451 is an inexpensive accelerometer that communicates over I2C. Adafruit has an [MMA8451 breakout board](https://www.adafruit.com/product/2019)

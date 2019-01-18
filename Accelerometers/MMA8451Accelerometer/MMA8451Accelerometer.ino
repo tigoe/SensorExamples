@@ -22,7 +22,7 @@ void setup(void) {
   Serial.begin(9600);
 // initialize communications with the accelerometer:
   if (! mma.begin()) {
-    Serial.println("Couldnt start. Check wiring the to the sensor.");
+    Serial.println("Couldn't start. Check wiring the to the sensor.");
     while (true);   // stop here and do nothing else
   }
   // set accelerometer range to 2G max:
@@ -39,5 +39,4 @@ void loop() {
   Serial.print(mma.y);
   Serial.print("\tZ: ");
   Serial.println(mma.z);
-
 }

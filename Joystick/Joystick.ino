@@ -1,20 +1,21 @@
 /*
- Adafruit joystick example
+ Joystick example
  
- Reads an Adafruit joystick and maps the X and Y outputs to a range from
- -1 to 1.  Also inverts the button reading so that pressed = 1 and unpressed = 0
+ Reads an Adafruit or Sparkfun joystick and maps the X and Y outputs to a range 
+ from -1 to 1.  Also inverts the button reading so that pressed = 1 and unpressed = 0
  
- circuit: Adafruit joystick attached to A0 through A4, with Vcc on A0
- (https://www.adafruit.com/products/512)
+ circuit:  joystick attached to A0 through A4, with sensor pins on A1, A2, and A3
  
  created 10 Sept 2012
+ modified 18 Jan 2019
  by Tom Igoe
  
  */
 void setup() {
   // initialize serial communication at 9600 bits per second:
   Serial.begin(9600);
-  // configure analog pins for Adafruit joystick:
+  // configure analog pins for joystick
+  // Check your joystick breakout board for correct pins:
   pinMode(A0, OUTPUT);
   pinMode(A4, OUTPUT);
   pinMode(A3, INPUT_PULLUP);    // joystick pushbutton
