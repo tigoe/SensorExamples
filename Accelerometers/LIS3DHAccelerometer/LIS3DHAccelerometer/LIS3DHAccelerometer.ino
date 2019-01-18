@@ -26,7 +26,7 @@ void setup() {
     while (true);     // stop here and do nothing
   }
 
-  accelerometer.setRange(LIS3DH_RANGE_2_G);   // 2, 4, 8 or 16 G!
+  accelerometer.setRange(LIS3DH_RANGE_8_G);   // 2, 4, 8 or 16 G!
   Serial.print(accelerometer.getRange());
 }
 
@@ -46,4 +46,3 @@ float convertReading(int reading) {
   float acceleration = (float)reading / divisor;
   return acceleration;
 }
-

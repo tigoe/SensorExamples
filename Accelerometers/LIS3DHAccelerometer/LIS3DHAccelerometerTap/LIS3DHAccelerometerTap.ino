@@ -14,12 +14,13 @@ Adafruit_LIS3DH accelerometer = Adafruit_LIS3DH();
 // Adjust this number for the sensitivity of the 'click' force
 // this strongly depend on the range! for 16G, try 5-10
 // for 8G, try 10-20. for 4G try 20-40. for 2G try 40-80
-#define CLICKTHRESHHOLD 40
+#define CLICKTHRESHHOLD 10
 
 long steps = 0;
 
 void setup() {
   Serial.begin(9600);
+  pinMode(14, OUTPUT);
   // 0x18 is the accelerometer's default I2C address:
   if (! accelerometer.begin(0x18)) {
     Serial.println("Couldn't start. Check wiring.");
@@ -52,6 +53,7 @@ void loop() {
    * axes to see how it works:
    */
   byte click = accelerometer.getClick();
+  digitalWrite(14, click);
   if (click > 0) {
     // print the whole byte in binary:
     Serial.println(click, BIN);
@@ -69,5 +71,5 @@ void loop() {
 
   // adjust the delay depending on how frequently you
   // plan to detect clicks. For a step detector, 30 - 80 ms works:
-  delay(30);
+  delay(10);
 }
