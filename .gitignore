@@ -2,3 +2,4 @@
 WifiOfficeSensorsPachube/passwords.h
 *.DS_Store
 *.fzz
+*.vscode*

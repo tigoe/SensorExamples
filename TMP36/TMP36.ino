@@ -12,7 +12,7 @@ void loop() {
   // read the value from the sensor:
   int sensorValue = analogRead(A0);
   // convert the reading to millivolts:
-  float voltage = sensorValue *  (5.0/ 1024.0); 
+  float voltage = sensorValue *  (3.3/ 1024.0); 
   // convert the millivolts to temperature celsius:
   float temperature = (voltage - 0.5)/0.01;
   // print the temperature:

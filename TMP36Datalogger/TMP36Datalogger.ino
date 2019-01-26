@@ -30,13 +30,11 @@ Temperature and Humidity sensors
 const int chipSelect = 4;         // CS pin for the SD card. Will change depending on your shield or module
 boolean cardReady = false;
 
-float voltage = 5.0;              // analog reference voltage
+float voltage = 1.3;              // analog reference voltage
 const float resolution = 1024.0;  // A-to-D resolution
 
 float tempOffset = 0.5;           // temp sensor offset
 float tempSlope = 0.01;           // temp sensor slope
-float rhSlope = 0.0062 * voltage; // humidity sensor slope
-float rhOffset = 0.16 * voltage;  // humidity sensor offset
 
 void setup() {
   Serial.begin(9600);
@@ -46,8 +44,7 @@ void setup() {
 void loop() {
   float temperature = tempRead(A0);                // get a temperature reading
   delay(2);                                        // give the ADC time to settle
-  float humidity = humidityRead(A1, temperature);  // get a humidity reading
-  writeToCard(temperature, humidity);              // write the readings to the SD card
+  writeToCard(temperature, 0);              // write the readings to the SD card
   delay(1000);                                     // wait a second
 }
 
@@ -61,18 +58,6 @@ float tempRead(int pinNumber) {  // read the temperature sensor:
   return currentTemp;
 }
 
-
-float humidityRead(int pinNumber,float temp) {
-  // read the humidity sensor:
-  int humiditySensor = analogRead(pinNumber);
-  // convert to voltage:
-  float humidityVoltage = (humiditySensor/resolution) * voltage; 
-  // convert to relative humidity (rH): 
-  float sensorRH = (humidityVoltage - rhOffset) / rhSlope;
-  // adjust for temperature:
-  float trueRH = sensorRH / (1.0546 - (0.00216 * temp)); 
-  return trueRH;
-} 
 
 boolean initializeCard() {
   Serial.print("Initializing SD card...");
