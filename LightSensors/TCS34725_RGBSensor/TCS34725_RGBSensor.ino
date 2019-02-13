@@ -17,6 +17,8 @@ Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_700MS, TCS347
 
 void setup(void) {
   Serial.begin(9600);
+  pinMode(7, OUTPUT);
+  digitalWrite(7, LOW);
   // start sensor:
   while (!tcs.begin()) {
     Serial.println("Looking for sensor...");
@@ -25,7 +27,7 @@ void setup(void) {
 }
 
 void loop(void) {
-  // every 2 seconds, read sensor:
+  // every  2 seconds, read sensor:
   if (millis() % 2000 < 2) {
     uint16_t r, g, b, c, colorTemp, lux;
     tcs.getRawData(&r, &g, &b, &c);
@@ -33,9 +35,9 @@ void loop(void) {
     lux = tcs.calculateLux(r, g, b);
     String reading = "CT: ";
     reading += String(colorTemp);
-    reading += "\nLux: ";
+    reading += " Lux: ";
     reading += lux;
-    reading += "R: " + String(r);
+    reading += " R: " + String(r);
     reading += " G: " + String(g);
     reading += " B: " + String(b);
     Serial.println(reading);
