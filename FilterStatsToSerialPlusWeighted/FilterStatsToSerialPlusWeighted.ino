@@ -77,8 +77,3 @@ void loop() {
   Serial.print(",");
   Serial.println(analogStDev);
 }
-
-
-
-
-

@@ -7,11 +7,12 @@
   http://www.pjrc.com/teensy/td_libs_Encoder.html
 
   created 19 Feb 2018
+  modified 6 Nov 2019
   by Tom Igoe
 */
 
 #include <Encoder.h>
-Encoder thisEncoder(6, 7);
+Encoder thisEncoder(2,3);
 const int buttonPin = 4;
 long lastPosition  = -1;
 int lastButtonState = 0;
@@ -40,6 +41,7 @@ void loop() {
     if (buttonState == LOW) {
       // reset the encoder count:
       thisEncoder.write(0);
+      Serial.println("reset");
     }
   }
   // save current state for comparison next time:
