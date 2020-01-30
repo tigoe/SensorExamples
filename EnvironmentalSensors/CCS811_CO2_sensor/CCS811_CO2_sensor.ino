@@ -5,10 +5,11 @@
    This example reads the sensor and prints out the basic data.
 
    Circuit:
-   CCS811 sensor SDA attached to SDA pin (A4 on Nano and Uno boards)
-   CCS811 SCL attached to SCL pin (A5 on Nano/Uno)
-   CCS811 RST pin attached through 10Kilohn resistor to +V
+   - CCS811 sensor SDA attached to SDA pin (A4 on Nano and Uno boards)
+   - CCS811 SCL attached to SCL pin (A5 on Nano/Uno)
+   - CCS811 RST pin attached through 10Kilohn resistor to +V
 
+  Uses Adafruit's library for the sensor
   Adafruit's CCS811 breakout board uses I2C address 0x5A; Sparkfun's
   breakout board uses 0x5B. Change the CCS_ADDR to adjust for your board.
 
