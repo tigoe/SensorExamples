@@ -51,6 +51,7 @@ void loop() {
   sensorReadings += lightSensor.readBlue();
   // update the display:
   displayWrite(sensorReadings);
+  Serial.println(sensorReadings);
   // take 2 seconds between readings:
   delay(2000);
 }
