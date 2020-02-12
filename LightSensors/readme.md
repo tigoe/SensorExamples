@@ -1,4 +1,4 @@
-##Light Sensors
+# Light Sensors
 
 ISL29125 - RGB with IR blocking filter
 [Sparkfun library](https://github.com/sparkfun/SparkFun_ISL29125_Breakout_Arduino_Library)
