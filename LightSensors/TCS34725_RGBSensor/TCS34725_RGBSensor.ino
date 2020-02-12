@@ -17,8 +17,6 @@ Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_700MS, TCS347
 
 void setup(void) {
   Serial.begin(9600);
-  pinMode(7, OUTPUT);
-  digitalWrite(7, LOW);
   // start sensor:
   while (!tcs.begin()) {
     Serial.println("Looking for sensor...");
