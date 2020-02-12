@@ -60,5 +60,9 @@ AS7341 - 11-channel with NIR and clear
 
 ## Publications
 
+* A pretty good [introduction to colorimetry](https://medium.com/hipster-color-science/a-beginners-guide-to-colorimetry-401f1830b65a)
 * AMS Application Note: [DN40-Rev 1.0 – Lux and CCT Calculations using ams Color Sensors](https://ams.com/documents/20143/80162/ColorSensors_AN000166_1-00.pdf/c0b4a4b4-9948-f2a7-f8a1-36a8208bd0a9) 
 * [Accurate method for computing correlated color temperature](https://www.osapublishing.org/DirectPDFAccess/271508BC-9A43-6E9C-75B4043231D56AE2_344803/oe-24-13-14066.pdf?da=1&id=344803&seq=0&mobile=no)
+* [Correlated Color Temperature Determination for LED Modules Using a Digital Color Sensor](https://www.scientificbulletin.upb.ro/rev_docs_arhiva/full3fa_651029.pdf)
+* [Calculate CIE 1931 xy coordinates from color temperature](https://www.waveformlighting.com/tech/calculate-cie-1931-xy-coordinates-from-cct/)
+* An interesting [discussion on the CCT calculation in the Adafruit TCS34725 library](https://github.com/adafruit/Adafruit_TCS34725/issues/21)
