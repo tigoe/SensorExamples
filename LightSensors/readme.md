@@ -40,17 +40,17 @@ MAX30105 - red, IR, green, for pulse oximetry and particle detection
 * Being replaced by [MAX30101](https://datasheets.maximintegrated.com/en/ds/MAX30101.pdf)
 
 AS7262 - 6 channel: red, orange, yellow, green, blue, and violet.
-* [Adafruit breakout board](https://www.adafruit.com/product/3779)
-* [Adafruit library](https://github.com/adafruit/Adafruit_AS726x)
-* Sparkfun breakout board
-* [Sparkfun library](https://github.com/sparkfun/Qwiic_Spectral_Sensor_AS726X)
-* [Datasheet](https://ams.com/documents/20143/36005/AS7262_DS000486_2-00.pdf/0031f605-5629-e030-73b2-f365fd36a43b)
-
 AS7263 - 6-channel with Near infrared
+* [Adafruit breakout board (AS7262)](https://www.adafruit.com/product/3779)
+* [Sparkfun breakout board (AS7262)](https://www.sparkfun.com/products/14347)
+* [Sparkfun breakout board (AS7263)](https://www.sparkfun.com/products/14351)
 * [Adafruit library](https://github.com/adafruit/Adafruit_AS726x)
 * Sparkfun breakout board
 * [Sparkfun library](https://github.com/sparkfun/Qwiic_Spectral_Sensor_AS726X)
-* [Datasheet](https://ams.com/documents/20143/36005/AS7263_DS000476_1-00.pdf/4bd22964-7fe0-2053-3e97-906f0836182f)
+* [Sparkfun hookup guide](https://learn.sparkfun.com/tutorials/as726x-nirvi)
+* [Datasheet AS7262](https://ams.com/documents/20143/36005/AS7262_DS000486_2-00.pdf/0031f605-5629-e030-73b2-f365fd36a43b)
+* [Datasheet AS7263](https://ams.com/documents/20143/36005/AS7263_DS000476_1-00.pdf/4bd22964-7fe0-2053-3e97-906f0836182f)
+
 
 
 AS7341 - 11-channel with NIR and clear
