@@ -40,6 +40,7 @@ MAX30105 - red, IR, green, for pulse oximetry and particle detection
 * Being replaced by [MAX30101](https://datasheets.maximintegrated.com/en/ds/MAX30101.pdf)
 
 AS7262 - 6 channel: red, orange, yellow, green, blue, and violet.
+
 AS7263 - 6-channel with Near infrared
 * [Adafruit breakout board (AS7262)](https://www.adafruit.com/product/3779)
 * [Sparkfun breakout board (AS7262)](https://www.sparkfun.com/products/14347)
