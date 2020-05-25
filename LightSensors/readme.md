@@ -61,6 +61,9 @@ AS7341 - 11-channel with NIR and clear
 
 ## Publications
 
+* Rune Madsen's [Programming Design Systems](https://programmingdesignsystems.com/) book is a great intro to visual design and programming and his chapters on color are a helpful intro to color theory for understanding sensors and LED color mixing: 
+   * [A Short History of Color Theory](https://programmingdesignsystems.com/color/a-short-history-of-color-theory/index.html#a-short-history-of-color-theory-xZzRFOZ)
+   * [Color Models and Color Spaces](https://programmingdesignsystems.com/color/color-models-and-color-spaces/index.html#color-models-and-color-spaces-JDQ1fRD)
 * A pretty good [introduction to colorimetry](https://medium.com/hipster-color-science/a-beginners-guide-to-colorimetry-401f1830b65a)
 * AMS Application Note: [DN40-Rev 1.0 – Lux and CCT Calculations using ams Color Sensors](https://ams.com/documents/20143/80162/ColorSensors_AN000166_1-00.pdf/c0b4a4b4-9948-f2a7-f8a1-36a8208bd0a9) 
 * [Accurate method for computing correlated color temperature](https://www.osapublishing.org/DirectPDFAccess/271508BC-9A43-6E9C-75B4043231D56AE2_344803/oe-24-13-14066.pdf?da=1&id=344803&seq=0&mobile=no)
