@@ -26,7 +26,7 @@ _Table 1. Pin connections for FSP01CE to Nano 33 IoT_
 | 3 | V2 | 4 | A0 | 
 
 
-Figure 3 shows the FSP03CE FSLP model connected to an Arduino Nano 33 IoT for use with the library. This circuit will work with the [FSP03CE sketch](FSP03CE_example/FSP03CE_example.ino). The pins are connected as described in Table 2. In addition to the pins as described here, a 22 kilohm resistor connects pin A3 to pin A4. The Nano's pins are numbered in a U pattern as described above.
+Figure 3 shows the FSP03CE FSLP model connected to an Arduino Nano 33 IoT for use with the library. This is a round sensor, and sliding a finger across it produces position values from 0 to 360. This circuit will work with the [FSP03CE sketch](FSP03CE_example/FSP03CE_example.ino). The pins are connected as described in Table 2. In addition to the pins as described here, a 22 kilohm resistor connects pin A3 to pin A4. The Nano's pins are numbered in a U pattern as described above.
 
 ![Breadboard view  of an FSLP connected to an Arduino Nano 33 IoT](img/nano_FSP03CE_bb.png)
 
