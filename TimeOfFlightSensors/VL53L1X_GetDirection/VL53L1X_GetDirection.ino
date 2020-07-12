@@ -95,6 +95,9 @@ void setup() {
   sensor.setDistanceModeLong();
   sensor.setTimingBudgetInMs(20);
   sensor.setIntermeasurementPeriod(20);
+
+  // set the ROI for next time:
+  sensor.setROI(roiWidth, roiHeight,  opticalCenter[zone]);
 }
 void loop() {
   // start the sensor reading:
@@ -103,16 +106,16 @@ void loop() {
   while (!sensor.checkForDataReady()) {
     delay(1);
   }
+  byte rangeStatus = sensor.getRangeStatus();
+  // rangeStatus = 0 is a good reading.
+  // if you don't get a good reading, go back to the beginning of the loop:
+  if (rangeStatus != 0)  return;
+
   // once you have data, get the distance:
   int distance = sensor.getDistance();
   // clear the sensor's interrrupts and stop the sensor reading:
   sensor.clearInterrupt();
   sensor.stopRanging();
-  byte rangeStatus = sensor.getRangeStatus();
-
-  // rangeStatus = 0 is a good reading.
-  // if you don't get a good reading, go back to the beginning of the loop:
-  if (rangeStatus != 0)  return;
 
   // set the ROI for next time:
   sensor.setROI(roiWidth, roiHeight,  opticalCenter[zone]);
@@ -168,7 +171,10 @@ void readDirection(int thisDist, int thisZone) {
 
   // if you're seeing 1-1, you've got an object in both ROIs
   if (previous[0] + previous[1] > 1) {
-    Serial.println("|");
+    Serial.print("   ");
+    Serial.print(previous[0]);
+    Serial.print(" ");
+    Serial.println(previous[1]);
   }
 
 }
