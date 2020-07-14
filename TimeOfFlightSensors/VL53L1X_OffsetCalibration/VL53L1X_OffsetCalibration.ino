@@ -18,7 +18,7 @@
 
 #include "SparkFun_VL53L1X.h"
 
-SFEVL53L1X distanceSensor;
+SFEVL53L1X sensor;
 
 void setup(void) {
   Wire.begin();
@@ -44,7 +44,7 @@ void setup(void) {
   Serial.println();
 
   // begin() returns 0 on successful response from sensor, unlike other begin() functions:
-  if (distanceSensor.begin() != 0) {
+  if (sensor.begin() != 0) {
     Serial.println("Sensor is not responding. Please check your wiring");
     while (true);
   }
@@ -52,28 +52,28 @@ void setup(void) {
 
   // Short mode max distance is limited to 1.3 m but has a better ambient immunity.
   // Above 1.3 meters, you'll get an error 4.
-  distanceSensor.setDistanceModeShort();
-  distanceSensor.setTimingBudgetInMs(50);
+  sensor.setDistanceModeShort();
+  sensor.setTimingBudgetInMs(50);
 
   // count of readings below 10cm:
   int lowDistanceReadings = 0;
   // start sensing:
-  distanceSensor.startRanging();
+  sensor.startRanging();
   Serial.print("readings below 10cm: ");
   Serial.println(lowDistanceReadings);
 
   // stay in this while loop until you get 20 readings below 10cm:
   while (lowDistanceReadings < 20) {
     // wait for sensor to be ready:
-    while (!distanceSensor.checkForDataReady()) {
+    while (!sensor.checkForDataReady()) {
       delay(1);
     }
     // get the ranging status error message:
-    byte rangeStatus = distanceSensor.getRangeStatus();
+    byte rangeStatus = sensor.getRangeStatus();
     // rangeStatus = 0 is a good reading:
     if (rangeStatus == 0) {
       // get the distance:
-      unsigned int distance = distanceSensor.getDistance();
+      unsigned int distance = sensor.getDistance();
       // if it's less than 100mm (10cm):
       if ( distance < 100) {
         // increment the count:
@@ -86,7 +86,7 @@ void setup(void) {
         Serial.println("reading > 10cm");
       }
       // reset the sensor's interrupt for next reading:
-      distanceSensor.clearInterrupt();
+      sensor.clearInterrupt();
     } else {
       // error from getRangeStatus():
       Serial.println("reading out of range");
@@ -100,7 +100,7 @@ void setup(void) {
   delay(5000);
   Serial.println("Offset calibration starting now...");
   /*
-       Place a target, 17 % gray, at a distance of 140 mm from the sensor and call the VL53L1X_CalibrateOffset (dev, 140, &offset) function.
+       Place a target, 17 % gray, at a distance of 140 mm from the sensor and call the VL53L1X_CalibrateOffset () function.
        The calibration may take a few seconds. The offset correction is applied to the sensor at the end of calibration.
 
        The calibration function takes 50 measurements and then takes the difference between the target distance
@@ -108,17 +108,24 @@ void setup(void) {
 
        NOTE: you will need to power the sensor off and re-power it to clear the offset once it's set.
   */
-  distanceSensor.calibrateOffset(140);
+  sensor.calibrateOffset(140);
   Serial.print("Result of offset calibration. RealDistance - MeasuredDistance=");
-  Serial.print(distanceSensor.getOffset());
+  Serial.print(sensor.getOffset());
   Serial.print(" mm");
   Serial.println();
 
   // measure periodically. Intermeasurement period must be >/= timing budget.
-  distanceSensor.setIntermeasurementPeriod(100);
-  distanceSensor.startRanging(); // Start once
+  sensor.setIntermeasurementPeriod(100);
+  sensor.startRanging(); // Start once
+  delay(5000);
 }
 
-void loop()
-{
+void loop() {
+ // See if the sensor has a reading:
+  while (!sensor.checkForDataReady());
+  // get the distance in mm:
+  int distance = sensor.getDistance();
+  // print distance in mm:
+  Serial.print(distance);
+  Serial.println(" mm");
 }
