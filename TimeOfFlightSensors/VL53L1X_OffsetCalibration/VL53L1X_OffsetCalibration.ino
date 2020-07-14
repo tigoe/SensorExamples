@@ -7,7 +7,8 @@
   #ifdefs.
   Be sure the vacuum tape has been removed from the front of the sensor.
 
-  This still isn't working how I would expect it to.
+  NOTE: you will need to power the sensor off and re-power it to clear the offset once it's set,
+  or you can attach an output pin to the SHUTDOWN pin and toggle it in the setup.
 
   Click here to get the library: http://librarymanager/All#SparkFun_VL53L1X
 
@@ -19,6 +20,8 @@
 #include "SparkFun_VL53L1X.h"
 
 SFEVL53L1X sensor;
+const int shutDownPin = 2;
+
 
 void setup(void) {
   Wire.begin();
@@ -42,6 +45,13 @@ void setup(void) {
   Serial.println("Use the resulting offset distance as parameter for the setOffset() function called after begin().");
   Serial.println("*****************************************************************************************************");
   Serial.println();
+
+  // reset the sensor by taking the SHUTDOWN pin low, then high:
+  pinMode(shutDownPin, OUTPUT);
+  digitalWrite(shutDownPin, LOW);
+  delay(5);
+  digitalWrite(shutDownPin, HIGH);
+
 
   // begin() returns 0 on successful response from sensor, unlike other begin() functions:
   if (sensor.begin() != 0) {
@@ -85,7 +95,7 @@ void setup(void) {
         lowDistanceReadings = 0;
         Serial.print("approximately ");
         Serial.println(distance);
-        Serial.println(" uncalibrated reading > 10cm");
+        Serial.println(" uncalibrated reading > 100mm");
       }
       // reset the sensor's interrupt for next reading:
       sensor.clearInterrupt();
@@ -97,8 +107,8 @@ void setup(void) {
     }
   }
 
-  Serial.println("Distance below 10cm detected 20 tines. Offset calibration will start in 5 seconds");
-
+  Serial.println("Distance below 10mm detected 20 times. Offset calibration will start in 5 seconds");
+  Serial.println("Place a target, 17 % gray, at a distance of 140 mm from the sensor");
   delay(5000);
   Serial.println("Offset calibration starting now...");
   /*
@@ -107,9 +117,6 @@ void setup(void) {
 
        The calibration function takes 50 measurements and then takes the difference between the target distance
        and the average distance and then calls setOffset() with this value. Thats all. No magic.
-
-       NOTE: you will need to power the sensor off and re-power it to clear the offset once it's set,
-       or you can attach an output pin to the SHUTDOWN pin and toggle it in the setup.
   */
   sensor.calibrateOffset(140);
   Serial.print("Result of offset calibration. RealDistance - MeasuredDistance=");
@@ -124,7 +131,7 @@ void setup(void) {
 }
 
 void loop() {
- // See if the sensor has a reading:
+  // See if the sensor has a reading:
   while (!sensor.checkForDataReady());
   // get the distance in mm:
   int distance = sensor.getDistance();
