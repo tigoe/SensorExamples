@@ -41,7 +41,7 @@ void setup(void) {
   Serial.println("*****************************************************************************************************");
   Serial.println("                                    Offset calibration");
   Serial.println("Place a light grey (17 % gray) target at a distance of 140mm in front of the VL53L1X sensor.");
-  Serial.println("The calibration will start 5 seconds after a distance below 10 cm was detected for 1 second.");
+  Serial.println("The calibration will start 5 seconds after a distance below 100 mm was detected for 1 second.");
   Serial.println("Use the resulting offset distance as parameter for the setOffset() function called after begin().");
   Serial.println("*****************************************************************************************************");
   Serial.println();
