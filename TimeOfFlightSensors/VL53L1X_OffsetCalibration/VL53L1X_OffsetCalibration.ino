@@ -11,7 +11,7 @@
 
   Click here to get the library: http://librarymanager/All#SparkFun_VL53L1X
 
-  modified 12 July 2020
+  modified 14 July 2020
   by Tom Igoe
   based on Armin Joachimsmeyer's Sparkfun library example
 */
@@ -83,7 +83,9 @@ void setup(void) {
       } else {
         // start counting again
         lowDistanceReadings = 0;
-        Serial.println("reading > 10cm");
+        Serial.print("approximately ");
+        Serial.println(distance);
+        Serial.println(" uncalibrated reading > 10cm");
       }
       // reset the sensor's interrupt for next reading:
       sensor.clearInterrupt();
@@ -106,7 +108,8 @@ void setup(void) {
        The calibration function takes 50 measurements and then takes the difference between the target distance
        and the average distance and then calls setOffset() with this value. Thats all. No magic.
 
-       NOTE: you will need to power the sensor off and re-power it to clear the offset once it's set.
+       NOTE: you will need to power the sensor off and re-power it to clear the offset once it's set,
+       or you can attach an output pin to the SHUTDOWN pin and toggle it in the setup.
   */
   sensor.calibrateOffset(140);
   Serial.print("Result of offset calibration. RealDistance - MeasuredDistance=");
