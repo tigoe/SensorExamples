@@ -8,7 +8,7 @@
   Be sure the vacuum tape has been removed from the front of the sensor.
 
   NOTE: you will need to power the sensor off and re-power it to clear the offset once it's set,
-  or you can attach an output pin to the SHUTDOWN pin and toggle it in the setup.
+  or you can attach an output pin to the SHUTDOWN pin and the code will toggle it in the setup.
 
   Click here to get the library: http://librarymanager/All#SparkFun_VL53L1X
 
@@ -108,7 +108,7 @@ void setup(void) {
   }
 
   Serial.println("Distance below 10mm detected 20 times. Offset calibration will start in 5 seconds");
-  Serial.println("Place a target, 17 % gray, at a distance of 140 mm from the sensor");
+  Serial.println("Now place a target, 17 % gray, at a distance of 140 mm from the sensor");
   delay(5000);
   Serial.println("Offset calibration starting now...");
   /*
