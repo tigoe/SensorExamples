@@ -44,6 +44,11 @@ void setup() {
                  "    the target is not reflective enough, or the target is too small, or\n"
                  "    there may be no target in range. \n"
                  "    Increasing the timing bidget might help, assuming there is a known target in range\n");
+  Serial.println("4 - Out of bounds. This means that the sensor is ranging in a “nonappropriated”\n"
+                 "    zone and the measured result may be inconsistent. This status is considered\n"
+                 "    as a warning but, in general, it happens when a target is at the maximum\n"
+                 "    distance possible from the sensor, i.e. around 5 m. However, this is only for\n"
+                 "    very bright targets.\n");
   Serial.println("7 - Wrapped target. If the target is very reflective and the distance to it\n"
                  "    is longer than the sensor's measurable limit (~5m when the sensor in long distance mode,\n"
                  "    ~1.3 m when the sensor is in short distance mode).\n"
@@ -100,6 +105,9 @@ void loop() {
         break;
       case 2:
         Serial.print("  Signal failure.");
+        break;
+      case 4:
+        Serial.print("  Out of bounds");
         break;
       case 7:
         Serial.print("  Wrapped target failure");
