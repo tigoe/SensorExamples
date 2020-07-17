@@ -59,7 +59,7 @@ void setup() {
   // sensor.setDistanceModeLong();
 
   // set sensor reading timing budget in ms:
-  sensor.setTimingBudgetInMs(50);
+  sensor.setTimingBudgetInMs(timingBudget);
   // Intermeasurement period must be > or = timing budget. Default = 100 ms.
   timingBudget = sensor.getTimingBudgetInMs();
   sensor.setIntermeasurementPeriod(timingBudget * 2);
