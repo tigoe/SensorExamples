@@ -85,12 +85,10 @@ void loop() {
 
     // timestamp when the sensor was ready:
     lastReadingTime = millis();
-
     byte rangeStatus = sensor.getRangeStatus();
     Serial.print("\tRange Status: ");
-    Serial.print(rangeStatus);
+    Serial.println(rangeStatus);
     if (rangeStatus != 0) return;
-
 
     // get the distance in mm:
     int distance = sensor.getDistance();
