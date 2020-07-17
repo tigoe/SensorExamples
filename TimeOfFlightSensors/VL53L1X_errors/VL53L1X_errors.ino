@@ -57,7 +57,7 @@ void setup() {
 
   // wait for a byte from the serial monitor:
   while (!Serial.available());
-  
+
   // set distance to 1.3m max distance:
   sensor.setDistanceModeShort();
   // set distance to 4m max distance:
@@ -79,22 +79,25 @@ void loop() {
   if (millis() - lastReadingTime > sensor.getIntermeasurementPeriod()) {
     // wait until the sensor has a reading:
     while (!sensor.checkForDataReady());
-            Serial.print("ms between readings: ");
+    Serial.print("ms between readings: ");
     Serial.print(millis() - lastReadingTime);
 
-    
+
     // timestamp when the sensor was ready:
     lastReadingTime = millis();
-    // get the distance in mm:
-    int distance = sensor.getDistance();
-    // print distance in mm:
-        Serial.print("\t distance: ");
-    Serial.print(distance);
-    Serial.print(" mm");
 
     byte rangeStatus = sensor.getRangeStatus();
     Serial.print("\tRange Status: ");
     Serial.print(rangeStatus);
+    if (rangeStatus != 0) return;
+
+
+    // get the distance in mm:
+    int distance = sensor.getDistance();
+    // print distance in mm:
+    Serial.print("\t distance: ");
+    Serial.print(distance);
+    Serial.print(" mm");
     // make it human readable
     switch (rangeStatus)  {
       case 0:
