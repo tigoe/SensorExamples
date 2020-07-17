@@ -79,17 +79,17 @@ void loop() {
   if (millis() - lastReadingTime > sensor.getIntermeasurementPeriod()) {
     // wait until the sensor has a reading:
     while (!sensor.checkForDataReady());
-    Serial.print("ms between readings: ");
-    Serial.print(millis() - lastReadingTime);
 
+    byte rangeStatus = sensor.getRangeStatus();
+
+    if (rangeStatus != 0) return;
+        Serial.print("ms between readings: ");
+    Serial.print(millis() - lastReadingTime);
 
     // timestamp when the sensor was ready:
     lastReadingTime = millis();
-    byte rangeStatus = sensor.getRangeStatus();
     Serial.print("\tRange Status: ");
-    Serial.println(rangeStatus);
-    if (rangeStatus != 0) return;
-
+    Serial.print(rangeStatus);
     // get the distance in mm:
     int distance = sensor.getDistance();
     // print distance in mm:
