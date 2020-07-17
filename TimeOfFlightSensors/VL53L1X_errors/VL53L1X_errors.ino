@@ -6,7 +6,7 @@
 
   The circuit:
   - VL53L1X SDA connected to SDA (A4)
-  - VL53L1X SCL connected to SCL (A4)
+  - VL53L1X SCL connected to SCL (A5)
 
   Created 16 July 2020
   by Tom Igoe
@@ -16,7 +16,7 @@
 #include <SparkFun_VL53L1X.h>
 
 long lastReadingTime = 0;  // last time you took a reading, in ms
-int timingBudget = 50;    // timing budget of the sensor, in ms. Adjust to address some error messages
+int timingBudget = 50;     // timing budget of the sensor, in ms. Adjust to address some error messages
 SFEVL53L1X sensor;
 
 
@@ -34,45 +34,45 @@ void setup() {
   }
 
   Serial.println("\n\n\nError messages: ");
-  Serial.println("There are a few error messages this sensor can give when you use the getRangeStatus() function:");
-  Serial.println("0  - Good reading.\n");
+  Serial.println("There are a few error messages this sensor can give when you use the getRangeStatus() function:\n");
+  Serial.println("0 - Good reading.\n");
   Serial.println("1 - Sigma failure. This means that the repeatability (or standard deviation)\n"
                  "    of the measurement is bad due to a decreasing signal-to-noise ratio. \n"
-                 "Increasing the timing budget can help to avoid this error.\n");
-  Serial.println("2 - signal failure. This means that the return signal is too weak\n"
-                 "    to return a good response. Either the target is too far,or\n"
+                 "    Increasing the timing budget can help to avoid this error.\n");
+  Serial.println("2 - Signal failure. This means that the return signal is too weak\n"
+                 "    to return a good response. Either the target is too far, or\n"
                  "    the target is not reflective enough, or the target is too small, or\n"
                  "    there may be no target in range. \n"
                  "    Increasing the timing bidget might help, assuming there is a known target in range\n");
-  Serial.println("7- wrapped target. If the target is very reflective and the distance to it\n"
-                 "   is longer than the sensor's measurable limit (~5m when the sensor in long distance mode,\n"
-                 "   ~1.3 m when the sensor is in short distance mode).\n"
-                 "   e.g. a retroreflective target at 6m may return a range of about 1m and a rangeStatus of 7.\n");
+  Serial.println("7 - Wrapped target. If the target is very reflective and the distance to it\n"
+                 "    is longer than the sensor's measurable limit (~5m when the sensor in long distance mode,\n"
+                 "    ~1.3 m when the sensor is in short distance mode).\n"
+                 "    e.g. a retroreflective target at 6m may return a range of about 1m and a rangeStatus of 7.\n");
   Serial.println("\n\nPress enter to start reading.");
 
   // wait for a byte from the serial monitor:
   while (!Serial.available());
   
   // set distance to 1.3m max distance:
-  sensor.setDistanceModeLong();
+  sensor.setDistanceModeShort();
   // set distance to 4m max distance:
-  //  sensor.setDistanceModeLong();
+  // sensor.setDistanceModeLong();
 
   // set sensor reading timing budget in ms:
   sensor.setTimingBudgetInMs(50);
-  //  Intermeasurement period must be > or = timing budget. Default = 100 ms.
+  // Intermeasurement period must be > or = timing budget. Default = 100 ms.
   timingBudget = sensor.getTimingBudgetInMs();
   sensor.setIntermeasurementPeriod(timingBudget * 2);
-  sensor.startRanging(); // Start once
+  sensor.startRanging(); // start once
 
   // tell the sensor to start ranging:
   sensor.startRanging();
 }
 
 void loop() {
-  // delay for inter-measurement period:
+  // delay for intermeasurement period:
   if (millis() - lastReadingTime > sensor.getIntermeasurementPeriod()) {
-    // Wait until  the sensor has a reading:
+    // wait until the sensor has a reading:
     while (!sensor.checkForDataReady());
             Serial.print("ms between readings: ");
     Serial.print(millis() - lastReadingTime);
@@ -90,7 +90,7 @@ void loop() {
     byte rangeStatus = sensor.getRangeStatus();
     Serial.print("\tRange Status: ");
     Serial.print(rangeStatus);
-    //Make it human readable
+    // make it human readable
     switch (rangeStatus)  {
       case 0:
         Serial.print("  Good reading");
