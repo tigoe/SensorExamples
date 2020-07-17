@@ -59,9 +59,9 @@ void setup() {
   while (!Serial.available());
 
   // set distance to 1.3m max distance:
-  sensor.setDistanceModeShort();
+  //  sensor.setDistanceModeShort();
   // set distance to 4m max distance:
-  // sensor.setDistanceModeLong();
+  sensor.setDistanceModeLong();
 
   // set sensor reading timing budget in ms:
   sensor.setTimingBudgetInMs(timingBudget);
@@ -69,21 +69,20 @@ void setup() {
   timingBudget = sensor.getTimingBudgetInMs();
   sensor.setIntermeasurementPeriod(timingBudget * 2);
   sensor.startRanging(); // start once
-
-  // tell the sensor to start ranging:
-  sensor.startRanging();
 }
 
 void loop() {
   // delay for intermeasurement period:
   if (millis() - lastReadingTime > sensor.getIntermeasurementPeriod()) {
+    sensor.startRanging();
     // wait until the sensor has a reading:
     while (!sensor.checkForDataReady());
 
     byte rangeStatus = sensor.getRangeStatus();
 
-    if (rangeStatus != 0) return;
-        Serial.print("ms between readings: ");
+    if (rangeStatus != 0 && rangeStatus != 4 ) return;
+
+    Serial.print("ms between readings: ");
     Serial.print(millis() - lastReadingTime);
 
     // timestamp when the sensor was ready:
@@ -92,6 +91,8 @@ void loop() {
     Serial.print(rangeStatus);
     // get the distance in mm:
     int distance = sensor.getDistance();
+    sensor.clearInterrupt();
+    sensor.stopRanging();
     // print distance in mm:
     Serial.print("\t distance: ");
     Serial.print(distance);
