@@ -64,6 +64,11 @@ void setup(void) {
   }
   Serial.println("Sensor is working properly");
 
+  Serial.println("\n\nPress enter to start reading.");
+  // wait for a byte from the serial monitor:
+  while (!Serial.available());
+
+
   // Short mode is appropriate for this example:
   sensor.setDistanceModeShort();
   sensor.setTimingBudgetInMs(50);
