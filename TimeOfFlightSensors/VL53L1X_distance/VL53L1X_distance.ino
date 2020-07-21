@@ -11,7 +11,7 @@
 
   The circuit:
   - VL53L1X SDA connected to SDA (A4)
-  - VL53L1X SCL connected to SCL (A4)
+  - VL53L1X SCL connected to SCL (A5)
 
   Created 6 July 2020
   Modified 21 July 2020

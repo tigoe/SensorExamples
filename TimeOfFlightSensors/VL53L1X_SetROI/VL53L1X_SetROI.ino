@@ -19,9 +19,10 @@
 
   The circuit:
   - VL53L1X SDA connected to SDA (A4)
-  - VL53L1X SCL connected to SCL (A4)
+  - VL53L1X SCL connected to SCL (A5)
 
   Created 7 July 2020
+    Modified 21 July 2020
   by Tom Igoe
   based on Sparkfun examples by Nathan Seidle
 */
@@ -84,10 +85,16 @@ void loop() {
   if (Serial.available()) {
     char cmd = Serial.read();
     if (cmd == ' ') {
-      // space gets a sensor reading:
+      //initiate measurement:
+      sensor.startRanging();
+      // See if the sensor has a reading:
       while (!sensor.checkForDataReady());
       // get the distance in mm:
       int distance = sensor.getDistance();
+      // clear the sensor's interrupt and turn off ranging:
+      sensor.clearInterrupt();
+      sensor.stopRanging();
+
       // print distance in mm:
       Serial.print(distance);
       Serial.println(" mm");

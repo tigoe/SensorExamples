@@ -12,6 +12,10 @@
 
   Click here to get the library: http://librarymanager/All#SparkFun_VL53L1X
 
+  The circuit:
+  - VL53L1X SDA connected to SDA (A4)
+  - VL53L1X SCL connected to SCL (A5)
+
   modified 21 July 2020
   by Tom Igoe
   based on Armin Joachimsmeyer's Sparkfun library example
