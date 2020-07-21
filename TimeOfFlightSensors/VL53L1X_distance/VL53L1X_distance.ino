@@ -3,6 +3,12 @@
   Uses Sparkfun's VL53L1X library: http://librarymanager/All#SparkFun_VL53L1X
   Prints the distance to an object in mm, cm, m, in, ft.
 
+  For greater than 1.3m, use setDistanceModeLong()
+
+  set timing budgets for different distances Sparkfun recommends:
+  20ms - short distance, 33ms - medium, 100ms - long distance.
+  in practice, I found that for beyond 2m, I needed 200 or 500ms.
+
   The circuit:
   - VL53L1X SDA connected to SDA (A4)
   - VL53L1X SCL connected to SCL (A4)
@@ -15,6 +21,7 @@
 
 #include <SparkFun_VL53L1X.h>
 
+int timingBudget = 33;
 SFEVL53L1X sensor;
 
 void setup() {
@@ -33,6 +40,13 @@ void setup() {
   sensor.setDistanceModeShort();
   // set distance to 4m max distance:
   //  sensor.setDistanceModeLong();
+
+  // set sensor reading timing budget in ms:
+  sensor.setTimingBudgetInMs(timingBudget);
+  // Intermeasurement period must be > or = timing budget. Default = 100 ms.
+  timingBudget = sensor.getTimingBudgetInMs();
+  sensor.setIntermeasurementPeriod(timingBudget);
+
   // tell the sensor to start ranging:
   sensor.startRanging();
 }

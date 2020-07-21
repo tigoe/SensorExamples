@@ -76,7 +76,6 @@ void setup() {
   // Intermeasurement period must be > or = timing budget. Default = 100 ms.
   timingBudget = sensor.getTimingBudgetInMs();
   sensor.setIntermeasurementPeriod(timingBudget);
-
 }
 
 void loop() {
