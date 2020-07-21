@@ -15,12 +15,15 @@
   If it gets a good reading, changes the ROI to the other half. When it has two
   good readings, it compares them to infer the direction of movement of an object
   or person in front of the sensor. It's currently incomplete and not reliably working.
-
+  currently, neither the ST method (ProcessPeopleCountingData) nor my method
+  deliver consistent results.
+  
   The circuit:
   - VL53L1X SDA connected to SDA (A4)
-  - VL53L1X SCL connected to SCL (A4)
+  - VL53L1X SCL connected to SCL (A5)
 
   Created 7 July 2020
+  Modified 21 July 2020
   by Tom Igoe
   based on Sparkfun examples by Nathan Seidle
   and ST examples
@@ -90,30 +93,22 @@ void setup() {
     while (true);
   }
 
-  // this config comes from the ST people counting example.
-  // They seem like reasonable settings:
-  sensor.setDistanceModeLong();
-  sensor.setTimingBudgetInMs(20);
-  sensor.setIntermeasurementPeriod(20);
+  // settings from Sparkfun's recommendations for short/medium length:
+  sensor.setDistanceModeShort();
+  sensor.setTimingBudgetInMs(33);
+  sensor.setIntermeasurementPeriod(33);
 
   // set the ROI for next time:
   sensor.setROI(roiWidth, roiHeight,  opticalCenter[zone]);
 }
 void loop() {
-  // start the sensor reading:
+  //initiate measurement:
   sensor.startRanging();
-  // wait for data to be ready:
-  while (!sensor.checkForDataReady()) {
-    delay(1);
-  }
-  byte rangeStatus = sensor.getRangeStatus();
-  // rangeStatus = 0 is a good reading.
-  // if you don't get a good reading, go back to the beginning of the loop:
-  if (rangeStatus != 0)  return;
-
-  // once you have data, get the distance:
+  // See if the sensor has a reading:
+  while (!sensor.checkForDataReady());
+  // get the distance in mm:
   int distance = sensor.getDistance();
-  // clear the sensor's interrrupts and stop the sensor reading:
+  // clear the sensor's interrupt and turn off ranging:
   sensor.clearInterrupt();
   sensor.stopRanging();
 
@@ -122,16 +117,13 @@ void loop() {
 
   //  call the ST people counting function. Commented out because I'm trying
   // an alternative:
-  //  PplCounter = ProcessPeopleCountingData(distance, zone);
-
-  // Serial.println(PplCounter);
+//    PplCounter = ProcessPeopleCountingData(distance, zone);
+//
+//   Serial.println(PplCounter);
   readDirection(distance, zone);
 
   // Switch zones from 0 to 1 or 1 to 0:
   zone = !zone;
-
-  // delay to conform to configs above
-  delay(20);
 }
 
 
@@ -171,12 +163,8 @@ void readDirection(int thisDist, int thisZone) {
 
   // if you're seeing 1-1, you've got an object in both ROIs
   if (previous[0] + previous[1] > 1) {
-    Serial.print("   ");
-    Serial.print(previous[0]);
-    Serial.print(" ");
-    Serial.println(previous[1]);
+    Serial.println("   |");
   }
-
 }
 
 /*
