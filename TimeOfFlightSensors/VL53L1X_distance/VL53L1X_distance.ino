@@ -6,7 +6,7 @@
   For greater than 1.3m, use setDistanceModeLong()
 
   set timing budgets for different distances Sparkfun recommends:
-  20ms - short distance, 33ms - medium, 100ms - long distance.
+  20ms - short distance, 33ms - medium, 100ms - long distance. 100ms is the default.
   in practice, I found that for beyond 2m, I needed 200 or 500ms.
 
   The circuit:
@@ -43,12 +43,9 @@ void setup() {
 
   // set sensor reading timing budget in ms:
   sensor.setTimingBudgetInMs(timingBudget);
-  // Intermeasurement period must be > or = timing budget. Default = 100 ms.
+  // Intermeasurement period must be > or = timing budget.
   timingBudget = sensor.getTimingBudgetInMs();
   sensor.setIntermeasurementPeriod(timingBudget);
-
-  // tell the sensor to start ranging:
-  sensor.startRanging();
 }
 
 void loop() {
