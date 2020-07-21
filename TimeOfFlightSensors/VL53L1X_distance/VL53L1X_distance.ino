@@ -8,6 +8,7 @@
   - VL53L1X SCL connected to SCL (A4)
 
   Created 6 July 2020
+  Modified 21 July 2020
   by Tom Igoe
   based on Sparkfun examples by Nathan Seidle
 */
@@ -37,10 +38,20 @@ void setup() {
 }
 
 void loop() {
+  //initiate measurement:
+  sensor.startRanging();
   // See if the sensor has a reading:
   while (!sensor.checkForDataReady());
   // get the distance in mm:
   int distance = sensor.getDistance();
+  // clear the sensor's interrupt and turn off ranging:
+  sensor.clearInterrupt();
+  sensor.stopRanging();
+
+  // if you didn't get a good reading, exit the loop:
+  if (sensor.getRangeStatus() != 0) return;
+
+  // if you did get a good reading,
   // print distance in mm:
   Serial.print(distance);
   Serial.print(" mm, ");

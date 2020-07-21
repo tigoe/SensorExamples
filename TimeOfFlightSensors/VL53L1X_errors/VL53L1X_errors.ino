@@ -4,11 +4,15 @@
   Uses Sparkfun's VL53L1X library: http://librarymanager/All#SparkFun_VL53L1X
   Prints the distance to an object in mm
 
+  This example reads the distance even if the ranging status is in error.
+  Using a timing budget of 500ms, I was able to read distances up to 4m
+  reasonably accurately (~5cm) even when the error code was reading "Signal failure"
+  
   The circuit:
   - VL53L1X SDA connected to SDA (A4)
   - VL53L1X SCL connected to SCL (A5)
 
-  Created 16 July 2020
+  Created 21 July 2020
   by Tom Igoe
   based on Sparkfun examples by Nathan Seidle
 */
@@ -16,7 +20,11 @@
 #include <SparkFun_VL53L1X.h>
 
 long lastReadingTime = 0;  // last time you took a reading, in ms
-int timingBudget = 50;     // timing budget of the sensor, in ms. Adjust to address some error messages
+// timing budget of the sensor, in ms. Sparkfun recommends:
+// 20ms - short distance, 33ms - medium, 100ms - long distance.
+// in practice, I found that for beyond 2m, I needed 200 or 500ms.
+int timingBudget = 500;     
+
 SFEVL53L1X sensor;
 
 
@@ -67,32 +75,34 @@ void setup() {
   sensor.setTimingBudgetInMs(timingBudget);
   // Intermeasurement period must be > or = timing budget. Default = 100 ms.
   timingBudget = sensor.getTimingBudgetInMs();
-  sensor.setIntermeasurementPeriod(timingBudget * 2);
-  sensor.startRanging(); // start once
+  sensor.setIntermeasurementPeriod(timingBudget);
+
 }
 
 void loop() {
   // delay for intermeasurement period:
-  if (millis() - lastReadingTime > sensor.getIntermeasurementPeriod()) {
+  long timeSinceReading = millis() - lastReadingTime;
+  if (timeSinceReading > sensor.getIntermeasurementPeriod()) {
+
+    //initiate measurement:
     sensor.startRanging();
-    // wait until the sensor has a reading:
+    // See if the sensor has a reading:
     while (!sensor.checkForDataReady());
-
-    byte rangeStatus = sensor.getRangeStatus();
-
-    if (rangeStatus != 0 && rangeStatus != 4 ) return;
-
-    Serial.print("ms between readings: ");
-    Serial.print(millis() - lastReadingTime);
-
-    // timestamp when the sensor was ready:
-    lastReadingTime = millis();
-    Serial.print("\tRange Status: ");
-    Serial.print(rangeStatus);
     // get the distance in mm:
     int distance = sensor.getDistance();
+    // clear the sensor's interrupt and turn off ranging:
     sensor.clearInterrupt();
     sensor.stopRanging();
+    // timestamp when the sensor was ready:
+    lastReadingTime = millis();
+    
+    byte rangeStatus = sensor.getRangeStatus();
+    Serial.print("ms between readings: ");
+    Serial.print(timeSinceReading);
+
+
+    Serial.print("\tRange Status: ");
+    Serial.print(rangeStatus);
     // print distance in mm:
     Serial.print("\t distance: ");
     Serial.print(distance);
