@@ -22,7 +22,7 @@
   - VL53L1X SCL connected to SCL (A5)
 
   Created 7 July 2020
-    Modified 21 July 2020
+  Modified 21 July 2020
   by Tom Igoe
   based on Sparkfun examples by Nathan Seidle
 */
