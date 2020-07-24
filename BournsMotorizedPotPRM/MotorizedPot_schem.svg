@@ -91,11 +91,11 @@
 <line id="connector52pin" class="st2" x1="292" y1="270.7" x2="326.3" y2="270.7"/>
 <text transform="matrix(1 0 0 1 255.345 272.3565)" class="st9 st6 st10">D9 PWM</text>
 <line id="connector53pin" class="st2" x1="292" y1="287.8" x2="326.3" y2="287.8"/>
-<text transform="matrix(1 0 0 1 237.2712 289.5068)" class="st9 st6 st10">D10 PWM/SS</text>
+<text transform="matrix(1 0 0 1 237.2712 289.5068)" class="st9 st6 st10">D10 PWM/CS</text>
 <line id="connector54pin" class="st2" x1="292" y1="305" x2="326.3" y2="305"/>
-<text transform="matrix(1 0 0 1 227.7048 306.6572)" class="st9 st6 st10">D11 PWM/MOSI</text>
+<text transform="matrix(1 0 0 1 230.7048 306.6572)" class="st9 st6 st10">D11 PWM/SDO</text>
 <line id="connector55pin" class="st2" x1="292" y1="322.1" x2="326.3" y2="322.1"/>
-<text transform="matrix(1 0 0 1 249.7771 323.8076)" class="st9 st6 st10">D12/MISO</text>
+<text transform="matrix(1 0 0 1 255.7771 323.8076)" class="st9 st6 st10">D12/SDI</text>
 <line id="connector41pin" class="st0" x1="292" y1="339.3" x2="326.3" y2="339.3"/>
 <rect id="connector41terminal" x="326.3" y="338.5" class="st0" width="1.7" height="1.7"/>
 <line id="connector56pin" class="st2" x1="292" y1="339.3" x2="326.3" y2="339.3"/>
