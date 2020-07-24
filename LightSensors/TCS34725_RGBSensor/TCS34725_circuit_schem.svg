@@ -295,13 +295,13 @@
 		<text transform="matrix(1 0 0 1 171.0725 211.9134)" class="st2 st5">D11/SDA</text>
 	</g>
 	<g id="label31">
-		<text transform="matrix(1 0 0 1 168.0764 227.2521)" class="st2 st5">D10/MISO</text>
+		<text transform="matrix(1 0 0 1 173.0764 227.2521)" class="st2 st5">D10/SDI</text>
 	</g>
 	<g id="label30">
 		<text transform="matrix(1 0 0 1 173.6076 242.5908)" class="st2 st5">D9/SCK</text>
 	</g>
 	<g id="label29">
-		<text transform="matrix(1 0 0 1 170.9904 257.93)" class="st2 st5">D8/MOSI</text>
+		<text transform="matrix(1 0 0 1 173.9904 257.93)" class="st2 st5">D8/SDO</text>
 	</g>
 	<text id="label28" transform="matrix(1 0 0 1 185.8381 273.2685)" class="st2 st5">D7</text>
 	<text id="label27" transform="matrix(1 0 0 1 185.8381 288.6076)" class="st2 st5">D6</text>
