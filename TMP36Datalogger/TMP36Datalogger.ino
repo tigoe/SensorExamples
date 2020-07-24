@@ -15,10 +15,11 @@ Temperature and Humidity sensors
  Circuit:
  * TMP36 on A0
  * HIH-4030 on A1
- * SD card on SPI MISO, MOSI, CLK pins, 
- * SD card CS on pin 4
+ * SD card on SPI SDI SDO, CLK pins, 
+ * SD card CS on pin 10
  
  created 1 June 2013
+ updated 24 July 2020
  by Tom Igoe
  
  */
@@ -27,7 +28,7 @@ Temperature and Humidity sensors
 #include <SPI.h>
 #include <SD.h>
 
-const int chipSelect = 4;         // CS pin for the SD card. Will change depending on your shield or module
+const int chipSelect = 10;         // CS pin for the SD card. Will change depending on your shield or module
 boolean cardReady = false;
 
 float voltage = 1.3;              // analog reference voltage
