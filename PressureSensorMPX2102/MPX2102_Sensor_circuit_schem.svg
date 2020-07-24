@@ -320,13 +320,13 @@
 		<text transform="matrix(1 0 0 1 524.5186 208.6129)" class="st3 st20">D11/SDA</text>
 	</g>
 	<g id="label31_1_">
-		<text transform="matrix(1 0 0 1 521.5226 223.9516)" class="st3 st20">D10/MISO</text>
+		<text transform="matrix(1 0 0 1 525.5226 223.9516)" class="st3 st20">D10/SDI</text>
 	</g>
 	<g id="label30_1_">
 		<text transform="matrix(1 0 0 1 527.0536 239.2903)" class="st3 st20">D9/SCK</text>
 	</g>
 	<g id="label29_1_">
-		<text transform="matrix(1 0 0 1 524.4366 254.6295)" class="st3 st20">D8/MOSI</text>
+		<text transform="matrix(1 0 0 1 527.4366 254.6295)" class="st3 st20">D8/SDO</text>
 	</g>
 	<text id="label28_1_" transform="matrix(1 0 0 1 539.2843 269.968)" class="st3 st20">D7</text>
 	<text id="label27_1_" transform="matrix(1 0 0 1 539.2843 285.3071)" class="st3 st20">D6</text>
