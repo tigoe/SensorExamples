@@ -417,13 +417,13 @@
 		<text transform="matrix(1 0 0 1 171.1454 211.8853)" class="st2 st6">D11/SDA</text>
 	</g>
 	<g id="label31_1_">
-		<text transform="matrix(1 0 0 1 168.1494 227.224)" class="st2 st6">D10/MISO</text>
+		<text transform="matrix(1 0 0 1 172.1494 227.224)" class="st2 st6">D10/SDI</text>
 	</g>
 	<g id="label30_1_">
 		<text transform="matrix(1 0 0 1 173.6805 242.5627)" class="st2 st6">D9/SCK</text>
 	</g>
 	<g id="label29_1_">
-		<text transform="matrix(1 0 0 1 171.0634 257.9019)" class="st2 st6">D8/MOSI</text>
+		<text transform="matrix(1 0 0 1 174.0634 257.9019)" class="st2 st6">D8/SDO</text>
 	</g>
 	<text id="label28_1_" transform="matrix(1 0 0 1 185.9111 273.2404)" class="st2 st6">D7</text>
 	<text id="label27_1_" transform="matrix(1 0 0 1 185.9111 288.5795)" class="st2 st6">D6</text>
