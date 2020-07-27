@@ -75,7 +75,7 @@ void setup() {
   sensor.setTimingBudgetInMs(timingBudget);
   // Intermeasurement period must be > or = timing budget.
   timingBudget = sensor.getTimingBudgetInMs();
-  sensor.setIntermeasurementPeriod(timingBudget);
+  sensor.setIntermeasurementPeriod(timingBudget* 1.5);
 }
 
 void loop() {
