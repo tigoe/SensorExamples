@@ -1,391 +1,431 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 21.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns:svg="http://www.w3.org/2000/svg"
-	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 420.9 420.9"
-	 style="enable-background:new 0 0 420.9 420.9;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:none;stroke:#000000;stroke-linecap:round;stroke-miterlimit:10;}
-	.st1{fill:none;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;}
-	.st2{font-family:'ArialMT';}
-	.st3{font-size:3.5px;}
-	.st4{fill:none;}
-	.st5{font-size:5.2401px;}
-	.st6{font-size:11.8661px;}
-	.st7{font-size:9.4929px;}
-</style>
-<symbol  id="line" viewBox="-0.5 -7.5 1 15">
-	<line class="st0" x1="0" y1="7" x2="0" y2="-7"/>
-</symbol>
-<rect x="298.8" y="195.6" class="st1" width="57.2" height="50.4"/>
-<g id="label_5_">
-	<text transform="matrix(1 0 0 1 319.2364 211.9896)" class="st2 st3">Adafruit</text>
-</g>
-<g id="label_6_">
-	<text transform="matrix(1 0 0 1 316.9014 215.4896)" class="st2 st3">TCS34725</text>
-</g>
-<g id="label_7_">
-	<text transform="matrix(1 0 0 1 321.4756 218.9896)" class="st2 st3">RGB</text>
-</g>
-<g id="label_8_">
-	<text transform="matrix(1 0 0 1 321.086 222.4896)" class="st2 st3">Color</text>
-</g>
-<g id="label_9_">
-	<text transform="matrix(1 0 0 1 319.7227 225.9896)" class="st2 st3">Sensor</text>
-</g>
-<line class="st1" x1="370" y1="210" x2="355.9" y2="210"/>
-<g id="connector14terminal">
-</g>
-<g id="label14">
-	<text transform="matrix(1 0 0 1 339.5088 210.6894)" class="st2 st3">LED_EN</text>
-</g>
-<line class="st1" x1="370" y1="217.2" x2="355.9" y2="217.2"/>
-<g id="connector13terminal">
-</g>
-<g id="label13">
-	<text transform="matrix(1 0 0 1 347.5093 217.8895)" class="st2 st3">INT</text>
-</g>
-<line class="st1" x1="298.7" y1="210" x2="284.3" y2="210"/>
-<g id="connector12terminal">
-</g>
-<line class="st1" x1="298.7" y1="217.2" x2="284.3" y2="217.2"/>
-<g id="connector11terminal">
-</g>
-<line class="st1" x1="327.1" y1="181.5" x2="327.1" y2="195.6"/>
-<g id="connector8terminal_1_">
-</g>
-<line class="st1" x1="319.9" y1="181.5" x2="319.9" y2="195.6"/>
-<g id="connector10terminal_1_">
-</g>
-<line class="st1" x1="327.1" y1="246" x2="327.1" y2="260"/>
-<g id="connector9terminal_1_">
-</g>
-<g id="label10_1_">
-	<text transform="matrix(1 0 0 1 300.1234 211.0865)" class="st2 st3">SDA</text>
-</g>
-<g id="label9_1_">
-	<text transform="matrix(1 0 0 1 300.5111 218.2866)" class="st2 st3">SCL</text>
-</g>
-<g transform="matrix(1, 0, 0, 1, 44.6, 16)">
-	<g>
-		<g>
-			<g>
-				<g>
-					<g>
-						<g transform="rotate(270)">
-							<g>
-								<g>
-									<g>
-										<g>
-											<text id="label5_9_" transform="matrix(1 0 0 1 -187.4226 283.7156)" class="st2 st3">VIN</text>
-										</g>
-									</g>
-								</g>
-							</g>
-						</g>
-					</g>
-				</g>
-			</g>
-		</g>
-	</g>
-</g>
-<g transform="matrix(1, 0, 0, 1, 51.8, 16)">
-	<g>
-		<g>
-			<g>
-				<g>
-					<g>
-						<g transform="rotate(270)">
-							<g>
-								<g>
-									<g>
-										<g>
-											<text id="label6_9_" transform="matrix(1 0 0 1 -188.7879 269.3144)" class="st2 st3">3.3V</text>
-										</g>
-									</g>
-								</g>
-							</g>
-						</g>
-					</g>
-				</g>
-			</g>
-		</g>
-	</g>
-</g>
-<g transform="matrix(1, 0, 0, 1, 44.6, 63.2)">
-	<g>
-		<g>
-			<g>
-				<g>
-					<g>
-						<g transform="rotate(270)">
-							<g>
-								<g>
-									<g>
-										<g>
-											<text id="label7_9_" transform="matrix(1 0 0 1 -181.5878 283.7156)" class="st2 st3">GND</text>
-										</g>
-									</g>
-								</g>
-							</g>
-						</g>
-					</g>
-				</g>
-			</g>
-		</g>
-	</g>
-</g>
-<g id="connector54terminal">
-</g>
-<g id="connector55terminal">
-</g>
-<g id="connector56terminal">
-</g>
-<g id="connector57terminal">
-</g>
-<g id="connector58terminal">
-</g>
-<g id="connector59terminal">
-</g>
-<g id="connector60terminal">
-</g>
-<g id="connector35terminal">
-</g>
-<g id="connector34terminal">
-</g>
-<g id="connector33terminal">
-</g>
-<g id="connector32terminal">
-</g>
-<g id="connector31terminal">
-</g>
-<g id="connector30terminal">
-</g>
-<g id="connector29terminal">
-</g>
-<g id="connector28terminal">
-</g>
-<g id="connector27terminal">
-</g>
-<g id="connector26terminal">
-</g>
-<g id="connector25terminal">
-</g>
-<g id="connector24terminal">
-</g>
-<g id="connector51terminal">
-</g>
-<g id="connector52terminal">
-</g>
-<g id="connector22terminal">
-</g>
-<g id="connector23terminal">
-</g>
-<rect id="connector44terminal" x="211.7" y="165.7" class="st4" width="1.6" height="1.6"/>
-<rect id="connector45terminal" x="211.7" y="193.8" class="st4" width="1.6" height="1.6"/>
-<rect id="connector42terminal" x="211.7" y="179.8" class="st4" width="1.6" height="1.6"/>
-<g>
-	<g transform="translate(385.418,179.097)">
-		<g id="schematic_3_">
-			<path id="connector0pin" class="st1" d="M-58.3,95.6v-7.2"/>
-			<g id="connector0terminal">
-			</g>
-			<path id="path4098" class="st1" d="M-65,95.7h13.4"/>
-			<path id="path4100" class="st1" d="M-62.8,98.5h8.9"/>
-			<path id="path4102" class="st1" d="M-56.1,101.2h-4.5"/>
-		</g>
-	</g>
-</g>
-<g>
-	<g transform="translate(132.084,558.83)">
-		<g id="schematic_4_">
-			<path id="connector0pin_1_" class="st1" d="M-11.6-239.5v-7.2"/>
-			<g id="connector0terminal_1_">
-			</g>
-			<path id="path4098_1_" class="st1" d="M-18.3-239.4h13.4"/>
-			<path id="path4100_1_" class="st1" d="M-16.1-236.6h8.9"/>
-			<path id="path4102_1_" class="st1" d="M-9.4-233.9h-4.5"/>
-		</g>
-	</g>
-</g>
-<line id="connector0pin_2_" class="st1" x1="327.1" y1="34.8" x2="327.1" y2="42"/>
-<path class="st1" d="M320.4,34.6h13.5"/>
-<g id="label_11_">
-	<text transform="matrix(1 0 0 1 321.4277 33.0004)" class="st2 st5">3.3V</text>
-</g>
-<g id="connector0terminal_3_">
-</g>
-<g>
-	<line class="st1" x1="212.1" y1="209.9" x2="233.5" y2="210"/>
-</g>
-<g>
-	<line class="st1" x1="269.5" y1="194.6" x2="269.5" y2="217.2"/>
-</g>
-<circle cx="269.5" cy="217.2" r="1.4"/>
-<g>
-	<line class="st1" x1="233.5" y1="210" x2="283.9" y2="210"/>
-</g>
-<g>
-	<line class="st1" x1="269.5" y1="217.2" x2="283.9" y2="217.2"/>
-</g>
-<g>
-	<line class="st1" x1="391.9" y1="210" x2="370.3" y2="210"/>
-</g>
-<g>
-	<line class="st1" x1="391.9" y1="260.4" x2="391.9" y2="210"/>
-</g>
-<g>
-	<line class="st1" x1="327.1" y1="260.4" x2="391.9" y2="260.4"/>
-</g>
-<circle cx="327.1" cy="260.4" r="1.4"/>
-<g>
-	<line class="st1" x1="327.1" y1="260.4" x2="327.1" y2="267.6"/>
-</g>
-<circle cx="327.1" cy="260.4" r="1.4"/>
-<g>
-	<line class="st1" x1="327.1" y1="181.5" x2="327.1" y2="42"/>
-</g>
-<circle cx="327.1" cy="42" r="1.4"/>
-<g>
-	<line class="st1" x1="327.1" y1="42.1" x2="86.9" y2="42.1"/>
-</g>
-<circle cx="327.1" cy="42" r="1.4"/>
-<g>
-	
-		<use xlink:href="#line"  width="1" height="15" x="-0.5" y="-7.5" transform="matrix(1 0 0 -1 140.8 61.043)" style="overflow:visible;"/>
-	<rect id="rect11" x="43.5" y="68.3" class="st1" width="154.2" height="229.9"/>
-	<text id="label_10_" transform="matrix(1 0 0 1 100.1511 176.3766)" class="st2 st6">Arduino</text>
-	<text id="text14" transform="matrix(1 0 0 1 99.4944 190.3917)" class="st2 st7">MKR Zero</text>
-	<g id="label46">
-		<text transform="matrix(1 0 0 1 178.8473 150.5581)" class="st2 st5">Reset</text>
-	</g>
-	<g id="label54">
-		<text transform="matrix(1 0 0 1 46.9993 89.2025)" class="st2 st5">AREF</text>
-	</g>
-	<g id="label55">
-		<text transform="matrix(1 0 0 1 46.9914 104.5412)" class="st2 st5">DAC0/A0</text>
-	</g>
-	<g id="label56">
-		<text transform="matrix(1 0 0 1 46.9993 119.8802)" class="st2 st5">A1</text>
-	</g>
-	<g id="label57">
-		<text transform="matrix(1 0 0 1 46.9993 135.2189)" class="st2 st5">A2</text>
-	</g>
-	<g id="label58">
-		<text transform="matrix(1 0 0 1 46.9993 150.5577)" class="st2 st5">A3</text>
-	</g>
-	<g id="label59">
-		<text transform="matrix(1 0 0 1 46.9993 165.8966)" class="st2 st5">A4</text>
-	</g>
-	<g id="label60">
-		<text transform="matrix(1 0 0 1 46.9993 181.2354)" class="st2 st5">A5</text>
-	</g>
-	<g id="label61">
-		<text transform="matrix(1 0 0 1 46.9993 196.5742)" class="st2 st5">A6</text>
-	</g>
-	<g id="label35">
-		<text transform="matrix(1 0 0 1 174.1885 181.2357)" class="st2 st5">D13/RX</text>
-	</g>
-	<g id="label34">
-		<text transform="matrix(1 0 0 1 174.7717 165.8971)" class="st2 st5">D14/TX</text>
-	</g>
-	<g id="label33">
-		<text transform="matrix(1 0 0 1 171.4641 196.5747)" class="st2 st5">D12/SCL</text>
-	</g>
-	<g id="label32">
-		<text transform="matrix(1 0 0 1 171.0725 211.9134)" class="st2 st5">D11/SDA</text>
-	</g>
-	<g id="label31">
-		<text transform="matrix(1 0 0 1 168.0764 227.2521)" class="st2 st5">D10/MISO</text>
-	</g>
-	<g id="label30">
-		<text transform="matrix(1 0 0 1 173.6076 242.5908)" class="st2 st5">D9/SCK</text>
-	</g>
-	<g id="label29">
-		<text transform="matrix(1 0 0 1 170.9904 257.93)" class="st2 st5">D8/MOSI</text>
-	</g>
-	<text id="label28" transform="matrix(1 0 0 1 185.8381 273.2685)" class="st2 st5">D7</text>
-	<text id="label27" transform="matrix(1 0 0 1 185.8381 288.6076)" class="st2 st5">D6</text>
-	<g id="label26">
-		<text transform="matrix(1 0 0 1 46.9914 288.6075)" class="st2 st5">D5 PWM</text>
-	</g>
-	<g id="label25">
-		<text transform="matrix(1 0 0 1 46.9913 273.2687)" class="st2 st5">D4 PWM</text>
-	</g>
-	<text id="label24" transform="matrix(1 0 0 1 46.9914 257.9299)" class="st2 st5">D3 PWM</text>
-	<text id="label51" transform="matrix(1 0 0 1 46.9913 242.5909)" class="st2 st5">D2 PWM</text>
-	<text id="label52" transform="matrix(1 0 0 1 46.9914 227.2523)" class="st2 st5">D1 PWM</text>
-	<text id="label52_1_" transform="matrix(1 0 0 1 46.9914 211.9135)" class="st2 st5">D0 PWM</text>
-	<g id="label22">
-		<text transform="matrix(1 0 0 1 79.6487 75.8564)" class="st2 st5">VCC</text>
-	</g>
-	<polygon id="connector37terminal" class="st4" points="112.8,53.5 114.4,53.5 114.4,53.5 	"/>
-	<g id="label37">
-		<text transform="matrix(1 0 0 1 109.2258 75.8564)" class="st2 st5">VIN</text>
-	</g>
-	<polygon id="connector63terminal" class="st4" points="140.8,53.5 142.4,53.5 142.4,53.5 	"/>
-	<g id="label63">
-		<text transform="matrix(1 0 0 1 138.4192 75.8564)" class="st2 st5">5V</text>
-	</g>
-	<g id="label23">
-		<text transform="matrix(1 0 0 1 113.3235 292.6609)" class="st2 st5">GND</text>
-	</g>
-	<polygon id="connector43terminal" class="st4" points="84.8,53.5 86.4,53.5 86.4,53.5 	"/>
-	<polygon id="connector50terminal" class="st4" points="84.8,53.5 86.4,53.5 86.4,53.5 	"/>
-	
-		<use xlink:href="#line"  width="1" height="15" x="-0.5" y="-7.5" transform="matrix(1 0 0 -1 120.601 305.1751)" style="overflow:visible;"/>
-	
-		<use xlink:href="#line"  width="1" height="15" x="-0.5" y="-7.5" transform="matrix(1 0 0 -1 114.8846 61.043)" style="overflow:visible;"/>
-	
-		<use xlink:href="#line"  width="1" height="15" x="-0.5" y="-7.5" transform="matrix(1 0 0 -1 86.8545 60.8339)" style="overflow:visible;"/>
-	
-		<use xlink:href="#line"  width="1" height="15" x="-0.5" y="-7.5" transform="matrix(6.123234e-17 1 1 -6.123234e-17 204.7989 148.4606)" style="overflow:visible;"/>
-	
-		<use xlink:href="#line"  width="1" height="15" x="-0.5" y="-7.5" transform="matrix(6.123234e-17 1 1 -6.123234e-17 205.2989 163.8281)" style="overflow:visible;"/>
-	
-		<use xlink:href="#line"  width="1" height="15" x="-0.5" y="-7.5" transform="matrix(6.123234e-17 1 1 -6.123234e-17 205.2989 179.1955)" style="overflow:visible;"/>
-	
-		<use xlink:href="#line"  width="1" height="15" x="-0.5" y="-7.5" transform="matrix(6.123234e-17 1 1 -6.123234e-17 205.2989 194.563)" style="overflow:visible;"/>
-	
-		<use xlink:href="#line"  width="1" height="15" x="-0.5" y="-7.5" transform="matrix(6.123234e-17 1 1 -6.123234e-17 205.2989 209.9304)" style="overflow:visible;"/>
-	
-		<use xlink:href="#line"  width="1" height="15" x="-0.5" y="-7.5" transform="matrix(6.123234e-17 1 1 -6.123234e-17 205.2989 225.2979)" style="overflow:visible;"/>
-	
-		<use xlink:href="#line"  width="1" height="15" x="-0.5" y="-7.5" transform="matrix(6.123234e-17 1 1 -6.123234e-17 205.2989 240.6653)" style="overflow:visible;"/>
-	
-		<use xlink:href="#line"  width="1" height="15" x="-0.5" y="-7.5" transform="matrix(6.123234e-17 1 1 -6.123234e-17 205.2989 256.0328)" style="overflow:visible;"/>
-	
-		<use xlink:href="#line"  width="1" height="15" x="-0.5" y="-7.5" transform="matrix(6.123234e-17 1 1 -6.123234e-17 205.2989 271.4003)" style="overflow:visible;"/>
-	
-		<use xlink:href="#line"  width="1" height="15" x="-0.5" y="-7.5" transform="matrix(6.123234e-17 1 1 -6.123234e-17 205.2989 286.7677)" style="overflow:visible;"/>
-	
-		<use xlink:href="#line"  width="1" height="15" x="-0.5" y="-7.5" transform="matrix(6.123234e-17 1 1 -6.123234e-17 35.5 148.4606)" style="overflow:visible;"/>
-	
-		<use xlink:href="#line"  width="1" height="15" x="-0.5" y="-7.5" transform="matrix(6.123234e-17 1 1 -6.123234e-17 36 163.8281)" style="overflow:visible;"/>
-	
-		<use xlink:href="#line"  width="1" height="15" x="-0.5" y="-7.5" transform="matrix(6.123234e-17 1 1 -6.123234e-17 36 179.1955)" style="overflow:visible;"/>
-	
-		<use xlink:href="#line"  width="1" height="15" x="-0.5" y="-7.5" transform="matrix(6.123234e-17 1 1 -6.123234e-17 36 194.563)" style="overflow:visible;"/>
-	
-		<use xlink:href="#line"  width="1" height="15" x="-0.5" y="-7.5" transform="matrix(6.123234e-17 1 1 -6.123234e-17 35.5 87.716)" style="overflow:visible;"/>
-	
-		<use xlink:href="#line"  width="1" height="15" x="-0.5" y="-7.5" transform="matrix(6.123234e-17 1 1 -6.123234e-17 36 103.0835)" style="overflow:visible;"/>
-	
-		<use xlink:href="#line"  width="1" height="15" x="-0.5" y="-7.5" transform="matrix(6.123234e-17 1 1 -6.123234e-17 36 118.4509)" style="overflow:visible;"/>
-	
-		<use xlink:href="#line"  width="1" height="15" x="-0.5" y="-7.5" transform="matrix(6.123234e-17 1 1 -6.123234e-17 36 133.8184)" style="overflow:visible;"/>
-	
-		<use xlink:href="#line"  width="1" height="15" x="-0.5" y="-7.5" transform="matrix(6.123234e-17 1 1 -6.123234e-17 36 209.9304)" style="overflow:visible;"/>
-	
-		<use xlink:href="#line"  width="1" height="15" x="-0.5" y="-7.5" transform="matrix(6.123234e-17 1 1 -6.123234e-17 36 225.2979)" style="overflow:visible;"/>
-	
-		<use xlink:href="#line"  width="1" height="15" x="-0.5" y="-7.5" transform="matrix(6.123234e-17 1 1 -6.123234e-17 36 240.6653)" style="overflow:visible;"/>
-	
-		<use xlink:href="#line"  width="1" height="15" x="-0.5" y="-7.5" transform="matrix(6.123234e-17 1 1 -6.123234e-17 36 256.0328)" style="overflow:visible;"/>
-	
-		<use xlink:href="#line"  width="1" height="15" x="-0.5" y="-7.5" transform="matrix(6.123234e-17 1 1 -6.123234e-17 36 271.4003)" style="overflow:visible;"/>
-	
-		<use xlink:href="#line"  width="1" height="15" x="-0.5" y="-7.5" transform="matrix(6.123234e-17 1 1 -6.123234e-17 36 286.7677)" style="overflow:visible;"/>
-</g>
-<line class="st1" x1="269.5" y1="194.6" x2="211.7" y2="194.6"/>
-<line class="st1" x1="86.9" y1="53.8" x2="86.9" y2="42.1"/>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 421 421" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:10;">
+    <g id="line">
+        <path d="M0,7L0,-7" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+    </g>
+    <rect x="298.8" y="195.6" width="57.2" height="50.4" style="fill:none;stroke:black;stroke-width:1px;stroke-linejoin:round;stroke-miterlimit:4;"/>
+    <g id="label_5_">
+    </g>
+    <g transform="matrix(1,0,0,1,316.901,215.49)">
+        <g id="label_6_">
+            <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:3.5px;">TCS34725</text>
+        </g>
+    </g>
+    <g transform="matrix(1,0,0,1,321.476,218.99)">
+        <g id="label_7_">
+            <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:3.5px;">RGB</text>
+        </g>
+    </g>
+    <g transform="matrix(1,0,0,1,321.086,222.49)">
+        <g id="label_8_">
+            <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:3.5px;">Color</text>
+        </g>
+    </g>
+    <g transform="matrix(1,0,0,1,319.723,225.99)">
+        <g id="label_9_">
+            <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:3.5px;">Sensor</text>
+        </g>
+    </g>
+    <path d="M370,210L355.9,210" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;stroke-linejoin:round;stroke-miterlimit:4;"/>
+    <g transform="matrix(1,0,0,1,339.509,210.689)">
+        <g id="label14">
+            <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:3.5px;">LED_EN</text>
+        </g>
+    </g>
+    <path d="M370,217.2L355.9,217.2" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;stroke-linejoin:round;stroke-miterlimit:4;"/>
+    <g transform="matrix(1,0,0,1,347.509,217.889)">
+        <g id="label13">
+            <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:3.5px;">INT</text>
+        </g>
+    </g>
+    <path d="M298.7,210L284.3,210" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;stroke-linejoin:round;stroke-miterlimit:4;"/>
+    <path d="M298.7,217.2L284.3,217.2" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;stroke-linejoin:round;stroke-miterlimit:4;"/>
+    <path d="M327.1,181.5L327.1,195.6" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;stroke-linejoin:round;stroke-miterlimit:4;"/>
+    <path d="M319.9,181.5L319.9,195.6" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;stroke-linejoin:round;stroke-miterlimit:4;"/>
+    <path d="M327.1,246L327.1,260" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;stroke-linejoin:round;stroke-miterlimit:4;"/>
+    <g transform="matrix(1,0,0,1,300.123,211.087)">
+        <g id="label10_1_">
+            <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:3.5px;">SDA</text>
+        </g>
+    </g>
+    <g transform="matrix(1,0,0,1,300.511,218.287)">
+        <g id="label9_1_">
+            <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:3.5px;">SCL</text>
+        </g>
+    </g>
+    <g transform="matrix(7.04481e-16,-1,1,7.04481e-16,328.316,203.423)">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <g>
+                            <g>
+                                <g>
+                                    <g>
+                                        <g>
+                                            <g>
+                                                <text id="label5_9_" x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:3.5px;">VIN</text>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+    <g transform="matrix(7.04481e-16,-1,1,7.04481e-16,321.114,204.788)">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <g>
+                            <g>
+                                <g>
+                                    <g>
+                                        <g>
+                                            <g>
+                                                <text id="label6_9_" x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:3.5px;">3.3V</text>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+    <g transform="matrix(7.04481e-16,-1,1,7.04481e-16,328.316,244.788)">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <g>
+                            <g>
+                                <g>
+                                    <g>
+                                        <g>
+                                            <g>
+                                                <text id="label7_9_" x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:3.5px;">GND</text>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+    <g id="connector44terminal" transform="matrix(1,0,0,1,0,0.481771)">
+        <rect x="211.7" y="165.7" width="1.6" height="1.6" style="fill:none;"/>
+    </g>
+    <g id="connector45terminal" transform="matrix(1,0,0,1,0,0.481771)">
+        <rect x="211.7" y="193.8" width="1.6" height="1.6" style="fill:none;"/>
+    </g>
+    <g id="connector42terminal" transform="matrix(1,0,0,1,0,0.481771)">
+        <rect x="211.7" y="179.8" width="1.6" height="1.6" style="fill:none;"/>
+    </g>
+    <g transform="matrix(1,0,0,1,385.418,179.097)">
+        <g>
+            <g id="schematic_3_">
+                <path id="connector0pin" d="M-58.3,95.6L-58.3,88.4" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;stroke-linejoin:round;stroke-miterlimit:4;"/>
+                <path id="path4098" d="M-65,95.7L-51.6,95.7" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;stroke-linejoin:round;stroke-miterlimit:4;"/>
+                <path id="path4100" d="M-62.8,98.5L-53.9,98.5" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;stroke-linejoin:round;stroke-miterlimit:4;"/>
+                <path id="path4102" d="M-56.1,101.2L-60.6,101.2" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;stroke-linejoin:round;stroke-miterlimit:4;"/>
+            </g>
+        </g>
+    </g>
+    <g transform="matrix(1,0,0,1,131.759,558.544)">
+        <g>
+            <g id="schematic_4_">
+                <path id="connector0pin_1_" d="M-11.6,-239.5L-11.6,-246.7" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;stroke-linejoin:round;stroke-miterlimit:4;"/>
+                <path id="path4098_1_" d="M-18.3,-239.4L-4.9,-239.4" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;stroke-linejoin:round;stroke-miterlimit:4;"/>
+                <path id="path4100_1_" d="M-16.1,-236.6L-7.2,-236.6" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;stroke-linejoin:round;stroke-miterlimit:4;"/>
+                <path id="path4102_1_" d="M-9.4,-233.9L-13.9,-233.9" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;stroke-linejoin:round;stroke-miterlimit:4;"/>
+            </g>
+        </g>
+    </g>
+    <path id="connector0pin_2_" d="M327.1,34.8L327.1,42" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;stroke-linejoin:round;stroke-miterlimit:4;"/>
+    <path d="M320.4,34.6L333.9,34.6" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;stroke-linejoin:round;stroke-miterlimit:4;"/>
+    <g transform="matrix(1,0,0,1,321.428,33.0004)">
+        <g id="label_11_">
+            <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:5.24px;">3.3V</text>
+        </g>
+    </g>
+    <g>
+        <path d="M212.1,209.9L233.5,210" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;stroke-linejoin:round;stroke-miterlimit:4;"/>
+    </g>
+    <g>
+        <path d="M269.5,194.6L269.5,217.2" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;stroke-linejoin:round;stroke-miterlimit:4;"/>
+    </g>
+    <g>
+        <path d="M233.5,210L283.9,210" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;stroke-linejoin:round;stroke-miterlimit:4;"/>
+    </g>
+    <g>
+        <path d="M269.5,217.2L283.9,217.2" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;stroke-linejoin:round;stroke-miterlimit:4;"/>
+    </g>
+    <g>
+        <path d="M391.9,210L370.3,210" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;stroke-linejoin:round;stroke-miterlimit:4;"/>
+    </g>
+    <g>
+        <path d="M391.9,260.4L391.9,210" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;stroke-linejoin:round;stroke-miterlimit:4;"/>
+    </g>
+    <g>
+        <path d="M327.1,260.4L391.9,260.4" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;stroke-linejoin:round;stroke-miterlimit:4;"/>
+    </g>
+    <circle cx="327.1" cy="260.4" r="1.4"/>
+    <g>
+        <path d="M327.1,260.4L327.1,267.6" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;stroke-linejoin:round;stroke-miterlimit:4;"/>
+    </g>
+    <circle cx="327.1" cy="260.4" r="1.4"/>
+    <g>
+        <path d="M327.1,181.5L327.1,42" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;stroke-linejoin:round;stroke-miterlimit:4;"/>
+    </g>
+    <circle cx="327.1" cy="42" r="1.4"/>
+    <g>
+        <path d="M327.1,42.1L86.9,42.1" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;stroke-linejoin:round;stroke-miterlimit:4;"/>
+    </g>
+    <circle cx="327.1" cy="42" r="1.4"/>
+    <g>
+        <g id="line1" serif:id="line" transform="matrix(1,0,0,-1,140.846,61.543)">
+            <path d="M0,7L0,-7" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        </g>
+        <rect id="rect11" x="43.5" y="68.3" width="154.2" height="229.9" style="fill:none;stroke:black;stroke-width:1px;stroke-linejoin:round;stroke-miterlimit:4;"/>
+        <g id="label_10_" transform="matrix(1,0,0,1,100.151,176.377)">
+            <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:11.866px;">Arduino</text>
+        </g>
+        <g id="text14" transform="matrix(1,0,0,1,99.4944,190.392)">
+            <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:9.493px;">MKR Zero</text>
+        </g>
+        <g transform="matrix(1,0,0,1,178.847,150.558)">
+            <g id="label46">
+                <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:5.24px;">Reset</text>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,46.9993,89.2025)">
+            <g id="label54">
+                <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:5.24px;">AREF</text>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,46.9914,104.541)">
+            <g id="label55">
+                <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:5.24px;">DAC0/A0</text>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,46.9993,119.88)">
+            <g id="label56">
+                <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:5.24px;">A1</text>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,46.9993,135.219)">
+            <g id="label57">
+                <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:5.24px;">A2</text>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,46.9993,150.558)">
+            <g id="label58">
+                <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:5.24px;">A3</text>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,46.9993,165.897)">
+            <g id="label59">
+                <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:5.24px;">A4</text>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,46.9993,181.235)">
+            <g id="label60">
+                <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:5.24px;">A5</text>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,46.9993,196.574)">
+            <g id="label61">
+                <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:5.24px;">A6</text>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,174.189,181.236)">
+            <g id="label35">
+                <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:5.24px;">D13/RX</text>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,174.772,165.897)">
+            <g id="label34">
+                <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:5.24px;">D14/TX</text>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,171.464,196.575)">
+            <g id="label33">
+                <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:5.24px;">D12/SCL</text>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,171.072,211.913)">
+            <g id="label32">
+                <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:5.24px;">D1<tspan x="6.31px 9.224px " y="0px 0px ">1/</tspan>SDA</text>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,173.076,227.252)">
+            <g id="label31">
+                <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:5.24px;">D10/SDI</text>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,173.608,242.591)">
+            <g id="label30">
+                <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:5.24px;">D9/SCK</text>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,173.99,257.93)">
+            <g id="label29">
+                <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:5.24px;">D8/SDO</text>
+            </g>
+        </g>
+        <g id="label28" transform="matrix(1,0,0,1,185.838,273.269)">
+            <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:5.24px;">D7</text>
+        </g>
+        <g id="label27" transform="matrix(1,0,0,1,185.838,288.608)">
+            <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:5.24px;">D6</text>
+        </g>
+        <g transform="matrix(1,0,0,1,46.9914,288.608)">
+            <g id="label26">
+                <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:5.24px;">D5 PWM</text>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,46.9913,273.269)">
+            <g id="label25">
+                <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:5.24px;">D4 PWM</text>
+            </g>
+        </g>
+        <g id="label24" transform="matrix(1,0,0,1,46.9914,257.93)">
+            <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:5.24px;">D3 PWM</text>
+        </g>
+        <g id="label51" transform="matrix(1,0,0,1,46.9913,242.591)">
+            <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:5.24px;">D2 PWM</text>
+        </g>
+        <g id="label52" transform="matrix(1,0,0,1,46.9914,227.252)">
+            <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:5.24px;">D1 PWM</text>
+        </g>
+        <g id="label52_1_" transform="matrix(1,0,0,1,46.9914,211.913)">
+            <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:5.24px;">D0 PWM</text>
+        </g>
+        <g transform="matrix(1,0,0,1,79.6487,75.8564)">
+            <g id="label22">
+                <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:5.24px;">VCC</text>
+            </g>
+        </g>
+        <g id="connector37terminal" transform="matrix(1,0,0,1,0.545898,0)">
+            <path d="M112.8,53.5L114.4,53.5L112.8,53.5Z" style="fill:none;fill-rule:nonzero;"/>
+        </g>
+        <g transform="matrix(1,0,0,1,109.226,75.8564)">
+            <g id="label37">
+                <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:5.24px;">VIN</text>
+            </g>
+        </g>
+        <g id="connector63terminal" transform="matrix(1,0,0,1,0.545898,0)">
+            <path d="M140.8,53.5L142.4,53.5L140.8,53.5Z" style="fill:none;fill-rule:nonzero;"/>
+        </g>
+        <g transform="matrix(1,0,0,1,138.419,75.8564)">
+            <g id="label63">
+                <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:5.24px;">5V</text>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,113.323,292.661)">
+            <g id="label23">
+                <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:5.24px;">GND</text>
+            </g>
+        </g>
+        <g id="connector43terminal" transform="matrix(1,0,0,1,0.545898,0)">
+            <path d="M84.8,53.5L86.4,53.5L84.8,53.5Z" style="fill:none;fill-rule:nonzero;"/>
+        </g>
+        <g id="connector50terminal" transform="matrix(1,0,0,1,0.545898,0)">
+            <path d="M84.8,53.5L86.4,53.5L84.8,53.5Z" style="fill:none;fill-rule:nonzero;"/>
+        </g>
+        <g id="line2" serif:id="line" transform="matrix(1,0,0,-1,120.101,305.675)">
+            <path d="M0,7L0,-7" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        </g>
+        <g id="line3" serif:id="line" transform="matrix(1,0,0,-1,114.93,61.543)">
+            <path d="M0,7L0,-7" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        </g>
+        <g id="line4" serif:id="line" transform="matrix(1,0,0,-1,86.9004,61.3339)">
+            <path d="M0,7L0,-7" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        </g>
+        <g id="line5" serif:id="line" transform="matrix(6.12323e-17,1,1,-6.12323e-17,204.299,148.442)">
+            <path d="M0,7L0,-7" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        </g>
+        <g id="line6" serif:id="line" transform="matrix(6.12323e-17,1,1,-6.12323e-17,204.799,163.81)">
+            <path d="M0,7L0,-7" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        </g>
+        <g id="line7" serif:id="line" transform="matrix(6.12323e-17,1,1,-6.12323e-17,204.799,179.177)">
+            <path d="M0,7L0,-7" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        </g>
+        <g id="line8" serif:id="line" transform="matrix(6.12323e-17,1,1,-6.12323e-17,204.799,194.545)">
+            <path d="M0,7L0,-7" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        </g>
+        <g id="line9" serif:id="line" transform="matrix(6.12323e-17,1,1,-6.12323e-17,204.799,209.912)">
+            <path d="M0,7L0,-7" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        </g>
+        <g id="line10" serif:id="line" transform="matrix(6.12323e-17,1,1,-6.12323e-17,204.799,225.28)">
+            <path d="M0,7L0,-7" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        </g>
+        <g id="line11" serif:id="line" transform="matrix(6.12323e-17,1,1,-6.12323e-17,204.799,240.647)">
+            <path d="M0,7L0,-7" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        </g>
+        <g id="line12" serif:id="line" transform="matrix(6.12323e-17,1,1,-6.12323e-17,204.799,256.015)">
+            <path d="M0,7L0,-7" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        </g>
+        <g id="line13" serif:id="line" transform="matrix(6.12323e-17,1,1,-6.12323e-17,204.799,271.382)">
+            <path d="M0,7L0,-7" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        </g>
+        <g id="line14" serif:id="line" transform="matrix(6.12323e-17,1,1,-6.12323e-17,204.799,286.749)">
+            <path d="M0,7L0,-7" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        </g>
+        <g id="line15" serif:id="line" transform="matrix(6.12323e-17,1,1,-6.12323e-17,35,147.961)">
+            <path d="M0,7L0,-7" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        </g>
+        <g id="line16" serif:id="line" transform="matrix(6.12323e-17,1,1,-6.12323e-17,35.5,163.328)">
+            <path d="M0,7L0,-7" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        </g>
+        <g id="line17" serif:id="line" transform="matrix(6.12323e-17,1,1,-6.12323e-17,35.5,178.696)">
+            <path d="M0,7L0,-7" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        </g>
+        <g id="line18" serif:id="line" transform="matrix(6.12323e-17,1,1,-6.12323e-17,35.5,194.063)">
+            <path d="M0,7L0,-7" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        </g>
+        <g id="line19" serif:id="line" transform="matrix(6.12323e-17,1,1,-6.12323e-17,35,87.216)">
+            <path d="M0,7L0,-7" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        </g>
+        <g id="line20" serif:id="line" transform="matrix(6.12323e-17,1,1,-6.12323e-17,35.5,102.584)">
+            <path d="M0,7L0,-7" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        </g>
+        <g id="line21" serif:id="line" transform="matrix(6.12323e-17,1,1,-6.12323e-17,35.5,117.951)">
+            <path d="M0,7L0,-7" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        </g>
+        <g id="line22" serif:id="line" transform="matrix(6.12323e-17,1,1,-6.12323e-17,35.5,133.318)">
+            <path d="M0,7L0,-7" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        </g>
+        <g id="line23" serif:id="line" transform="matrix(6.12323e-17,1,1,-6.12323e-17,35.5,209.43)">
+            <path d="M0,7L0,-7" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        </g>
+        <g id="line24" serif:id="line" transform="matrix(6.12323e-17,1,1,-6.12323e-17,35.5,224.798)">
+            <path d="M0,7L0,-7" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        </g>
+        <g id="line25" serif:id="line" transform="matrix(6.12323e-17,1,1,-6.12323e-17,35.5,240.165)">
+            <path d="M0,7L0,-7" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        </g>
+        <g id="line26" serif:id="line" transform="matrix(6.12323e-17,1,1,-6.12323e-17,35.5,255.533)">
+            <path d="M0,7L0,-7" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        </g>
+        <g id="line27" serif:id="line" transform="matrix(6.12323e-17,1,1,-6.12323e-17,35.5,270.9)">
+            <path d="M0,7L0,-7" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        </g>
+        <g id="line28" serif:id="line" transform="matrix(6.12323e-17,1,1,-6.12323e-17,35.5,286.268)">
+            <path d="M0,7L0,-7" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        </g>
+    </g>
+    <path d="M269.5,194.6L211.7,194.6" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;stroke-linejoin:round;stroke-miterlimit:4;"/>
+    <path d="M86.9,53.8L86.9,42.1" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;stroke-linejoin:round;stroke-miterlimit:4;"/>
 </svg>
