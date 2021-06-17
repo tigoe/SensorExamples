@@ -15,6 +15,13 @@ A group of multi-channel light sensors from AMS.
 * Channel O: 600nm (orange)
 * Channel R: 650nm (red)
 
+#### Breakout boards:
+* Sparkfun
+* Adafruit
+
+#### Libraries:
+* 
+
 ### AS7263 6-Channel NIR Spectral_ID Sensor
 
 * [Product Page](https://ams.com/as7263)
@@ -27,6 +34,12 @@ A group of multi-channel light sensors from AMS.
 * Channel U: 760nm
 * Channel V: 810nm
 * Channel W: 860nm
+
+#### Breakout boards:
+* Sparkfun
+
+#### Libraries:
+* 
 
 ### AS7265x 18-Channel VIS to NIR Spectral_ID 3-Sensor Chipset
 
@@ -60,6 +73,12 @@ AS72653:
 * Channel E: 510nm
 * Channel F: 535nm
 
+#### Breakout boards:
+* Sparkfun
+
+#### Libraries:
+* 
+
 ### AS7341 11-Channel Multi-Spectral Digital Sensor
 
 * [Product page](https://ams.com/as7341)
@@ -80,6 +99,14 @@ AS72653:
 | NIR (Near IR) | 910 | n/a |
 | Clear | Si response/non filtered | n/a |
 | FD (Flicker Detection) | Si response/non filtered | n/a |
+
+#### Breakout boards:
+* Sparkfun
+* Adafruit
+* DFRobot
+
+#### Libraries:
+* 
 
 ## Background reading:
 * A quick introduction to [Melanopic Equivalent Daylight Illuminace (EDI)](https://biosinstitute.org/melanopic-equivalent-daylight-illuminance/)
