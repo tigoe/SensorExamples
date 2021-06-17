@@ -21,7 +21,7 @@ A group of multi-channel light sensors from AMS.
 
 #### Libraries:
 * [Adafruit](https://github.com/adafruit/Adafruit_AS726x)
-* Sparkfun
+* [Sparkfun](https://github.com/sparkfun/SparkFun_AS726x_Arduino_Library)
 
 ### AS7263 6-Channel NIR Spectral_ID Sensor
 
@@ -41,7 +41,7 @@ A group of multi-channel light sensors from AMS.
 
 #### Libraries:
 * [Adafruit](https://github.com/adafruit/Adafruit_AS726x)
-* Sparkfun
+* [Sparkfun](https://github.com/sparkfun/SparkFun_AS726x_Arduino_Library)
 
 ### AS7265x 18-Channel VIS to NIR Spectral_ID 3-Sensor Chipset
 
