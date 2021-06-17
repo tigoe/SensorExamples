@@ -20,7 +20,8 @@ A group of multi-channel light sensors from AMS.
 * Adafruit
 
 #### Libraries:
-* 
+* [Adafruit](https://github.com/adafruit/Adafruit_AS726x)
+* Sparkfun
 
 ### AS7263 6-Channel NIR Spectral_ID Sensor
 
@@ -39,7 +40,8 @@ A group of multi-channel light sensors from AMS.
 * Sparkfun
 
 #### Libraries:
-* 
+* [Adafruit](https://github.com/adafruit/Adafruit_AS726x)
+* Sparkfun
 
 ### AS7265x 18-Channel VIS to NIR Spectral_ID 3-Sensor Chipset
 
@@ -74,10 +76,10 @@ AS72653:
 * Channel F: 535nm
 
 #### Breakout boards:
-* Sparkfun
+* [Sparkfun](https://www.sparkfun.com/products/15050)
 
 #### Libraries:
-* 
+* [Sparkfun](https://github.com/sparkfun/SparkFun_AS7265x_Arduino_Library)
 
 ### AS7341 11-Channel Multi-Spectral Digital Sensor
 
@@ -101,12 +103,14 @@ AS72653:
 | FD (Flicker Detection) | Si response/non filtered | n/a |
 
 #### Breakout boards:
-* Sparkfun
-* Adafruit
+* [Sparkfun](https://www.sparkfun.com/products/17719)
+* [Adafruit](https://github.com/adafruit/Adafruit_AS7341)
 * DFRobot
 
 #### Libraries:
-* 
+* [Adafruit](https://github.com/adafruit/Adafruit_AS7341)
+* [Sparkfun](https://github.com/sparkfun/SparkFun_AS7341X_Arduino_Library)
+
 
 ## Background reading:
 * A quick introduction to [Melanopic Equivalent Daylight Illuminace (EDI)](https://biosinstitute.org/melanopic-equivalent-daylight-illuminance/)
