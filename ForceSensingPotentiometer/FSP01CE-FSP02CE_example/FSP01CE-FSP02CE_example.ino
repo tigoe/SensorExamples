@@ -25,7 +25,7 @@
 const float threshold =  0.5;
 
 // sensor is attached to pins A2-A1, with the external resistor going from A2 to A3:
-// Same code can be used for FSP01CE and FSP02CE, by changinf last parameter.
+// Same code can be used for FSP01CE and FSP02CE, by changing last parameter.
 // FSP01CE: false, FSP02CE: true
 M2aglabs_Ohmite sensor(A2, A3, A1, A0, false);
 
