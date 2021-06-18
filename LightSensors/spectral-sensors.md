@@ -1,10 +1,17 @@
 # Spectral Sensors
 
-A group of multi-channel light sensors. 
+A group of multi-channel light sensors. The ones covered as of this writing are all from [AMS-Osram](https://ams.com), who make a wide range of light-based sensors. Their spectral sensing family of sensors includes sensors for tristimulus XYZ color sensing as well as multi-channel spectral sensors in both visible and near-infrared ranges. This page covers the AS7262/3 6-channel spectral sensors, the AS7265x sensors, which provide 18 channels together, and the AS7341 sensor, which provides 11 channels of spectral sensing.
+
+Of the lot, the AS7265x and the AS7341 seem to offer the most value for money, in terms of general use. The former supports 18 channels of sensing, and the latter 11. The AS7262/3 are limited to six channels each, and the AS7262 is no longer recommended for use by AMS. The AS7261 looks interesting as well, as it is designed to give results in the CIE XY colorspace.
+
+## What do the Readings Mean?
+
+The AS726xx sensors' results are all returned in counts/&mu;W/cm<sup>2</sup>. One lux = 0.14641 &mu;W/cm<sup>2</sup>. Therefore, one count on any of these sensors is 6.8301 lx in illuminance terms. (**check my math please**). Here is a [Units converter](https://www.unitsconverters.com/en/W/Cm2-To-Lx/Utu-3547-3537) for common physical properties that I used for this math.
+
+**TODO:** work out similar results for AS7341. 
 
 ## AS7262/3 6-Channel Sensors
-
-These two 6-channel spectral sensors from AMS have more or less the same interface, but differing ranges of sensitivity. The AS7262 reads in the visual range from 450nm (violet) to 650nm (red), and the AS7263 reads from 610nm (red) to 860nm (infrared).
+These two 6-channel spectral sensors from AMS have more or less the same interface, but differing ranges of sensitivity. The AS7262 reads in the visual range from 450nm (violet) to 650nm (red), and the AS7263 reads from 610nm (red) to 860nm (infrared). These sensors have both an I2C and a UART interface. Sparkfun's [Hookup Guide to both sensors](https://learn.sparkfun.com/tutorials/as726x-nirvi) is a good summary of the sensor's capabilities and their library functions. Adafruit's [guide to the AS7272](https://learn.adafruit.com/adafruit-as7262-6-channel-visible-light-sensor?view=all) is not bad either. 
 
 #### Breakout boards:
 * Sparkfun [AS7262 board](https://www.sparkfun.com/products/14347)
@@ -15,9 +22,9 @@ These two 6-channel spectral sensors from AMS have more or less the same interfa
 * [Adafruit AS726x](https://github.com/adafruit/Adafruit_AS726x)
 * [Sparkfun AS726x](https://github.com/sparkfun/SparkFun_AS726x_Arduino_Library)
 
-Sparkfun's [Hookup Guide to both sensors](https://learn.sparkfun.com/tutorials/as726x-nirvi) is a good summary of the sensor's capabilities and their library functions. Adafruit's [guide to the AS7272](https://learn.adafruit.com/adafruit-as7262-6-channel-visible-light-sensor?view=all) is not bad either. 
-
 ### AS7262 Consumer Grade Smart 6-Channel VIS Sensor
+
+Current status on AMS' site: not recommended for new designs.
 
 * [Product Page](https://ams.com/as7262)
 * [Datasheet](https://ams.com/documents/20143/36005/AS7262_DS000486_2-00.pdf)
@@ -114,6 +121,7 @@ AS72653:
 
 
 ## Background reading:
+* [A beginner's guide to colorimetry](https://medium.com/hipster-color-science/a-beginners-guide-to-colorimetry-401f1830b65a)
 * A quick introduction to [Melanopic Equivalent Daylight Illuminace (EDI)](https://biosinstitute.org/melanopic-equivalent-daylight-illuminance/)
 * [CIE Position Statement on Non-Visual Effects of Light](http://cie.co.at/files/CIE%20Position%20Statement%20-%20Proper%20Light%20at%20the%20Proper%20Time%20(2019)_0.pdf) 
 * [User Guide to the &alpha;-opic Toolbox
