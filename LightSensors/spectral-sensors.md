@@ -22,13 +22,14 @@ Sparkfun's [Hookup Guide to both sensors](https://learn.sparkfun.com/tutorials/a
 * [Product Page](https://ams.com/as7262)
 * [Datasheet](https://ams.com/documents/20143/36005/AS7262_DS000486_2-00.pdf)
 
+(colors shown are approximate, and taken from John Cook's [Wavelength to RGB Converter](https://www.johndcook.com/wavelength_to_RGB.html))
 #### Channels:
-* Channel V: 450nm (violet)
-* Channel B: 500nm (blue)
-* Channel G: 550nm (green)
-* Channel Y: 570nm (yellow)
-* Channel O: 600nm (orange)
-* Channel R: 650nm (red)
+* Channel V: 450nm <span style="color:white; background-color:#0046ff;">(violet)</span>
+* Channel B: 500nm <span style="color:white; background-color:#00ff92;">(blue)</span>
+* Channel G: 550nm <span style="color:white; background-color:#a3ff00;">(green)</span>
+* Channel Y: 570nm <span style="color:white; background-color:#e1ff00;">(yellow)</span>
+* Channel O: 600nm <span style="color:white; background-color:#ffbe00;">(orange)</span>
+* Channel R: 650nm <span style="color:white; background-color:#ff0000;">(red)</span>
 
 ### AS7263 6-Channel NIR Spectral_ID Sensor
 
@@ -36,7 +37,7 @@ Sparkfun's [Hookup Guide to both sensors](https://learn.sparkfun.com/tutorials/a
 * [Datasheet](https://ams.com/documents/20143/36005/AS7263_DS000476_1-00.pdf)
 
 #### Channels: 
-* Channel R: 610nm (red)
+* Channel R: 610nm <span style="color:white; background-color:#ff9b00;">(red)</span>
 * Channel S: 680nm (infrared)
 * Channel T: 730nm (infrared)
 * Channel U: 760nm (infrared)
@@ -54,28 +55,28 @@ This is a set of three 6-channel spectral sensors from AMS, covering a range fro
 #### Channels:
 
 AS72651:
-* Channel R: 610nm (red)
-* Channel S: 680nm (red)
-* Channel T: 730nm (red)
-* Channel U: 760nm (red)
+* Channel R: 610nm <span style="color:white; background-color:#ff9b00;">(red)</span>
+* Channel S: 680nm <span style="color:white; background-color:#ff0000;">(red)</span>
+* Channel T: 730nm <span style="color:white; background-color:#c80000;">(red)</span>
+* Channel U: 760nm <span style="color:white; background-color:#8d0000;">(red)</span>
 * Channel V: 810nm (infrared)
 * Channel W: 860nm (infrared)
 
 AS75652:
-* Channel G: 560nm (green) 
-* Channel H: 585nm (yellow-green)
-* Channel I: 645nm (red)
-* Channel J: 705nm (red)
+* Channel G: 560nm <span style="color:white; background-color:#c3ff00;">(green)</span>
+* Channel H: 585nm <span style="color:white; background-color:#ffef00;">(yellow-green)</span>
+* Channel I: 645nm <span style="color:white; background-color:#ff0000;">(red)</span>
+* Channel J: 705nm <span style="color:white; background-color:#f60000;">(red)</span>
 * Channel K: 900nm (infrared)
 * Channel L: 940nm (infrared)
 
 AS72653: 
-* Channel A: 395nm (violet)
-* Channel B: 435nm (deep blue)
-* Channel C: 460nm (blue)
-* Channel D: 485nm (teal)
-* Channel E: 510nm (blue-green)
-* Channel F: 535nm (green)
+* Channel A: 395nm <span style="color:white; background-color:#8000a1;">(violet)</span>
+* Channel B: 435nm <span style="color:white; background-color:#2300ff;">(deep blue)</span>
+* Channel C: 460nm <span style="color:white; background-color:#007bff;">(blue)</span>
+* Channel D: 485nm <span style="color:white; background-color:#00eaff;">(teal)</span>
+* Channel E: 510nm <span style="color:white; background-color:#00ff00;">(blue-green)</span>
+* Channel F: 535nm <span style="color:white; background-color:#70ff00;">(green)</span>
 
 #### Breakout boards:
 * [Sparkfun](https://www.sparkfun.com/products/15050)
@@ -90,14 +91,14 @@ AS72653:
 
 #### Channels:
 
-* F1: 415nm (violet)
-* F2: 445nm (blue)
-* F3: 480nm (light blue)
-* F4: 515nm (green)
-* F5: 555nm (yellow green)
-* F6: 590nm (yellow)
-* F7: 630nm (orange)
-* F8: 680nm (red)
+* F1: 415nm <span style="color:white; background-color:#7600ed;">(violet)</span>
+* F2: 445nm <span style="color:white; background-color:#0028ff;">(blue)</span>
+* F3: 480nm <span style="color:white; background-color:#00d5ff;">(light blue)</span>
+* F4: 515nm <span style="color:white; background-color:#1fff00;">(green)</span>
+* F5: 555nm <span style="color:white; background-color:#b3ff00;">(yellow green)</span>
+* F6: 590nm <span style="color:white; background-color:#ffdf00;">(yellow)</span>
+* F7: 630nm <span style="color:white; background-color:#ff4f00;">(orange)</span>
+* F8: 680nm <span style="color:white; background-color:#ff0000;">(red)</span>
 * NIR: 910nm (near IR)
 * Clear: non filtered
 * FD: (Flicker Detection) non filtered
