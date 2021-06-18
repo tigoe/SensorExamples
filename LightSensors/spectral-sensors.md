@@ -90,15 +90,15 @@ AS72653:
 
 #### Channels:
 
-* F1: 415nm
-* F2: 445nm
-* F3: 480nm
-* F4: 515nm
-* F5: 555nm
-* F6: 590nm
-* F7: 630nm
-* F8: 680nm
-* NIR (Near IR): 910nm
+* F1: 415nm (violet)
+* F2: 445nm (blue)
+* F3: 480nm (light blue)
+* F4: 515nm (green)
+* F5: 555nm (yellow green)
+* F6: 590nm (yellow)
+* F7: 630nm (orange)
+* F8: 680nm (red)
+* NIR: 910nm (near IR)
 * Clear: non filtered
 * FD: (Flicker Detection) non filtered
 
