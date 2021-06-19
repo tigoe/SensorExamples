@@ -95,6 +95,8 @@ AS72653:
 
 * [Product page](https://ams.com/as7341)
 * [Datasheet](https://ams.com/documents/20143/36005/AS7341_DS000504_3-00.pdf)
+* Diffuser in tests, according to the datasheet: [ED1-C50](https://www.thorlabs.com/thorproduct.cfm?partnumber=ED1-C50)
+* LEDs used in tests: 420nm (blue), 940nm (IR), 2700K warm white 
 
 #### Channels:
 
