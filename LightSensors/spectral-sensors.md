@@ -124,4 +124,4 @@ AS72653:
 
 ## Background Reading
 
-See the main [Light Sensors page](../LightSensors#background-reading)
+See the main [Light Sensors page](../LightSensors/index.html#background-reading)
