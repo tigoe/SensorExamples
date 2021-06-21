@@ -122,15 +122,6 @@ AS72653:
 * [Sparkfun](https://github.com/sparkfun/SparkFun_AS7341X_Arduino_Library)
 
 
-## Background reading:
-* [A beginner's guide to colorimetry](https://medium.com/hipster-color-science/a-beginners-guide-to-colorimetry-401f1830b65a)
-* A quick introduction to [Melanopic Equivalent Daylight Illuminace (EDI)](https://biosinstitute.org/melanopic-equivalent-daylight-illuminance/)
-* [CIE Position Statement on Non-Visual Effects of Light](http://cie.co.at/files/CIE%20Position%20Statement%20-%20Proper%20Light%20at%20the%20Proper%20Time%20(2019)_0.pdf) 
-* [User Guide to the &alpha;-opic Toolbox
-for implementing CIE S 026](http://files.cie.co.at/CIE%20S%20026%20alpha-opic%20Toolbox%20User%20Guide.pdf)
-* [Userguide to the Equivalent Daylight (D65) 
-Illuminance Toolbox](https://www.nsvv.nl/wp-content/uploads/2019/03/CIE-S-026-EDI-Toolbox-Userguide-vE1.05x.pdf)
-* White paper from AMS: [Chip-scale spectral sensing:
-understanding the new uses
-for ultra-precise light-source
-measurement ](https://ams.com/documents/20143/215005/ams_WhitePaper_Chip-scale_spectral_sensing_022021.pdf)
+## Background Reading
+
+See the main [Light Sensors page](/#background-reading)
