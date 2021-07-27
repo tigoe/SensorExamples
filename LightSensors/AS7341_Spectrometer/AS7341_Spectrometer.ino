@@ -1,24 +1,30 @@
 /*
-  AS7341 sensor readings
+  AS7341 sensor readings.  Reads and prints the results 
+  as a CSV string. This version uses a non-blocking 
+  approach, using the startReading() and checkReadingProgress() 
+  functions. It's about 2 seconds between readings.
+
+  The printing and the JSON file with this sketch are formatted
+  for use with Serial Studio:
+  https://github.com/Serial-Studio/Serial-Studio
 
   Library:
   http://librarymanager/All#Adafruit_AS7341
 
-  Reads and prints the results as a CSV string.
-
+ 
   created 18 Jun 2021
+  modified 22 Jun 2021
   by Tom Igoe
 
 */
 
 #include <Adafruit_AS7341.h>
+// instance of the sensor library:
 
 Adafruit_AS7341 as7341;
 // array to hold the raw readings:
 uint16_t readings[12];
-// last time you got a reading:
 
-long int lastTime = 0;
 void setup() {
   // init serial, wait 3 secs for serial monitor to open:
   Serial.begin(9600);
@@ -26,7 +32,8 @@ void setup() {
 
   if (!as7341.begin()) {
     Serial.println("Sensor not found, check wiring");
-    while (true);
+    while (true)
+      ;
   }
 
   Serial.println("415nm, 445nm, 480nm, 515nm, 555nm, 590nm, 630nm, 680nm, Clear, 910nm");
@@ -56,7 +63,7 @@ void loop() {
       // skip 4 and 5 as they are repeats:
       if (r == 4 || r == 5) continue;
       Serial.print(readings[r]);
-      if (r < 11 ) Serial.print(",");
+      if (r < 11) Serial.print(",");
     }
     // print a footer:
     Serial.println(" */");

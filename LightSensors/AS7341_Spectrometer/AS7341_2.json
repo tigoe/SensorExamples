@@ -1,0 +1,172 @@
+{
+  "t": "AS7365x",
+  "g": [
+    {
+      "t": "Readings",
+      "d": [
+        {
+          "t": "395nm",
+          "v": "%2",
+          "g": true,
+          "u": "counts",
+          "w": "bar",
+          "min": 0,
+          "max": 65535
+        },
+        {
+          "t": "435nm",
+          "v": "%3",
+          "g": true,
+          "u": "counts",
+          "w": "bar",
+          "min": 0,
+          "max": 65535
+        },
+        {
+          "t": "460nm",
+          "v": "%4",
+          "g": true,
+          "u": "counts",
+          "w": "bar",
+          "min": 0,
+          "max": 65535
+        },
+        {
+          "t": "485nm",
+          "v": "%5",
+          "g": true,
+          "u": "counts",
+          "w": "bar",
+          "min": 0,
+          "max": 65535
+        },
+        {
+          "t": "510nm",
+          "v": "%6",
+          "g": true,
+          "u": "counts",
+          "w": "bar",
+          "min": 0,
+          "max": 65535
+        },
+        {
+          "t": "535nm",
+          "v": "%7",
+          "g": true,
+          "u": "counts",
+          "w": "bar",
+          "min": 0,
+          "max": 65535
+        },
+        {
+          "t": "560nm",
+          "v": "%8",
+          "g": true,
+          "u": "counts",
+          "w": "bar",
+          "min": 0,
+          "max": 65535
+        },
+        {
+          "t": "585nm",
+          "v": "%9",
+          "g": true,
+          "u": "counts",
+          "w": "bar",
+          "min": 0,
+          "max": 65535
+        },
+        {
+          "t": "645nm",
+          "v": "%10",
+          "g": true,
+          "u": "counts",
+          "w": "bar",
+          "min": 0,
+          "max": 65535
+        },
+        {
+          "t": "705nm",
+          "v": "%11",
+          "g": true,
+          "u": "counts",
+          "w": "bar",
+          "min": 0,
+          "max": 65535
+        },
+        {
+          "t": "900nm",
+          "v": "%12",
+          "g": true,
+          "u": "counts",
+          "w": "bar",
+          "min": 0,
+          "max": 65535
+        },
+        {
+          "t": "940nm",
+          "v": "%13",
+          "g": true,
+          "u": "counts",
+          "w": "bar",
+          "min": 0,
+          "max": 65535
+        },
+        {
+          "t": "610nm",
+          "v": "%14",
+          "g": true,
+          "u": "counts",
+          "w": "bar",
+          "min": 0,
+          "max": 65535
+        },
+        {
+          "t": "680nm",
+          "v": "%15",
+          "g": true,
+          "u": "counts",
+          "w": "bar",
+          "min": 0,
+          "max": 65535
+        },
+        {
+          "t": "730nm",
+          "v": "%16",
+          "g": true,
+          "u": "counts",
+          "w": "bar",
+          "min": 0,
+          "max": 65535
+        },
+        {
+          "t": "760nm",
+          "v": "%17",
+          "g": true,
+          "u": "counts",
+          "w": "bar",
+          "min": 0,
+          "max": 65535
+        },
+        {
+          "t": "810nm",
+          "v": "%18",
+          "g": true,
+          "u": "counts",
+          "w": "bar",
+          "min": 0,
+          "max": 65535
+        },
+        {
+          "t": "860nm",
+          "v": "%19",
+          "g": true,
+          "u": "counts",
+          "w": "bar",
+          "min": 0,
+          "max": 65535
+        }
+      ]
+    }
+  ]
+}
