@@ -1,6 +1,6 @@
 # Spectral Sensors
 
-A group of multi-channel light sensors. The ones covered as of this writing are all from [AMS-Osram](https://ams.com), who make a wide range of light-based sensors. Their spectral sensing family of sensors includes sensors for tristimulus XYZ color sensing as well as multi-channel spectral sensors in both visible and near-infrared ranges. This page covers the AS7262/3 6-channel spectral sensors, the AS7265x sensors, which provide 18 channels together, and the AS7341 sensor, which provides 11 channels of spectral sensing.
+A group of multi-channel light sensors. The ones covered as of this writing are all from [AMS-Osram](https://ams.com), who make a wide range of light-based sensors. Their spectral sensing family of sensors includes sensors for tristimulus XYZ color sensing as well as multi-channel spectral sensors in both visible and near-infrared ranges. This page covers the AS7262/3 6-channel spectral sensors, the AS7265x sensors, which provide 18 channels together, and the AS7341 sensor, which provides 11 channels of spectral sensing. For more examples of how to use the AS7341 sensor, see [this repository](https://tigoe.github.io/LightProjects/spectrometers/). 
 
 Of the lot, the AS7265x and the AS7341 seem to offer the most value for money, in terms of general use. The former supports 18 channels of sensing, and the latter 11. The AS7262/3 are limited to six channels each, and the AS7262 is no longer recommended for use by AMS. The AS7261 looks interesting as well, as it is designed to give results in the CIE XY colorspace.
 
