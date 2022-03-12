@@ -2,7 +2,7 @@
 
 This Arduino example reads the color from a TCS34725 color sensor and displays the result on a programmable WS2812 LED (NeoPixel). It also sends the data serially. The Processing sketch called ColorDisplayer can read that string and change its background color with the color value. 
 
-There are two sketches in this directory, TCS34725_read, which is an Arduino sketch, and ColorDisplayer, which is a Processing sketch. 
+There are two sketches in this directory, `TCS34725_read`, which is an Arduino sketch, and `ColorDisplayer`, which is a Processing sketch. 
 
 ## Circuit 
 
