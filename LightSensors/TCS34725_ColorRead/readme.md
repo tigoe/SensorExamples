@@ -1,6 +1,6 @@
 # TCS34725 Color Read Example
 
-This Arduino example, `TCS34725_read`[(link)](https://raw.githubusercontent.com/tigoe/SensorExamples/main/LightSensors/TCS34725_ColorRead/TCS34725_read/TCS34725_read.ino), reads the color from a TCS34725 color sensor and displays the result on a programmable WS2812 LED (NeoPixel). It also sends the data serially. The Processing sketch called `ColorDisplayer`[(link)](https://raw.githubusercontent.com/tigoe/SensorExamples/main/LightSensors/TCS34725_ColorRead/ColorDisplayer/ColorDisplayer.pde) can read that string and change its background color with the color value. The Arduino sketch should work on any model of Arduino. 
+This Arduino example, `TCS34725_read` [(click here)](https://raw.githubusercontent.com/tigoe/SensorExamples/main/LightSensors/TCS34725_ColorRead/TCS34725_read/TCS34725_read.ino), reads the color from a TCS34725 color sensor and displays the result on a programmable WS2812 LED (NeoPixel). It also sends the data serially. The Processing sketch called `ColorDisplayer` [(click here)](https://raw.githubusercontent.com/tigoe/SensorExamples/main/LightSensors/TCS34725_ColorRead/ColorDisplayer/ColorDisplayer.pde) can read that string and change its background color with the color value. The Arduino sketch should work on any model of Arduino. 
 
 ## Circuit 
 
