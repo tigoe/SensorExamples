@@ -53,4 +53,5 @@ void loop() {
   }
   // save button state for comparison next time:
   lastButtonState = buttonState;
+  delay(10);
 }
