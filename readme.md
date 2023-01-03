@@ -10,3 +10,4 @@ A few categories have dedicated pages:
 * [Light Sensors](LightSensors)
 * [Spectral Sensors](LightSensors/spectral-sensors.md)
 * [MPX2102 Pressure Sensor ](PressureSensorMPX2102)
+* [PIR sensor](PIRSensor)

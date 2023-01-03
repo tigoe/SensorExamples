@@ -1,6 +1,7 @@
 # PIR Sensor
 
-This is an example for a PIR (passive infrared) sensor. These sensors typically read a wide field of view, and if they detect any motion, the output pin changes from high to low. They typically need about two seconds to reset. The one used here, the BS412 [mini basic PIR from Adafruit](https://www.adafruit.com/product/4666), has a 120 degree field of view and can read a range of about 5 to 8 meters. 
+* Link to the [code for this example]({{site.baseurl}}/PIRSensor)
+ PIR (passive infrared) sensors typically read a wide field of view, and if they detect any motion, the output pin changes from high to low. They typically need about two seconds to reset. The one used here, the BS412 [mini basic PIR from Adafruit](https://www.adafruit.com/product/4666), has a 120 degree field of view and can read a range of about 5 to 8 meters. 
 
 This code will probably work with other PIR sensors as well, as this behavior is typical of others I have used. 
 
