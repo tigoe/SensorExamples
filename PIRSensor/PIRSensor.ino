@@ -18,7 +18,6 @@
 */
 const int sensorPin = 2;
 const int resetInterval = 2000;
-long lastTrigger = 0;
 int lastReading = 0;
 long lastRelease = 0;
 
