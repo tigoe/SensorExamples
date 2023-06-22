@@ -120,7 +120,13 @@ Sure enough, that matches the value of the last two bytes, 0x224, or 548 in deci
 
 ## Reading the Header
 
-Since the sensor data is repeated, you need to look for the header to know when you're at the beginning of each set of readings. The Arduino Serial API offers a few ways to do this: [`Serial.find()`](https://www.arduino.cc/reference/en/language/functions/communication/serial/find/), [`Serial.findUntil()`](https://www.arduino.cc/reference/en/language/functions/communication/serial/finduntil/), [`Serial.readBytes()`](https://www.arduino.cc/reference/en/language/functions/communication/serial/readbytes/), and [`Serial.readBytesUntil()`](https://www.arduino.cc/reference/en/language/functions/communication/serial/readbytesuntil/). After you find the header, you need to wait for the rest of the bytes, however. You can combine these steps using the `Serial.readBytesUntil()` function, which lets you read bytes into a buffer until you get a given byte.   The [buffer_read_test example]({{site.codeurl}}/EnvironmentalSensors/PMS3005_AQI_sensor/buffer_read_test/buffer_read_test.ino) shows how to do this. It looks for the first header byte, 0x42, and stores bytes in a 32-byte array called buffer until it finds that byte. The key function is `Serial1.readBytesUntil()`, used like so:
+Since the sensor data is repeated, you need to look for the header to know when you're at the beginning of each set of readings. The Arduino Serial API offers a few ways to do this: 
+* [`Serial.find()`](https://www.arduino.cc/reference/en/language/functions/communication/serial/find/) looks for a string of text, 
+* [`Serial.findUntil()`](https://www.arduino.cc/reference/en/language/functions/communication/serial/finduntil/) looks for a string, but terminates if it hits a single-byte terminator, 
+* [`Serial.readBytes()`](https://www.arduino.cc/reference/en/language/functions/communication/serial/readbytes/) reads the whole serial buffer into an array, and 
+* [`Serial.readBytesUntil()`](https://www.arduino.cc/reference/en/language/functions/communication/serial/readbytesuntil/) reads the serial buffer into an array until it reaches a given character. 
+
+After you find the header, you need to wait for the rest of the bytes, however, so the `Serial.readBytesUntil()` function is the best one in this case. The [buffer_read_test example]({{site.codeurl}}/EnvironmentalSensors/PMS3005_AQI_sensor/buffer_read_test/buffer_read_test.ino) shows how to do this. It looks for the first header byte, 0x42, and stores bytes in a 32-byte array called buffer until it finds that byte. The key function is `Serial1.readBytesUntil()`, used like so:
 
 ```arduino
  // read into the buffer until you hit 0x42:
