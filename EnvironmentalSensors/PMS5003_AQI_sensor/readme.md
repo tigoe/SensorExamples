@@ -118,11 +118,25 @@ Looking at the sentence above, here's the sum of all the bytes before the checks
 ```
 Sure enough, that matches the value of the last two bytes, 0x224, or 548 in decimal terms. So you know the data is valid. 
 
+## Reading the Header
+
+Since the sensor data is repeated, you need to look for the header to know when you're at the beginning of each set of readings. The Arduino Serial API offers a few ways to do this: [`Serial.find()`](https://www.arduino.cc/reference/en/language/functions/communication/serial/find/), [`Serial.findUntil()`](https://www.arduino.cc/reference/en/language/functions/communication/serial/finduntil/), [`Serial.readBytes()`](https://www.arduino.cc/reference/en/language/functions/communication/serial/readbytes/), and [`Serial.readBytesUntil()`](https://www.arduino.cc/reference/en/language/functions/communication/serial/readbytesuntil/). After you find the header, you need to wait for the rest of the bytes, however. You can combine these steps using the `Serial.readBytesUntil()` function, which lets you read bytes into a buffer until you get a given byte.   The [buffer_read_test example]({{site.codeurl}}/EnvironmentalSensors/PMS3005_AQI_sensor/buffer_read_test/buffer_read_test.ino) shows how to do this. It looks for the first header byte, 0x42, and stores bytes in a 32-byte array called buffer until it finds that byte. The key function is `Serial1.readBytesUntil()`, used like so:
+
+```arduino
+ // read into the buffer until you hit 0x42:
+  int result = Serial1.readBytesUntil(0x42, buffer, 32);
+```
+The variable `result` tells you how many bytes you got, so you can use it to make sure you got all the bytes:
+```arduino
+// if you got no data, skip the rest of the loop:
+  if (result <= 0) return;
+```
+
 ### What If One of the Data Bytes matches the Header Byte Values?
 
-It's possible that one of the data bytes could be 0x42, so it's good to check for both header bytes.  The Arduino Serial API offers a few ways to do this: [`Serial.find()`](https://www.arduino.cc/reference/en/language/functions/communication/serial/find/), [`Serial.findUntil()`](https://www.arduino.cc/reference/en/language/functions/communication/serial/finduntil/), [`Serial.readBytes()`](https://www.arduino.cc/reference/en/language/functions/communication/serial/readbytes/), and [`Serial.readBytesUntil()`](https://www.arduino.cc/reference/en/language/functions/communication/serial/readbytesuntil/). After you find the header, you need to wait for the rest of the bytes, however. You can combine these steps using the `Serial.readBytesUntil()` function, which lets you read bytes into a buffer until you get a given byte.   The [buffer_read_test example]({{site.codeurl}}/EnvironmentalSensors/buffer_read_test/buffer_read_test.ino) shows how to do this. 
+It's possible that one of the data bytes could be 0x42, so it's good to check for both header bytes. It will be the first byte in the buffer array after you use `Serial1.readBytesUntil()`. You check like so:
 
-
-
-
-
+```arduino
+  // if you didn't get the second header byte, skip the rest of the loop:
+  if (buffer[0] != 0x4D) return;
+```
