@@ -1,5 +1,5 @@
 /*
-  PMS3005 AQI Sensor Reader
+  PMS5003 AQI Sensor Reader
   Reads the sensor via UART and prints out the values and their labels
 
   created 22 Jun 2023
