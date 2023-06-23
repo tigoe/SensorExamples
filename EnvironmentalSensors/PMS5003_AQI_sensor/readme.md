@@ -136,6 +136,8 @@ To combine individual bytes into larger values, it helps to imagine those bytes 
 | 2<sup>7</sup> | 2<sup>6</sup> | 2<sup>5</sup> | 2<sup>4</sup> | 2<sup>3</sup> | 2<sup>2</sup> | 2<sup>1</sup> | 2<sup>0</sup> |
 |0|0|1|1|1|1|1|0|
 
+_Table 3. Bit positions and their values._
+
 For every bit that's got a 1 in it, you add that power of 2 to get the total value of the byte. Here's the breakdown: 
 
 2<sup>5</sup> + 2<sup>4</sup> + 2<sup>3</sup> + 2<sup>2</sup> + 2<sup>1</sup> = \
@@ -153,12 +155,15 @@ Now think about what  happens if the bits move left or right. Let's take that sa
 Each time you shift the pattern one bit to the left, the total value doubles. If you shift it to the right, it halves. This is called **bit shifting**. It's a common operation in programming. The symbols `<<` and `>>` are used to represent bit shifting. Here are some example bit operations:
 
 | Operation | Result (Decimal) | Result (Binary) |
+|--|--|--|
 | 31 << 1 | 62  | 00111110 |
 | 31 << 2 | 124 | 01111100 |
 | 31 << 3 | 248 | 11111000 |
 | 248 >> 1 | 124 | 01111100 |
 | 248 >> 2 | 62 | 00111110 |
 | 248 >> 3 | 31 | 00011111 |
+
+_Table 4. Bit shifting examples_
 
 Bit shifting can be very helpful in combining multiple byte values into a single variable. As an example, let's use the checksum byte values from above and put it in a larger variable. To do this, you'd create `int`  variable  called  `checksum` (space added to make it readable):
 ```
