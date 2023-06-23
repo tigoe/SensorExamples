@@ -141,7 +141,7 @@ The variable `result` tells you how many bytes you got, so you can use it to mak
   if (result <= 0) return;
 ```
 
-### What If One of the Data Bytes Matches the Header Byte Values?
+#### What If One of the Data Bytes Matches the Header Byte Values?
 
 It's possible that one of the data bytes could have the value 0x42, so it's good to check for both header bytes. It will be the first byte in the buffer array after you use `Serial1.readBytesUntil()`. You can check if it's there like so:
 
@@ -152,7 +152,7 @@ It's possible that one of the data bytes could have the value 0x42, so it's good
 
 You'll see this check in the `processData()` function of the [PMS5003AQISensorRead]({{site.codeurl}}/EnvironmentalSensors/PMS5003_AQI_sensor/PMS5003AQISensorRead/PMS5003AQISensorRead.ino) program. 
 
-## Combining Bytes Into Larger Values
+### Combining Bytes Into Larger Values
 
 All of the data bytes in the sensor's packet represent 2-byte values. You need to combine each pair of bytes into a single value.
 
@@ -235,7 +235,7 @@ Looking at the  packet above, here's the sum of all the bytes before the checksu
 Sure enough, that matches the value of the last two bytes, 0x224, or 548 in decimal notation. So you know the data is valid. 
 
 
-## Parsing the Data Packet
+### Parsing the Sensor Data
 
 You'll need bit-shifting operations to combine the two-byte data pairs in this sensor's data packet. 
 
