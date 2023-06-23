@@ -73,12 +73,14 @@ int processData() {
   // boil the next 26 bytes down into 13 data readings:
   for (int r = 0; r < 13; r++) {
     // calculate the actual reading values:
-    // the variables below are to explain the relationship between
-    // the two arrays:
-    const int offset = 3;
+    // you're starting with byte 3 of the buffer:
+    int offset = 3;
+    // and each reading includes two of the buffer's bytes:
     int bufferIndex = (r * 2) + offset;
+    // combine a byte and the one next to it:
     readings[r] = (buffer[bufferIndex] << 8) + buffer[bufferIndex + 1];
   }
+  // return success:
   return 0;
 
   // here's a guide to which readings are in which buffer positions:

@@ -186,19 +186,19 @@ This is the same as:
 ```
 dataValue = (highByte * 256) + lowByte
 ```
-because 256 = 2<sup>8</sup>
+because 256 = 2<sup>8</sup>.
 
 > **Note:** Arduino variable sizes depend on the processor your code is running on. For example, an int takes two bytes on an Uno, but four bytes on a SAMD board like the Nano 33 IoT or MKR boards. See the [variable reference](https://www.arduino.cc/reference/en/#variables) for more on this.
 
 ## Parsing the Data Packet
 
-You'll need this operation for combining the two-byte data pairs in this sensor's data packet. 
+You'll need bit-shifting operations to combine the two-byte data pairs in this sensor's data packet. 
 
 In the code above, you read the bytes into the array called `buffer`. The first header byte was discarded, so the first byte in `buffer`, byte 0, is 0x4D, the second header byte. Reading from  Table 2 above, the rest of `buffer` is filled as follows (data names are listed in the datasheet):
 
 * Bytes 1-2: Frame Length
-* Bytes 3-4: Data 1 - PM1.0 (std particle)
-* Bytes 5-6: Data 2 - PM2.5 (std particle)
+* Bytes 3-4: Data 1 - PM1.0 (std. particle)
+* Bytes 5-6: Data 2 - PM2.5 (std. particle)
 * ... etc ...
 * Bytes 25-26: Data 12 - particles/0.1L (>10um)
 * Bytes 27-28: reserved
@@ -227,10 +227,11 @@ You could program the parsing just like that, but it's a lot of typing. In the e
  // boil 26 bytes down into 13 data values:
   for (int r = 0; r < 13; r++) {
     // calculate the actual reading values:
-    // the variables below are to explain 
-    // the relationship between the two arrays:
+    // you're starting with byte 3 of the buffer:
     int offset = 3;
+    // and each reading includes two of the buffer's bytes:
     int bufferIndex = (r * 2) + offset;
+    // combine a byte and the one next to it:
     readings[r] = (buffer[bufferIndex] << 8) + buffer[bufferIndex + 1];
   }
 ```
