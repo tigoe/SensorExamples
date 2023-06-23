@@ -1,6 +1,6 @@
 ## Hardware Connection
 
-The PMS5003 sensor sends its data over an asynchronous serial connection (UART). You'll need to read the data over a UART interface on your microcontroller and interpret the bytes.
+The [Plantower PMS5003 sensor](https://www.plantower.com/en/products_33/74.html) sends its data over an asynchronous serial connection (UART). You'll need to read the data over a UART interface on your microcontroller and interpret the bytes.
 
 Many Arduino boards (though not the Uno) have two UARTs. The first is the USB-Serial connection that you use to upload new code and to send information to the Serial port using `Serial.println()` and other serial commands. 
 
@@ -104,7 +104,7 @@ Since the sensor data is continually repeated, you need to look for the header t
 * [`Serial.readBytes()`](https://www.arduino.cc/reference/en/language/functions/communication/serial/readbytes/) reads the whole serial buffer into an array,
 * [`Serial.readBytesUntil()`](https://www.arduino.cc/reference/en/language/functions/communication/serial/readbytesuntil/) reads the serial buffer into an array until it reaches a given character. 
 
-After you find the header, you need to wait for the rest of the bytes, however, so the `Serial.readBytesUntil()` function is the best one in this case. It lets you combine finding the header with storing the rest in an array. The [buffer_read_test example]({{site.codeurl}}/EnvironmentalSensors/PMS3005_AQI_sensor/buffer_read_test/buffer_read_test.ino) shows how to do this. It looks for the first header byte, 0x42, and stores bytes in a 32-byte array called `buffer` until it finds that byte. The key function is `Serial1.readBytesUntil()`, used like so:
+After you find the header, you need to wait for the rest of the bytes, however, so the `Serial.readBytesUntil()` function is the best one in this case. It lets you combine finding the header with storing the rest in an array. The [buffer_read_test example]({{site.codeurl}}/EnvironmentalSensors/PMS5003_AQI_sensor/buffer_read_test/buffer_read_test.ino) shows how to do this. It looks for the first header byte, 0x42, and stores bytes in a 32-byte array called `buffer` until it finds that byte. The key function is `Serial1.readBytesUntil()`, used like so:
 
 ```arduino
  // read into the buffer until you hit 0x42:
@@ -221,7 +221,7 @@ Converting them all one by one might look like this:
   int particle10 = (buffer[25] << 8) + buffer[26];
 ```
 
-You could program the parsing just like that, but it's a lot of typing. In the example [PMS3005AQISensorRead]({{site.codeurl}}/EnvironmentalSensors/PMS3005_AQI_sensor/PMS3005AQISensorRead/PMS3005AQISensorRead.ino), these lines are boiled down to a for loop as follows:
+You could program the parsing just like that, but it's a lot of typing. In the example [PMS5003AQISensorRead]({{site.codeurl}}/EnvironmentalSensors/PMS5003_AQI_sensor/PMS5003AQISensorRead/PMS5003AQISensorRead.ino), these lines are boiled down to a for loop as follows:
 
 ```arduino
  // boil 26 bytes down into 13 data values:
@@ -235,7 +235,7 @@ You could program the parsing just like that, but it's a lot of typing. In the e
     readings[r] = (buffer[bufferIndex] << 8) + buffer[bufferIndex + 1];
   }
 ```
-The progam flow of [PMS3005AQISensorRead]({{site.codeurl}}/EnvironmentalSensors/PMS3005_AQI_sensor/PMS3005AQISensorRead/PMS3005AQISensorRead.ino) goes as follows:
+The progam flow of [PMS5003AQISensorRead]({{site.codeurl}}/EnvironmentalSensors/PMS5003_AQI_sensor/PMS5003AQISensorRead/PMS5003AQISensorRead.ino) goes as follows:
 
 ```
 
