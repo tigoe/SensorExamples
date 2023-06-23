@@ -129,35 +129,38 @@ It's possible that one of the data bytes could have the value 0x42, so it's good
 
 All of the data bytes represent 2-byte values. You need to combine each pair of bytes into a single value.
 
-To combine individual bytes into larger values, it helps to imagine those bytes and values as bits in memory. A single byte variable takes up 8 bits in the microcontroller's memory, a two-byte variable takes 16 bits, and a four-byte variable takes 32 bits. Each bit is just a switch in memory (really a transistor) that's turned on or off. Each bit position represents a power of two. Let's take this byte: `00111110`:
+To combine individual bytes into larger values, it helps to imagine those bytes and values as bits in memory. A single byte variable takes up 8 bits in the microcontroller's memory, a two-byte variable takes 16 bits, and a four-byte variable takes 32 bits. Each bit is just a switch in memory (really a transistor) that's turned on or off. Each bit position represents a power of two. Let's take this byte: `00111110`. Each bit in the byte represents a successive power of two, like so:
 
 | Bit 7 | Bit 6 | Bit 5 | Bit 4 | Bit 3 | Bit 2 | Bit 1 | Bit 0 |
 |-|-|-|-|-|-|-|-|
 | 2<sup>7</sup> | 2<sup>6</sup> | 2<sup>5</sup> | 2<sup>4</sup> | 2<sup>3</sup> | 2<sup>2</sup> | 2<sup>1</sup> | 2<sup>0</sup> |
 |0|0|1|1|1|1|1|0|
 
-This byte has the value 58. Here's the breakdown again: 
+For every bit that's got a 1 in it, you add that power of 2 to get the total value of the byte. Here's the breakdown: 
 
 2<sup>5</sup> + 2<sup>4</sup> + 2<sup>3</sup> + 2<sup>2</sup> + 2<sup>1</sup> = \
 32 + 16 + 8 + 4 + 2 = \
-58
+62
  
-Here are three different bytes holding three different values:
+Now think about what  happens if the bits move left or right. Let's take that same bit pattern, five 1's in a row, and move it left or right within the byte:
 
 ```
-00111110 = 58
+00011111 = 31
+00111110 = 62
 01111100 = 124
 11111000 = 248
 ```
-They all have different values, but notice how they have the same pattern of 1 and 0 in the middle, but the pattern is shifted one bit position each time. Also notice how, each time you shift one bit to the left, the value doubles. This is called **bit shifting**. It's a common operation in programming. Bit shifting by one position to the left (the symbol for this is `<<`) doubles the value, and by one position to the right (`>>`) halves the value. Looking at those same byte values again:
+Each time you shift the pattern one bit to the left, the total value doubles. If you shift it to the right, it halves. This is called **bit shifting**. It's a common operation in programming. The symbols `<<` and `>>` are used to represent bit shifting. Here are some example bit operations:
 
-|Bits |Decimal Value| Equals | Equals|
-|--|--|--|--|
-|00111110 | 58 | 124 >> 1 | 248 >> 2 |
-|01111100 | 124 | 58 << 1 | 248 >> 1 |
-| 11111000 | 248 | 58 << 2 | 124 << 1 |
+| Operation | Result (Decimal) | Result (Binary) |
+| 31 << 1 | 62  | 00111110 |
+| 31 << 2 | 124 | 01111100 |
+| 31 << 3 | 248 | 11111000 |
+| 248 >> 1 | 124 | 01111100 |
+| 248 >> 2 | 62 | 00111110 |
+| 248 >> 3 | 31 | 00011111 |
 
-Bit shifting can be very helpful in combining multiple bytes into a single value. Imagine `int`  variable  called  `c` (space added to make it readable):
+Bit shifting can be very helpful in combining multiple byte values into a single variable. Imagine an `int`  variable  called  `c` (space added to make it readable):
 ```
 int c = 00000000 00000000
 ```
