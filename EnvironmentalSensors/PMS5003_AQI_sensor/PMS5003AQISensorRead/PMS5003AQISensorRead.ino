@@ -56,7 +56,7 @@ int processData(byte buffer[]) {
   //  if the first byte is not 0x42, return error -1:
   if (buffer[0] != 0x4D) return -1;
 
-  // calculate checksum starting with the first byte:
+  // calculate checksum including the first byte (0x42):
   int checksum = 0x42;
   for (int i = 0; i < 29; i++) {
     checksum += buffer[i];

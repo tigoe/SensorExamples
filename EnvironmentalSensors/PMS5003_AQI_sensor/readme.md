@@ -234,10 +234,9 @@ You could program the parsing just like that, but it's a lot of typing. In the e
     readings[r] = (buffer[bufferIndex] << 8) + buffer[bufferIndex + 1];
   }
 ```
-The progam flow of [PMS5003AQISensorRead]({{site.codeurl}}/EnvironmentalSensors/PMS5003_AQI_sensor/PMS5003AQISensorRead/PMS5003AQISensorRead.ino) goes as follows:
+The full progam flow of [PMS5003AQISensorRead]({{site.codeurl}}/EnvironmentalSensors/PMS5003_AQI_sensor/PMS5003AQISensorRead/PMS5003AQISensorRead.ino) goes as follows:
 
 ```
-
 void setup() {
   // set up the two UARTs
 }
@@ -251,7 +250,7 @@ void loop() {
 
 int processData(byte buffer[]) {
   // if the buffer's first byte is not 0x4D, stop and return an error
-  // calculate checksum starting with the first byte
+  // calculate checksum including the first byte (0x42)
   // if the checksum is wrong, stop and return an error
   // if all is good, continue processing
   // process the data length into one value
