@@ -186,6 +186,8 @@ This is the same as:
 ```
 dataValue = (highByte * 256) + lowByte
 ```
+because 256 = 2<sup>8</sup>
+
 > **Note:** Arduino variable sizes depend on the processor your code is running on. For example, an int takes two bytes on an Uno, but four bytes on a SAMD board like the Nano 33 IoT or MKR boards. See the [variable reference](https://www.arduino.cc/reference/en/#variables) for more on this.
 
 ## Parsing the Data Packet
