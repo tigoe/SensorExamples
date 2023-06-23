@@ -2,7 +2,18 @@
 
 The PMS5003 sensor sends its data over an asynchronous serial connection (UART). You'll need to read the data over a UART interface on your microcontroller and interpret the bytes.
 
-Many Arduino boards (though not the Uno) have two UARTs. The first is the USB-Serial connection that you use to upload new code and to send information to the Serial port using `Serial.println()` and other serial commands. The second UART on the Nano 33 IoT is on digital pins 0 and 1 (physical pins 16 and 16, on the bottom right of the board). On the MKR boards it's on digital pins 13 and 14 (physical pins 22 and 23, on the right side of the board). The second UART on any Arduino or compatible board is addressed as `Serial1` in code, like so:
+Many Arduino boards (though not the Uno) have two UARTs. The first is the USB-Serial connection that you use to upload new code and to send information to the Serial port using `Serial.println()` and other serial commands. 
+
+Table 1 shows the connections between the PMS5003 sensor and the Nano 33 IoT or MKR boards.
+
+| Board | Sensor RX  | Sensor TX |
+|--|--|--|
+|Nano 33 IoT | Digital 1 (Physical pin 17; Nano TX) |Digital 0 (Physical pin 16; Nano RX) |
+|MKR series |Digital 14 (Physical pin 23; MKR TX)|Digital 13 (Physical pin 22; MKR RX)|
+
+_Table 1. Pin connections from sensor to microcontroller_
+
+The second UART on any Arduino or compatible board is addressed as `Serial1` in code, like so:
 ```
 Serial1.begin(9600);
 Serial1.println("Hello");
@@ -11,10 +22,10 @@ Serial1.println("Hello");
 
 ## Sensor Data Format
 
-The sensor's [data sheet](https://www.aqmd.gov/docs/default-source/aq-spec/resources-page/plantower-pms5003-manual_v2-3.pdf) explains that the default serial data format is a 32-byte sentence, as follows:
+The sensor's [data sheet](https://www.aqmd.gov/docs/default-source/aq-spec/resources-page/plantower-pms5003-manual_v2-3.pdf) explains that the default serial data format is a 32-byte  packet, as follows:
 
-| Byte No. | Meaning | Value |
-|---|---|---|
+| Byte No. | Meaning | Value | Property |
+|---|---|---|---|
 | 1 |Header Byte | 0x42 |
 | 2 |Header Byte | 0x4D |
 | 3 |Frame Length High Byte | variable |
@@ -26,8 +37,16 @@ The sensor's [data sheet](https://www.aqmd.gov/docs/default-source/aq-spec/resou
 | 31 |Checksum High Byte | variable |
 | 32 |Checksum Low Byte | variable |
 
+_ Table 2. Data Bytes of the PMS5003 Sensor Data Format_
+
 
 > **Note:** in programming contexts, single-byte values are often written in base-16, or *hexadecimal* notation. In this notation, each digit has 16 possible values, 0-9 then A-F. The `0x` at the beginning indicates that a number is hexadecimal. It makes it easy to write each byte as a two-digit figure: 0-255 in decimal notation is 0-FF in hexadcimal. These notes will follow that convention.
+
+If you have trouble converting from decimal to hexadecimal to binary, the MacOS calculator is your friend. Open it and press command-3 to get the programmer's calculator, as shown in Figure 1. 
+
+![Screenshot of the MacOS calculator shown in programmer's calculator mode (command-3)](img/macos_calc_0x224.png)
+
+_Figure 1. The MacOS calculator shown in programmer's calculator mode (command-3)_
 
 ## Reading the Serial Data
 
@@ -48,7 +67,7 @@ void loop() {
     // read one byte:
     byte input = Serial1.read();
     // if that byte is the first header byte,
-    // print a newline so you can see once sentence per line:
+    // print a newline so you can see once  packet per line:
     if (input == 0x42) {
       Serial.println();
     }
@@ -68,9 +87,9 @@ You can see the two header bytes, followed by 15 pairs of bytes. The bytes repre
 
 ### Calculating the Checksum
 
-The last two bytes of the data sentence are the checksum. A *checksum* is a summary of a data sentence, that you can use to validate the data. To use it, add up all the bytes before the checksum. If their sum matches the value of the checksum, your data is valid. 
+The last two bytes of the data  packet are the checksum. A *checksum* is a summary of a data  packet, that you can use to validate the data. To use it, add up all the bytes before the checksum. If their sum matches the value of the checksum, your data is valid. 
 
-Looking at the sentence above, here's the sum of all the bytes before the checksum (keep in mind, they're shown in hexadecimal values here):
+Looking at the  packet above, here's the sum of all the bytes before the checksum (keep in mind, they're shown in hexadecimal values here):
 
 ```
 42 + 4D + 0 + 1C + 0 + 1 + 0 + 3 + 0 + 3 + 0 + 1 + 0 + 3 + 0 + 3 + 1 + 59 + 0 + 64 + 0 + 12 + 0 + 4 + 0 + 0 + 0 + 0 + 97 + 0 = 0x224
@@ -99,7 +118,7 @@ The variable `result` tells you how many bytes you got, so you can use it to mak
 
 ### What If One of the Data Bytes Matches the Header Byte Values?
 
-It's possible that one of the data bytes could be 0x42, so it's good to check for both header bytes. It will be the first byte in the buffer array after you use `Serial1.readBytesUntil()`. You check like so:
+It's possible that one of the data bytes could have the value 0x42, so it's good to check for both header bytes. It will be the first byte in the buffer array after you use `Serial1.readBytesUntil()`. You check like so:
 
 ```arduino
   // if you didn't get the second header byte, skip the rest of the loop:
@@ -110,43 +129,133 @@ It's possible that one of the data bytes could be 0x42, so it's good to check fo
 
 All of the data bytes represent 2-byte values. You need to combine each pair of bytes into a single value.
 
-To combine individual bytes into larger values, it helps to imagine those bytes and values as bits in memory. A single byte variable has 8 bits, and a two-byte variable has 16 bits. When you put any value into a variable, it's put in from the low bit first. If you want to move that value to a different starting position, you multiply by 2 (remember, binary notation is base-20 OR use the shift operators `<<` and `>>`.
+To combine individual bytes into larger values, it helps to imagine those bytes and values as bits in memory. A single byte variable takes up 8 bits in the microcontroller's memory, a two-byte variable takes 16 bits, and a four-byte variable takes 32 bits. Each bit is just a switch in memory (really a transistor) that's turned on or off. Each bit position represents a power of two:
 
-For example, here's the decimal value 232 in a `byte` variable:
-```
-11101000
-``` 
-And here's the decimal value 3 in a `byte` variable:
-```
-00000111
-``` 
-Now imagine these two bytes together in a larger variable, perhaps an `int` variable: 
-```
-00000011 11101000
-```
-That's 3 in the high byte and 232 in the low byte. What is it as a single value? Each byte has 256 possible values, so to find out, multiply the high byte by 256 and add it to the low byte:
-```
-(3 * 256) + 232 = 1000
-```
-Whenever you need to combine two bytes into a single value, you can use this formula:
-```
-data value = (highbyte * 256) + lowByte
-```
-In your program, you can also use the shift operators, `<<` and `>>` to move bits in a byte. For example, imagine the value 3 in an int variable:
-```
-00000000 00000111
-```
-Now shift it by 8 bits to the left:
-```
-00000111 00000000
-```
-That's 3 * 256 or 768. When you want to combine that with a lower byte value, just add the lower byte on:
-3 * 256 + 232:
-```
-00000011 11101000
-```
-That's 1000. 
+| Bit 7 | Bit 6 | Bit 5 | Bit 4 | Bit 3 | Bit 2 | Bit 1 | Bit 0 |
+|-|-|-|-|-|-|-|-|
+| 2<sup>7</sup> | 2<sup>6</sup> | 2<sup>5</sup> | 2<sup>4</sup> | 2<sup>3</sup> | 2<sup>2</sup> | 2<sup>1</sup> | 2<sup>0</sup> |
+|0|0|1|1|1|1|1|0|
 
-You'll need this operation for combining the two-byte data pairs in this sensor's data sentence. 
+The byte above has the value 58. 
 
-> **Note:** Arduino variable sizes depend on the processor your code is running on. See the reference for more on this
+2<sup>5</sup> + 2<sup>4</sup> + 2<sup>3</sup> + 2<sup>2</sup> + 2<sup>1</sup> = \
+32 + 16 + 8 + 4 + 2 = \
+58
+ 
+Here are three different bytes holding three different values:
+
+```
+00111110 = 58
+01111100 = 124
+11111000 = 248
+```
+Notice how they have the same pattern of 1 and 0 in the middle, but the pattern is shifted one bit position each time. Also notice how, each time you shift one bit to the left, the value doubles. This is called **bit shifting**. It's a common operation in programming. Bit shifting by one position to the left (the symbol for this is `<<`) doubles the value, and by one position to the right (`>>`) halves the value. Looking at those same byte values again:
+
+|Bits |Base-10| Equals | Equals|
+|--|--|--|--|
+|00111110 | 58 | 124 >> 1 | 248 >> 2 |
+|01111100 | 124 | 58 << 1 | 248 >> 1 |
+| 11111000 | 248 | 58 << 2 | 124 << 1 |
+
+Now, imagine combining two byte values into a single two-byte variable. Declare it as an `int` and call it `c` (space added to make it readable):
+```
+int c = 00000000 00000000
+```
+Let's take that checksum value from above. It was two bytes, `0x02` and  `0x24` in hexadecimal. That's `00000010` and `00100100` in binary. To combine them in one byte, first you put the high byte in the variable (`c = 0x02`) and the bits  of the variable will look like this:
+
+```
+00000000 00000010
+```
+Then we shift it 8 bits to the left (`c = c << 8`). Now the bits will look like this:
+```
+00000010 00000000
+```
+Then we add the lower byte to the variable (`c = c + 0x24`). Now it will look like this: 
+```
+00000010 00100100
+```
+That's how we combine two bytes into one larger variable. Since bit shifting changes the values by powers of two, you can also use multiplication.  Whenever you need to combine two bytes into a single value, you can use this formula:
+```
+dataValue = (highByte << 8) + lowByte
+```
+This is the same as:
+```
+dataValue = (highByte * 256) + lowByte
+```
+> **Note:** Arduino variable sizes depend on the processor your code is running on. For example, an int takes two bytes on an Uno, but four bytes on a SAMD board like the Nano 33 IoT or MKR boards. See the [variable reference](https://www.arduino.cc/reference/en/#variables) for more on this.
+
+## Parsing the Data Packet
+
+You'll need this operation for combining the two-byte data pairs in this sensor's data packet. 
+
+In the code above, you read the bytes into the array called `buffer`. The first header byte was discarded, so the first byte in `buffer`, byte 0, is 0x4D, the second header byte. Reading from  Table 2 above, the rest of `buffer` is filled as follows (data names are listed in the datasheet):
+
+* Bytes 1-2: Frame Length
+* Bytes 3-4: Data 1 - PM1.0 (std particle)
+* Bytes 5-6: Data 2 - PM2.5 (std particle)
+* ... etc ...
+* Bytes 25-26: Data 12 - particles/0.1L (>10um)
+* Bytes 27-28: reserved
+* Bytes 29-30: checksum
+
+Converting them all one by one might look like this:
+
+```arduino
+ int pm1Std = (buffer[3] << 8) + buffer[4];
+  int pm25Std = (buffer[5] << 8) + buffer[6];
+  int pm10Std = (buffer[7] << 8) + buffer[8];
+  int pm1Atmo = (buffer[9] << 8) + buffer[10];
+  int pm25Atmo = (buffer[11] << 8) + buffer[12];
+  int pm10Atmo = (buffer[13] << 8) + buffer[14];
+  int particle03 = (buffer[15] << 8) + buffer[16];
+  int particle05 = (buffer[17] << 8) + buffer[18];
+  int particle1 = (buffer[19] << 8) + buffer[20];
+  int particle25 = (buffer[21] << 8) + buffer[22];
+  int particle50 = (buffer[23] << 8) + buffer[24];
+  int particle10 = (buffer[25] << 8) + buffer[26];
+```
+
+You could program the parsing just like that, but it's a lot of typing. In the example [PMS3005AQISensorRead]({{site.codeurl}}/EnvironmentalSensors/PMS3005_AQI_sensor/PMS3005AQISensorRead/PMS3005AQISensorRead.ino), these lines are boiled down to a for loop as follows:
+
+```arduino
+ // boil 26 bytes down into 13 data values:
+  for (int r = 0; r < 13; r++) {
+    // calculate the actual reading values:
+    // the variables below are to explain the relationship between
+    // the two arrays:
+    const int offset = 3;
+    int bufferIndex = (r * 2) + offset;
+    readings[r] = (buffer[bufferIndex] << 8) + buffer[bufferIndex + 1];
+  }
+```
+The progam flow of [PMS3005AQISensorRead]({{site.codeurl}}/EnvironmentalSensors/PMS3005_AQI_sensor/PMS3005AQISensorRead/PMS3005AQISensorRead.ino) goes as follows:
+
+```
+
+void setup() {
+  // set up the two UARTs
+}
+
+void loop() {
+  // read into the buffer until you hit 0x42:
+  // if you got no data, skip the rest of the loop
+  // if the second header byte is missing, skip the rest of the loop
+  // if you got a full buffer (31 bytes), process it and print it
+  // using the function processData
+}
+
+int processData() {
+  //  if the first byte is not 0x42, return an error
+  // calculate checksum starting with the first byte
+  // if the checksum is wrong, return an error
+  // if all is good, continue processing
+  // process the data length into one value
+  // boil the next 26 bytes down into 13 data readings
+  // return success
+}
+
+```
+
+This explains generically how to process the data from the PMS5003 sensor. After a successful read, the readings will be in the `readings` array, so you can modify this program to send the data via WiFi, Bluetooth, re-format for a particular data notation, or anything you wish. 
+
+This sensor data is not calibrated. The [data sheet](https://www.aqmd.gov/docs/default-source/aq-spec/resources-page/plantower-pms5003-manual_v2-3.pdf)  does not explain how to calibrate this sensor. 
