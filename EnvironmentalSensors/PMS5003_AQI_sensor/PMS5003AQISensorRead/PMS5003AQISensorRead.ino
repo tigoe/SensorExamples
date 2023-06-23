@@ -57,8 +57,9 @@ int processData(byte buffer[], int bufferLength) {
 
   // get the data length from the buffer:
   int dataLength = (buffer[1] << 8) + buffer[2];
-  // The actual data starts at the third byte, so
-  // bufferLength is 3 bytes longer than dataLength.
+  // The buffer includes the second header byte
+  // and these data length bytes. The actual data starts
+  // after that, so bufferLength is 3 bytes longer than dataLength.
   // if the two don't match, return error -2:
   if (dataLength != bufferLength - 3) return -2;
 
