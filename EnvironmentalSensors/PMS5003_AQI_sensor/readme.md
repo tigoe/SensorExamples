@@ -109,11 +109,10 @@ void loop() {
 int processData(byte buffer[]) {
   // if the buffer's first byte is not 0x4D, stop and return an error
   // process the data length bytes into one value
-  // if the data length is not what's reported, return an error
+  // if the data length is not what's reported, stop and return an error
   // calculate checksum including the first byte (0x42)
   // if the checksum is wrong, stop and return an error
-  // if all is good,
-  // boil the next 26 bytes down into 13 data values
+  // combine the next 26 bytes into 13 data values
   // return success
 }
 
