@@ -40,9 +40,8 @@ void loop() {
   // if you got no data, skip the rest of the loop:
   if (result <= 0) return;
   // if you got a full buffer (31 bytes), process it and print it:
-  if (result == 31) {
-    Serial.print("bytes received: ");
-    processData(dataBuffer);
+
+  if (processData(dataBuffer, result)) {
     // print all the readings:
     for (int r = 0; r < 13; r++) {
       Serial.print(readingNames[r]);
@@ -52,22 +51,27 @@ void loop() {
   }
 }
 
-int processData(byte buffer[]) {
-  //  if the first byte is not 0x42, return error -1:
+int processData(byte buffer[], int bufferLength) {
+  //  if the first byte is not 0x4D, return error -1:
   if (buffer[0] != 0x4D) return -1;
 
-  // calculate checksum including the first byte (0x42):
+  // get the data length from the buffer:
+  int dataLength = (buffer[1] << 8) + buffer[2];
+  // The actual data starts at the third byte, so
+  // bufferLength is 3 bytes longer than dataLength.
+  // if the two don't match, return error -2:
+  if (dataLength != bufferLength - 3) return -2;
+
+  // calculate checksum including the first header byte (0x42):
   int checksum = 0x42;
   for (int i = 0; i < 29; i++) {
     checksum += buffer[i];
   }
-
+  // get the checksum value from the buffer:
   int checksumValue = (buffer[29] << 8) + buffer[30];
-  // if the checksum is wrong, return error -2;
-  if (checksum != checksumValue) return -2;
+  // if the checksum is wrong, return error -3;
+  if (checksum != checksumValue) return -3;
 
-  // if all is good, continue processing:
-  int dataLength = (buffer[1] << 8) + buffer[2];
   // boil the next 26 bytes down into 13 data readings:
   for (int r = 0; r < 13; r++) {
     // calculate the actual reading values:
@@ -79,7 +83,7 @@ int processData(byte buffer[]) {
     readings[r] = (buffer[bufferIndex] << 8) + buffer[bufferIndex + 1];
   }
   // return success:
-  return 0;
+  return 1;
 
   // here's a guide to which readings are in which buffer positions:
   // int pm1Std = (buffer[3] << 8) + buffer[4];

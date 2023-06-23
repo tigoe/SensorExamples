@@ -1,6 +1,10 @@
+# Understanding the PMS5003 Data Protocol
+
+This is a guide to reading and parsing the data from the [Plantower PMS5003 AQI sensor](https://www.plantower.com/en/products_33/74.html). This sensor has an asynchronous serial interface, so it's a useful example for understanding the structure of binary data protocols. In particular, this protocol contains a fixed header, a data length, and a checksum, all of which will be processed in the code in this explanation.
+
 ## Hardware Connection
 
-The [Plantower PMS5003 sensor](https://www.plantower.com/en/products_33/74.html) sends its data over an asynchronous serial connection (UART). You'll need to read the data over a UART interface on your microcontroller and interpret the bytes.
+The sensor sends its data over an asynchronous serial connection (UART). You'll need to read the data over a UART interface on your microcontroller and interpret the bytes.
 
 Many Arduino boards (though not the Uno) have two UARTs. The first is the USB-Serial connection that you use to upload new code and to send information to the Serial port using `Serial.println()` and other serial commands. 
 
@@ -39,7 +43,6 @@ The sensor's [data sheet](https://www.aqmd.gov/docs/default-source/aq-spec/resou
 
 _Table 2. Data Bytes of the PMS5003 Sensor Data Format_
 
-
 > **Note:** in programming contexts, single-byte values are often written in base-16, or *hexadecimal* notation. In this notation, each digit has 16 possible values, 0-9 then A-F. The `0x` at the beginning indicates that a number is hexadecimal. It makes it easy to write each byte as a two-digit figure: 0-255 in decimal notation is 0-FF in hexadcimal. These notes will follow that convention.
 
 If you have trouble converting from decimal to hexadecimal to binary, the MacOS calculator is your friend. Open it and press command-3 to get the programmer's calculator, as shown in Figure 1. 
@@ -48,12 +51,13 @@ If you have trouble converting from decimal to hexadecimal to binary, the MacOS 
 
 _Figure 1. The MacOS calculator shown in programmer's calculator mode (command-3)_
 
+To process the data coming in from the sensor, first you should write a test program to see that it looks like the data sheet describes. Then you can write a program to parse the data. 
+
 ## Reading the Serial Data
 
-The data from the sensor will
-be sent over and over again via the UART. So the first thing you need to do is to look for the first byte, whose value in hexadecimal notation is `0x42`. 
+The data from the sensor will be sent over and over again via the UART. So the first thing you need to do is to look for the first byte, whose value in hexadecimal notation is `0x42`. 
 
-You can do look for the first header byte like so:
+You can do look for the first header byte as shown in the [simple_read_test]({{site.codeurl}}/EnvironmentalSensors/PMS5003_AQI_sensor/simple_read_test/simple_read_test.ino) program:
 
 ````arduino
 void setup() {
@@ -83,20 +87,41 @@ You should see output in the Serial Monitor like this:
 ```
 42 4D 0 1C 0 1 0 3 0 3 0 1 0 3 0 3 1 59 0 64 0 12 0 4 0 0 0 0 97 0 2 24 
 ```
-You can see the two header bytes, followed by 15 pairs of bytes. The bytes represent the values as explained in the data format above. To understand them, start with the first two after the header, the data length. They are `0 1C`. You can combine them into a single byte by multiplying the first byte by 256 and adding it to the second byte (this math is explained in more detail below). Since the first byte is 0, you just need the second byte, `0x1C`, which is 28 in decimal notation.  That means the data length is 28 bytes. Sure enough, 28 bytes follow the data length. So far, so good. 
+You can see the two header bytes, followed by 15 pairs of bytes. The bytes represent the values as explained in the data format above. To understand them, start with the first two after the header, the data length. They are `0 1C`. You can combine them into a single byte by multiplying the first byte by 256 and adding it to the second byte (this math is explained in more detail below). Since the first byte is 0, you just need the second byte, `0x1C`, which is 28 in decimal notation.  That means the data length is 28 bytes. Sure enough, 28 bytes follow the data length. So far, so good. Later, you'll calculate the data length in code to check.
 
-### Calculating the Checksum
+## Parsing the Data
 
-The last two bytes of the data  packet are the checksum. A *checksum* is a summary of a data  packet, that you can use to validate the data. To use it, add up all the bytes before the checksum. If their sum matches the value of the checksum, your data is valid. 
-
-Looking at the  packet above, here's the sum of all the bytes before the checksum (keep in mind, they're shown in hexadecimal values here):
+Now that you know the microcontroller is reading the data, write a new program to parse it. 
+The full progam flow of [PMS5003AQISensorRead]({{site.codeurl}}/EnvironmentalSensors/PMS5003_AQI_sensor/PMS5003AQISensorRead/PMS5003AQISensorRead.ino) goes as follows:
 
 ```
-42 + 4D + 0 + 1C + 0 + 1 + 0 + 3 + 0 + 3 + 0 + 1 + 0 + 3 + 0 + 3 + 1 + 59 + 0 + 64 + 0 + 12 + 0 + 4 + 0 + 0 + 0 + 0 + 97 + 0 = 0x224
-```
-Sure enough, that matches the value of the last two bytes, 0x224, or 548 in decimal notation. So you know the data is valid. 
+void setup() {
+  // set up the two UARTs
+}
 
-## Reading the Header
+void loop() {
+  // read into the buffer until you hit 0x42:
+  // if you got no data, skip the rest of the loop
+  // if you got 31 bytes after the 0x42, process it
+  //    using the function processData
+}
+
+int processData(byte buffer[]) {
+  // if the buffer's first byte is not 0x4D, stop and return an error
+  // process the data length bytes into one value
+  // if the data length is not what's reported, return an error
+  // calculate checksum including the first byte (0x42)
+  // if the checksum is wrong, stop and return an error
+  // if all is good,
+  // boil the next 26 bytes down into 13 data values
+  // return success
+}
+
+```
+
+Now let's break it down in detail.
+
+### Reading the Header And Data Into a Buffer
 
 Since the sensor data is continually repeated, you need to look for the header to know when you're at the beginning of each set of readings. The Arduino Serial API offers a few ways to do this (click the functions below for more): 
 * [`Serial.find()`](https://www.arduino.cc/reference/en/language/functions/communication/serial/find/) looks for a string of text, 
@@ -118,16 +143,18 @@ The variable `result` tells you how many bytes you got, so you can use it to mak
 
 ### What If One of the Data Bytes Matches the Header Byte Values?
 
-It's possible that one of the data bytes could have the value 0x42, so it's good to check for both header bytes. It will be the first byte in the buffer array after you use `Serial1.readBytesUntil()`. You check like so:
+It's possible that one of the data bytes could have the value 0x42, so it's good to check for both header bytes. It will be the first byte in the buffer array after you use `Serial1.readBytesUntil()`. You can check if it's there like so:
 
 ```arduino
-  // if you didn't get the second header byte, skip the rest of the loop:
-  if (buffer[0] != 0x4D) return;
+  //  if the first byte is not 0x4D, return error -1:
+  if (buffer[0] != 0x4D) return -1;
 ``` 
+
+You'll see this check in the `processData()` function of the [PMS5003AQISensorRead]({{site.codeurl}}/EnvironmentalSensors/PMS5003_AQI_sensor/PMS5003AQISensorRead/PMS5003AQISensorRead.ino) program. 
 
 ## Combining Bytes Into Larger Values
 
-All of the data bytes represent 2-byte values. You need to combine each pair of bytes into a single value.
+All of the data bytes in the sensor's packet represent 2-byte values. You need to combine each pair of bytes into a single value.
 
 To combine individual bytes into larger values, it helps to imagine those bytes and values as bits in memory. A single byte variable takes up 8 bits in the microcontroller's memory, a two-byte variable takes 16 bits, and a four-byte variable takes 32 bits. Each bit is just a switch in memory (really a transistor) that's turned on or off. Each bit position represents a power of two. Let's take this byte: `00111110`. Each bit in the byte represents a successive power of two, like so:
 
@@ -192,7 +219,21 @@ This is the same as:
 dataValue = (highByte * 256) + lowByte
 ```
 
+You can see this process applied in the `processData()` function of the [PMS5003AQISensorRead]({{site.codeurl}}/EnvironmentalSensors/PMS5003_AQI_sensor/PMS5003AQISensorRead/PMS5003AQISensorRead.ino) program, where the variables `dataLength` and `checksumValue` are calculated.
+
 > **Note:** Arduino variable sizes depend on the processor your code is running on. For example, an int takes two bytes on an Uno, but four bytes on a SAMD board like the Nano 33 IoT or MKR boards. See the [variable reference](https://www.arduino.cc/reference/en/#variables) for more on this.
+
+### Calculating the Checksum
+
+The last two bytes of the data  packet are the checksum. A *checksum* is a summary of a data  packet, that you can use to validate the data. To use it, add up all the bytes before the checksum. If their sum matches the value of the checksum, your data is valid. 
+
+Looking at the  packet above, here's the sum of all the bytes before the checksum (keep in mind, they're shown in hexadecimal values here):
+
+```
+42 + 4D + 0 + 1C + 0 + 1 + 0 + 3 + 0 + 3 + 0 + 1 + 0 + 3 + 0 + 3 + 1 + 59 + 0 + 64 + 0 + 12 + 0 + 4 + 0 + 0 + 0 + 0 + 97 + 0 = 0x224
+```
+Sure enough, that matches the value of the last two bytes, 0x224, or 548 in decimal notation. So you know the data is valid. 
+
 
 ## Parsing the Data Packet
 
@@ -225,7 +266,7 @@ Converting them all one by one might look like this:
   int particle10 = (buffer[25] << 8) + buffer[26];
 ```
 
-You could program the parsing just like that, but it's a lot of typing. In the example [PMS5003AQISensorRead]({{site.codeurl}}/EnvironmentalSensors/PMS5003_AQI_sensor/PMS5003AQISensorRead/PMS5003AQISensorRead.ino), these lines are boiled down to a for loop as follows:
+You could program the parsing just like that, but it's a lot of typing. In the [PMS5003AQISensorRead]({{site.codeurl}}/EnvironmentalSensors/PMS5003_AQI_sensor/PMS5003AQISensorRead/PMS5003AQISensorRead.ino) program, these lines are boiled down to a for loop as follows:
 
 ```arduino
  // boil 26 bytes down into 13 data values:
@@ -239,32 +280,6 @@ You could program the parsing just like that, but it's a lot of typing. In the e
     readings[r] = (buffer[bufferIndex] << 8) + buffer[bufferIndex + 1];
   }
 ```
-The full progam flow of [PMS5003AQISensorRead]({{site.codeurl}}/EnvironmentalSensors/PMS5003_AQI_sensor/PMS5003AQISensorRead/PMS5003AQISensorRead.ino) goes as follows:
+Once you've generated the readings array, you're done! You've got the data from the PMS5003 sensor. After a successful read, the readings will be in the `readings` array, so you can modify this program to send the data via WiFi, Bluetooth, re-format for a particular data notation, or anything you wish. 
 
-```
-void setup() {
-  // set up the two UARTs
-}
-
-void loop() {
-  // read into the buffer until you hit 0x42:
-  // if you got no data, skip the rest of the loop
-  // if you got 31 bytes after the 0x42, process it
-  //    using the function processData
-}
-
-int processData(byte buffer[]) {
-  // if the buffer's first byte is not 0x4D, stop and return an error
-  // calculate checksum including the first byte (0x42)
-  // if the checksum is wrong, stop and return an error
-  // if all is good, continue processing
-  // process the data length into one value
-  // boil the next 26 bytes down into 13 data readings
-  // return success
-}
-
-```
-
-This explains generically how to process the data from the PMS5003 sensor. After a successful read, the readings will be in the `readings` array, so you can modify this program to send the data via WiFi, Bluetooth, re-format for a particular data notation, or anything you wish. 
-
-This sensor data is not calibrated. The [data sheet](https://www.aqmd.gov/docs/default-source/aq-spec/resources-page/plantower-pms5003-manual_v2-3.pdf)  does not explain how to calibrate this sensor. 
+This sensor data is not calibrated. The [data sheet](https://www.aqmd.gov/docs/default-source/aq-spec/resources-page/plantower-pms5003-manual_v2-3.pdf) does not explain how to calibrate this sensor. 
