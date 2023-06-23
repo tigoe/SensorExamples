@@ -178,7 +178,7 @@ Then you add the lower byte to the variable (`checksum = checksum + 0x24`). Now 
 00000010 00100100
 ```
 
-That's how we combine two bytes into one larger variable. Since bit shifting changes the values by powers of two, you can use multiplication instead if you prefer. Bit shifting is basically multiplying by powers of 2.  Whenever you need to combine two bytes into a single value, you can use this formula:
+That's how we combine two bytes into one larger variable. Since bit shifting changes the values by powers of two, you can use multiplication instead if you prefer. Bit shifting is basically multiplying by powers of 2.  Whenever you need to combine two bytes into a single value, you can use this formula (because 256 = 2<sup>8</sup>):
 ```
 dataValue = (highByte << 8) + lowByte
 ```
@@ -186,7 +186,6 @@ This is the same as:
 ```
 dataValue = (highByte * 256) + lowByte
 ```
-because 256 = 2<sup>8</sup>.
 
 > **Note:** Arduino variable sizes depend on the processor your code is running on. For example, an int takes two bytes on an Uno, but four bytes on a SAMD board like the Nano 33 IoT or MKR boards. See the [variable reference](https://www.arduino.cc/reference/en/#variables) for more on this.
 
@@ -246,13 +245,12 @@ void setup() {
 void loop() {
   // read into the buffer until you hit 0x42:
   // if you got no data, skip the rest of the loop
-  // if the second header byte is missing, skip the rest of the loop
-  // if you got a full buffer (31 bytes), process it and print it
+  // if you got 31 bytes after the 0x42, process it
   //    using the function processData
 }
 
-int processData() {
-  // if the first byte is not 0x42, stop and return an error
+int processData(byte buffer[]) {
+  // if the buffer's first byte is not 0x4D, stop and return an error
   // calculate checksum starting with the first byte
   // if the checksum is wrong, stop and return an error
   // if all is good, continue processing

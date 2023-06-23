@@ -6,8 +6,6 @@
   by Tom Igoe
 */
 
-// a buffer for the raw bytes from the sensor:
-byte buffer[32];
 // a buffer for the processed data readings:
 int readings[13];
 
@@ -35,16 +33,16 @@ void setup() {
 }
 
 void loop() {
+  // a buffer for the raw bytes from the sensor:
+  byte dataBuffer[32];
   // read into the buffer until you hit 0x42:
-  int result = Serial1.readBytesUntil(0x42, buffer, 32);
+  int result = Serial1.readBytesUntil(0x42, dataBuffer, 32);
   // if you got no data, skip the rest of the loop:
   if (result <= 0) return;
-  // if the second header byte is missing, skip the rest of the loop:
-  if (buffer[0] != 0x4D) return;
   // if you got a full buffer (31 bytes), process it and print it:
   if (result == 31) {
     Serial.print("bytes received: ");
-    processData();
+    processData(dataBuffer);
     // print all the readings:
     for (int r = 0; r < 13; r++) {
       Serial.print(readingNames[r]);
@@ -54,7 +52,7 @@ void loop() {
   }
 }
 
-int processData() {
+int processData(byte buffer[]) {
   //  if the first byte is not 0x42, return error -1:
   if (buffer[0] != 0x4D) return -1;
 
