@@ -37,7 +37,7 @@ The sensor's [data sheet](https://www.aqmd.gov/docs/default-source/aq-spec/resou
 | 31 |Checksum High Byte | variable |
 | 32 |Checksum Low Byte | variable |
 
-_ Table 2. Data Bytes of the PMS5003 Sensor Data Format_
+_Table 2. Data Bytes of the PMS5003 Sensor Data Format_
 
 
 > **Note:** in programming contexts, single-byte values are often written in base-16, or *hexadecimal* notation. In this notation, each digit has 16 possible values, 0-9 then A-F. The `0x` at the beginning indicates that a number is hexadecimal. It makes it easy to write each byte as a two-digit figure: 0-255 in decimal notation is 0-FF in hexadcimal. These notes will follow that convention.
@@ -129,14 +129,14 @@ It's possible that one of the data bytes could have the value 0x42, so it's good
 
 All of the data bytes represent 2-byte values. You need to combine each pair of bytes into a single value.
 
-To combine individual bytes into larger values, it helps to imagine those bytes and values as bits in memory. A single byte variable takes up 8 bits in the microcontroller's memory, a two-byte variable takes 16 bits, and a four-byte variable takes 32 bits. Each bit is just a switch in memory (really a transistor) that's turned on or off. Each bit position represents a power of two:
+To combine individual bytes into larger values, it helps to imagine those bytes and values as bits in memory. A single byte variable takes up 8 bits in the microcontroller's memory, a two-byte variable takes 16 bits, and a four-byte variable takes 32 bits. Each bit is just a switch in memory (really a transistor) that's turned on or off. Each bit position represents a power of two. Let's take this byte: `00111110`:
 
 | Bit 7 | Bit 6 | Bit 5 | Bit 4 | Bit 3 | Bit 2 | Bit 1 | Bit 0 |
 |-|-|-|-|-|-|-|-|
 | 2<sup>7</sup> | 2<sup>6</sup> | 2<sup>5</sup> | 2<sup>4</sup> | 2<sup>3</sup> | 2<sup>2</sup> | 2<sup>1</sup> | 2<sup>0</sup> |
 |0|0|1|1|1|1|1|0|
 
-The byte above has the value 58. 
+This byte has the value 58. Here's the breakdown again: 
 
 2<sup>5</sup> + 2<sup>4</sup> + 2<sup>3</sup> + 2<sup>2</sup> + 2<sup>1</sup> = \
 32 + 16 + 8 + 4 + 2 = \
@@ -149,19 +149,19 @@ Here are three different bytes holding three different values:
 01111100 = 124
 11111000 = 248
 ```
-Notice how they have the same pattern of 1 and 0 in the middle, but the pattern is shifted one bit position each time. Also notice how, each time you shift one bit to the left, the value doubles. This is called **bit shifting**. It's a common operation in programming. Bit shifting by one position to the left (the symbol for this is `<<`) doubles the value, and by one position to the right (`>>`) halves the value. Looking at those same byte values again:
+They all have different values, but notice how they have the same pattern of 1 and 0 in the middle, but the pattern is shifted one bit position each time. Also notice how, each time you shift one bit to the left, the value doubles. This is called **bit shifting**. It's a common operation in programming. Bit shifting by one position to the left (the symbol for this is `<<`) doubles the value, and by one position to the right (`>>`) halves the value. Looking at those same byte values again:
 
-|Bits |Base-10| Equals | Equals|
+|Bits |Decimal Value| Equals | Equals|
 |--|--|--|--|
 |00111110 | 58 | 124 >> 1 | 248 >> 2 |
 |01111100 | 124 | 58 << 1 | 248 >> 1 |
 | 11111000 | 248 | 58 << 2 | 124 << 1 |
 
-Now, imagine combining two byte values into a single two-byte variable. Declare it as an `int` and call it `c` (space added to make it readable):
+Bit shifting can be very helpful in combining multiple bytes into a single value. Imagine `int`  variable  called  `c` (space added to make it readable):
 ```
 int c = 00000000 00000000
 ```
-Let's take that checksum value from above. It was two bytes, `0x02` and  `0x24` in hexadecimal. That's `00000010` and `00100100` in binary. To combine them in one byte, first you put the high byte in the variable (`c = 0x02`) and the bits  of the variable will look like this:
+Let's take that checksum value from above and put it in our variable. It was two bytes, `0x02` and  `0x24` in hexadecimal. That's `00000010` and `00100100` in binary. To combine them in one byte, first you put the high byte in the variable (`c = 0x02`) and the bits  of the variable will look like this:
 
 ```
 00000000 00000010
@@ -174,7 +174,8 @@ Then we add the lower byte to the variable (`c = c + 0x24`). Now it will look li
 ```
 00000010 00100100
 ```
-That's how we combine two bytes into one larger variable. Since bit shifting changes the values by powers of two, you can also use multiplication.  Whenever you need to combine two bytes into a single value, you can use this formula:
+
+That's how we combine two bytes into one larger variable. Since bit shifting changes the values by powers of two, you can use multiplication instead if you prefer. Bit shifting is basically multiplying by powers of 2.  Whenever you need to combine two bytes into a single value, you can use this formula:
 ```
 dataValue = (highByte << 8) + lowByte
 ```
@@ -221,9 +222,9 @@ You could program the parsing just like that, but it's a lot of typing. In the e
  // boil 26 bytes down into 13 data values:
   for (int r = 0; r < 13; r++) {
     // calculate the actual reading values:
-    // the variables below are to explain the relationship between
-    // the two arrays:
-    const int offset = 3;
+    // the variables below are to explain 
+    // the relationship between the two arrays:
+    int offset = 3;
     int bufferIndex = (r * 2) + offset;
     readings[r] = (buffer[bufferIndex] << 8) + buffer[bufferIndex + 1];
   }
@@ -241,13 +242,13 @@ void loop() {
   // if you got no data, skip the rest of the loop
   // if the second header byte is missing, skip the rest of the loop
   // if you got a full buffer (31 bytes), process it and print it
-  // using the function processData
+  //    using the function processData
 }
 
 int processData() {
-  //  if the first byte is not 0x42, return an error
+  // if the first byte is not 0x42, stop and return an error
   // calculate checksum starting with the first byte
-  // if the checksum is wrong, return an error
+  // if the checksum is wrong, stop and return an error
   // if all is good, continue processing
   // process the data length into one value
   // boil the next 26 bytes down into 13 data readings
