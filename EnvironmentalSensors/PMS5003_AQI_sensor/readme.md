@@ -98,7 +98,7 @@ Sure enough, that matches the value of the last two bytes, 0x224, or 548 in deci
 
 ## Reading the Header
 
-Since the sensor data is continually repeated, you need to look for the header to know when you're at the beginning of each set of readings. The Arduino Serial API offers a few ways to do this: 
+Since the sensor data is continually repeated, you need to look for the header to know when you're at the beginning of each set of readings. The Arduino Serial API offers a few ways to do this (click the functions below for more): 
 * [`Serial.find()`](https://www.arduino.cc/reference/en/language/functions/communication/serial/find/) looks for a string of text, 
 * [`Serial.findUntil()`](https://www.arduino.cc/reference/en/language/functions/communication/serial/finduntil/) looks for a string, but terminates if it hits a single-byte terminator, 
 * [`Serial.readBytes()`](https://www.arduino.cc/reference/en/language/functions/communication/serial/readbytes/) reads the whole serial buffer into an array,
@@ -160,20 +160,20 @@ Each time you shift the pattern one bit to the left, the total value doubles. If
 | 248 >> 2 | 62 | 00111110 |
 | 248 >> 3 | 31 | 00011111 |
 
-Bit shifting can be very helpful in combining multiple byte values into a single variable. Imagine an `int`  variable  called  `c` (space added to make it readable):
+Bit shifting can be very helpful in combining multiple byte values into a single variable. As an example, let's use the checksum byte values from above and put it in a larger variable. To do this, you'd create `int`  variable  called  `checksum` (space added to make it readable):
 ```
-int c = 00000000 00000000
+int checksum = 00000000 00000000
 ```
-Let's take that checksum value from above and put it in our variable. It was two bytes, `0x02` and  `0x24` in hexadecimal. That's `00000010` and `00100100` in binary. To combine them in one byte, first you put the high byte in the variable (`c = 0x02`) and the bits  of the variable will look like this:
+ The checksum bytes were the last two in the reading, `0x02` and  `0x24` in hexadecimal. That's `00000010` and `00100100` in binary. To combine them in one byte, first you put the high byte in the variable (`checksum = 0x02`). Then the bits of the variable will look like this:
 
 ```
 00000000 00000010
 ```
-Then we shift it 8 bits to the left (`c = c << 8`). Now the bits will look like this:
+Then you shift it 8 bits to the left (`checksum = checksum << 8`). Now the bits will look like this:
 ```
 00000010 00000000
 ```
-Then we add the lower byte to the variable (`c = c + 0x24`). Now it will look like this: 
+Then you add the lower byte to the variable (`checksum = checksum + 0x24`). Now it will look like this: 
 ```
 00000010 00100100
 ```
@@ -207,7 +207,7 @@ In the code above, you read the bytes into the array called `buffer`. The first 
 Converting them all one by one might look like this:
 
 ```arduino
- int pm1Std = (buffer[3] << 8) + buffer[4];
+  int pm1Std = (buffer[3] << 8) + buffer[4];
   int pm25Std = (buffer[5] << 8) + buffer[6];
   int pm10Std = (buffer[7] << 8) + buffer[8];
   int pm1Atmo = (buffer[9] << 8) + buffer[10];
