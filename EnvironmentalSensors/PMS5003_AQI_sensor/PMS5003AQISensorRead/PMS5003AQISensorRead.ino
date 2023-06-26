@@ -2,6 +2,12 @@
   PMS5003 AQI Sensor Reader
   Reads the sensor via UART and prints out the values and their labels
 
+  Circuit:
+  * Sensor TX: Arduino Serial1 RX
+  * Sensor RX: Arduino Serial1 TX
+  * GND: Arduino Ground
+  * Vcc: Arduino 5V supply. Note that it needs 5V, not 3.3V
+
   created 22 Jun 2023
   by Tom Igoe
 */
